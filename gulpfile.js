@@ -15,7 +15,7 @@ gulp.task('clean:dist', (done) => {
   })
 });
 
-gulp.task('compile:jsx', () => {
+gulp.task('compile:js', () => {
   return gulp.src(src + 'entry.js')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest(dist));
@@ -34,16 +34,30 @@ gulp.task('copy:html', () => {
     .pipe(gulp.dest(dist));
 });
 
+gulp.task('watch:html', () => {
+  gulp.watch(src + '**/*.html', ['copy:html']);
+});
+
+gulp.task('watch:sass', () => {
+  gulp.watch(src + '**/*.scss', ['compile:sass']);
+});
+
+gulp.task('watch:js', () => {
+  gulp.watch(src + '**/*.js', ['compile:js']);
+});
+
 gulp.task('build:dev', (done) => {
   runSequence('clean:dist',
-    ['compile:jsx', 'compile:sass', 'copy:html'],
+    ['compile:js', 'compile:sass', 'copy:html'],
     done);
 });
 
-gulp.task('serve:dev',['build:dev'], () => {
+gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], () => {
   browerSync.init({
     server: {
-      baseDir: './dist/'
-    }
+      baseDir: './dist/',
+    },
+    files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
+    port: 3000
   });
 });
