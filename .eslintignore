@@ -1,0 +1,5 @@
+## Ignore Node Modules when linting
+/node_modules/*
+
+## Ignore gulpfile when linting
+/gulpfile.js
