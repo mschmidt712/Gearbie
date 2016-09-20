@@ -7,6 +7,8 @@ const browerSync = require('browser-sync');
 const runSequence = require('run-sequence');
 const plumber = require('gulp-plumber');
 const imageMin = require('gulp-imagemin');
+const autoprefixer = require('autoprefixer');
+const postcss = require('gulp-postcss');
 
 const src = './src/';
 const dist = './dist/';
@@ -28,6 +30,7 @@ gulp.task('compile:sass', () => {
   return gulp.src(src + '**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(dist));
 });
