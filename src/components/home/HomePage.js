@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 function HomePage() {
   return (
     <div>
-      <div className="home-page-container">
-        <div className="image-container">
+      <div className="image-container">
+        <div className="home-page-container">
           <h3 className="page-sub-header">KENZAN</h3>
           <h1 className="page-header">MAKE NEXT <span className="emphasis">POSSIBLE.</span></h1>
           <p className="page-description">
