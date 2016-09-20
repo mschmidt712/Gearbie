@@ -4,7 +4,8 @@ const webpack = require('webpack-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const browerSync = require('browser-sync');
-var runSequence = require('run-sequence');
+const runSequence = require('run-sequence');
+const plumber = require('gulp-plumber');
 
 const src = './src/';
 const dist = './dist/';
@@ -17,6 +18,7 @@ gulp.task('clean:dist', (done) => {
 
 gulp.task('compile:js', () => {
   return gulp.src(src + 'entry.js')
+    .pipe(plumber())
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest(dist));
 });

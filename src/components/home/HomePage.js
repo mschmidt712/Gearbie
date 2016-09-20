@@ -1,19 +1,29 @@
-import { React } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
-const HomePage = function () {
+function HomePage() {
   return (
     <div>
-      <h3>KENZAN</h3>
-      <h1>MAKE NEXT POSSIBLE</h1>
-      <p>
-        We've been delivering innovative solutions that support our clients,
-        from ideation to deployment since 2004.
-      </p>
-      <button>Open Source</button>
-      <button>Tech Radar</button>
+      <div className="home-page-container">
+        <div className="image-container">
+          <h3 className="page-sub-header">KENZAN</h3>
+          <h1 className="page-header">MAKE NEXT <span className="emphasis">POSSIBLE.</span></h1>
+          <p className="page-description">
+            We've been delivering innovative solutions that support our clients,
+            from ideation to deployment since 2004.
+          </p>
+          <button className="btn btn-primary">Open Source</button>
+          <button className="btn btn-primary">Tech Radar</button>
+        </div>
+      </div>
+      <div className="page-footer">
+        <div className="arrow-link">
+          <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
+        </div>
+        <h3 className="footer-text"> Explore. Contribute. Code</h3>
+      </div>
     </div>
-    );
-};
+  );
+}
 
 export default HomePage;

@@ -1,0 +1,150 @@
+// Variables
+$primary-blue: #0066cc;
+$primary-orange: #FF6601;
+$secondary-orange: #FF6600;
+$font-white: #FFFFFE;
+$font-gray: #434B53;
+$footer-gray: #E9E8E4;
+
+// Roboto Font
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: calc(100% - 6rem);
+  background-color: #3d3d3d;
+}
+
+// Navbar
+.navbar {
+  border: 2px black;
+  overflow: overlay;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    border-bottom: 4px solid black;
+    border-top: 10px solid $primary-blue;
+
+    li {
+      height: auto;
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+        margin: 10px 10px 20px 10px;
+        padding-bottom: 20px;
+
+        &:hover {
+        background-color: lightgray;
+      }
+      }
+    }
+  }
+}
+
+//Buttons
+.btn {
+  padding: 15px 30px;
+  margin: 30px auto;
+  border: 1px solid $font-white;
+  border-radius: 5px;
+  display: block;
+}
+
+@media(min-width: 800px) {
+  .btn {
+    display: inline;
+    margin: 30px;
+  }
+}
+
+
+.btn-primary {
+  font-size: 1.5em;
+  color: $font-white;
+  background-color: $primary-orange;
+}
+
+.page-description {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: $font-white;
+  padding: 50px 50px;
+}
+
+.page-header {
+  color: $font-white;
+  font-size: 4em;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-shadow: 4px 2px 4px #000;
+}
+
+.page-sub-header {
+  color: $font-white;
+  font-weight: 400;
+  font-size: 2em;
+}
+
+.emphasis {
+  font-weight: 600;
+  color: $secondary-orange;
+}
+
+.home-page-container {
+  text-align: center;
+  margin: 15px 50px;
+}
+
+.page-footer {
+  background-color: $footer-gray;
+  width: 100%;
+  height: 6rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  .arrow-link {
+    background-color: white;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    top: -20px;
+    left: calc(50% - 25px);
+  }
+
+  .arrow-icon {
+    position: absolute;
+    left:-100px;
+    top: 6px;
+  }
+
+  .material-icons.orange {
+    color: $primary-orange;
+  }
+
+  .material-icons.md {
+    font-size: 36px;
+  }
+
+  .footer-text {
+    color: $font-gray;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+  }
+}
