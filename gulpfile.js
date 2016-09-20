@@ -57,7 +57,7 @@ gulp.task('build:dev', (done) => {
 gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], () => {
   browerSync.init({
     server: {
-      baseDir: './dist/',
+      baseDir: ['./dist/', './'],
     },
     files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     port: 3000

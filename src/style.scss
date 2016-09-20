@@ -133,18 +133,18 @@ body {
     top: 6px;
   }
 
-  .material-icons.orange {
-    color: $primary-orange;
-  }
-
-  .material-icons.md {
-    font-size: 36px;
-  }
-
   .footer-text {
     color: $font-gray;
     font-weight: 400;
     margin: 0;
     text-align: center;
   }
+}
+
+.material-icons.orange {
+  color: $primary-orange;
+}
+
+.material-icons.md {
+  font-size: 36px;
 }
