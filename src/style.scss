@@ -1,0 +1,41 @@
+// Variables
+$primary-blue: #0066cc;
+
+// Roboto Font
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+// Navbar
+.navbar {
+  border: 2px black;
+  overflow: overlay;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    border-bottom: 4px solid black;
+    border-top: 10px solid $primary-blue;
+
+    li {
+      height: auto;
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+        margin: 10px 10px 20px 10px;
+        padding-bottom: 20px;
+
+        &:hover {
+        background-color: lightgray;
+      }
+      }
+    }
+  }
+}
