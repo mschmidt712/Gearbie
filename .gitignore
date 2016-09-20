@@ -3,3 +3,6 @@
 
 ##Dist Folder
 /dist/*
+
+##VS IDE
+/.vscode/*
