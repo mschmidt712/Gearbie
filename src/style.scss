@@ -1,9 +1,9 @@
 // Variables
 $primary-blue: #0066cc;
-$primary-orange: #FF6601;
+$primary-orange: #FD7222;
 $secondary-orange: #FF6600;
 $font-white: #FFFFFE;
-$font-gray: #434B53;
+$primary-gray: #434B53;
 $footer-gray: #E9E8E4;
 
 // Roboto Font
@@ -53,24 +53,35 @@ body {
 
 //Buttons
 .btn {
+  outline: none;
   padding: 15px 30px;
   margin: 30px auto;
   border: 1px solid $font-white;
   border-radius: 5px;
   display: block;
+  cursor: pointer;
+  transition:all 0.3s ease-out;
+
+  font-weight: 300;
+  letter-spacing: 0.05rem;
 }
 
 .btn-primary {
   font-size: 1.5rem;
   color: $font-white;
   background-color: $primary-orange;
+
+  &:hover {
+    background-color: rgba(red($primary-orange), green($primary-orange), blue($primary-orange), 0.7);
+  }
+
+  &:active {
+    box-shadow: none;
+    background-color: rgba(red($primary-orange), green($primary-orange), blue($primary-orange), 0.4)
+  }
 }
 
 @media(min-width: 800px) {
-  body {
-    font-size: 90%;
-  }
-
   .btn {
     display: inline;
     margin: 30px;
@@ -86,17 +97,19 @@ body {
   padding-bottom: 100px;
 }
 
-.image-container {
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.5),
+.home-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.6)
-    ), url('./assets/culture-11.jpg');
-  background-repeat: no-repeat;
+    ), url('./assets/culture-11.jpg') no-repeat center center fixed;
+}
+
+//Image Backgrounds
+.image-container {
   background-size: cover;
-  background-position: center center;
-  width: 100%;
+  min-height: calc(100% - 5rem);
   margin-bottom: -15px;
-  background-color: $font-gray;
+  background-color: $primary-gray;
 }
 
 //Headers
@@ -105,7 +118,7 @@ body {
   font-size: 4rem;
   font-weight: 400;
   letter-spacing: 0.5rem;
-  text-shadow: 4px 2px 4px #000;
+  text-shadow: 4px 2px 6px #000;
 }
 
 .emphasis {
@@ -117,6 +130,7 @@ body {
   color: $font-white;
   font-weight: 400;
   font-size: 2rem;
+  letter-spacing: 0.25rem;
   padding-top:40px;
 }
 
@@ -125,6 +139,7 @@ body {
   font-weight: 800;
   color: $font-white;
   padding: 50px 50px;
+  line-height: 2.25rem;
 }
 
 
@@ -155,7 +170,7 @@ body {
   }
 
   .footer-text {
-    color: $font-gray;
+    color: $primary-gray;
     font-weight: 400;
     margin: 0;
     text-align: center;
