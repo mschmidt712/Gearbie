@@ -6,6 +6,10 @@ $font-white: #FFFFFE;
 $font-gray: #434B53;
 $footer-gray: #E9E8E4;
 
+// Media query breakpoints
+$phone: 320px;
+$tablet: 768px;
+
 // Roboto Font
 @font-face {
   font-family: 'Roboto', sans-serif;
@@ -28,20 +32,22 @@ body {
 
 // Navbar
 .navbar {
-
+  background: white;
   ul {
     list-style-type: none;
     display: flex;
-    border-bottom: 4px solid black;
-    border-top: 10px solid $primary-blue;
+    border-bottom: 2px solid $primary-orange;
+    border-top: 15px solid $font-gray;
     margin: 0;
 
     li {
       a {
+        display: flex;
         text-decoration: none;
-        color: black;
-        font-size: 32px;
-        padding: 10px 10px 10px 10px;
+        color: $font-gray;
+        font-size: 1.5rem;
+        padding: 30px 10px 30px 10px;
+        transition: background .5s ease;
 
         &:hover {
         background-color: lightgray;
