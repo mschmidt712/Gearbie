@@ -6,28 +6,51 @@ $font-white: #FFFFFE;
 $font-gray: #434B53;
 $footer-gray: #E9E8E4;
 
+$phone-breakpoint: 600px;
+$tablet-breakpoint: 1200px;
+
+
 // Roboto Font
 @font-face {
   font-family: 'Roboto', sans-serif;
   src: url('./assets/fonts/Roboto-Regular.ttf');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
-  height: 100%;
+  min-height: 100%;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-size: 100%;
   position: relative;
   margin: 0;
   padding-bottom: 6rem;
-  min-height: calc(100% - 6rem);
-  background-color: #3d3d3d;
+  min-height: 100%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  body{
+    font-size: 150%;
+    overflow: hidden;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  body{
+    font-size: 200%;
+  }
 }
 
 // Navbar
 .navbar {
+  height: 3rem;
+  background: white;
 
   ul {
     list-style-type: none;
@@ -49,15 +72,23 @@ body {
       }
     }
   }
+
+  .active {
+    background: white;
+  }
 }
 
 //Buttons
 .btn {
   padding: 15px 30px;
-  margin: 30px auto;
+  margin: 10px 5px;
   border: 1px solid $font-white;
   border-radius: 5px;
-  display: block;
+  display: inline-block;
+  cursor: pointer;
+  transition:all 0.3s ease-out;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
 }
 
 .btn-primary {
@@ -73,17 +104,21 @@ body {
   }
 }
 
-
-//Home Page
-.home-page-container {
-  text-align: center;
-  margin: 15px auto;
-  max-width: 1200px;
-  padding-bottom: 100px;
+@media(min-width: $phone-breakpoint) {
+  .btn {
+    margin: 30px;
+  }
 }
 
-//Headers
-.page-header {
+//Home Page
+.home-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/culture-11.jpg') no-repeat center center fixed;
+}
+
+.home-page-header {
   color: $font-white;
   font-size: 4rem;
   font-weight: 400;
@@ -96,6 +131,118 @@ body {
   color: $secondary-orange;
 }
 
+.home-page-description {
+  font-weight: 800;
+  color: $font-white;
+  line-height: 1.5rem;
+  padding: 50px 0px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .home-page-description {
+    padding: 50px 0px;
+    line-height: 2.25rem;
+  }
+}
+
+//Explore Page
+.explore-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Explore_Page_Image.jpg') no-repeat center center fixed;
+}
+
+//Page Containers
+.image-container {
+  background-size: cover;
+  margin-bottom: -15px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .image-container {
+    height: 100%;
+  }
+}
+
+.page-container {
+  text-align: center;
+  margin: 15px auto;
+  max-width: 1200px;
+  padding:0px 50px 100px;
+}
+
+.col-2-page-container {
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.col-2 {
+  padding: 20px 50px;
+  // max-width: 600px;
+  width: calc(100% - 100px);
+  display: block;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .col-2 {
+    max-width: 1200px;
+    width: 50%;
+    padding: 50px;
+    float: left;
+  }
+}
+
+.text-box-container {
+  width: 100%;
+  background-color: white;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box-container {
+    width: 50%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box-container {
+    background-color: transparent;
+  }
+}
+
+.text-box {
+  background-color: $font-white;
+  padding: 0px;
+  position: relative;
+
+  .text-box-header {
+    font-weight: 300;
+    color: $primary-orange;
+    margin: 0;
+  }
+
+  .text-box-content {
+    font-size: 85%;
+    line-height: 120%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box {
+    padding: 35px;
+
+    .text-box-content {
+      font-size: 60%;
+    }
+  }
+}
+
+//Headers
+.page-header {
+  color: $font-white;
+}
+
 .page-sub-header {
   color: $font-white;
   font-weight: 400;
@@ -106,9 +253,15 @@ body {
   font-size: 1.5rem;
   font-weight: 800;
   color: $font-white;
-  padding: 50px 50px;
+  line-height: 1.5rem;
 }
 
+@media(min-width: $tablet-breakpoint) {
+  .page-description {
+    padding: 50px 0px;
+    line-height: 2.25rem;
+  }
+}
 
 //Footer
 .page-footer {
@@ -131,7 +284,7 @@ body {
   }
 
   .arrow-icon {
-    position: absolute;
+    position: relative;
     left:-100px;
     top: 6px;
   }
@@ -141,6 +294,12 @@ body {
     font-weight: 400;
     margin: 0;
     text-align: center;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page-footer {
+    position: fixed;
   }
 }
 
