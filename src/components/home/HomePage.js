@@ -20,7 +20,7 @@ function HomePage() {
         <div className="arrow-link">
           <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
         </div>
-        <h3 className="footer-text"> Explore. Contribute. Code</h3>
+        <h5 className="footer-text"> Explore. Contribute. Code</h5>
       </div>
     </div>
   );
