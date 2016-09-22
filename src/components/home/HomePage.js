@@ -12,8 +12,14 @@ function HomePage() {
             We've been delivering innovative solutions that support our clients,
             from ideation to deployment since 2004.
           </p>
-          <button className="btn btn-primary">Open Source</button>
-          <button className="btn btn-primary">Tech Radar</button>
+          <div className="button-container">
+            <Link to="/explore/open-source" className="btn btn-primary">
+              Open Source
+            </Link>
+            <Link to="/explore/tech-radar" className="btn btn-primary">
+              Tech Radar
+            </Link>
+          </div>
         </div>
       </div>
       <div className="page-footer">

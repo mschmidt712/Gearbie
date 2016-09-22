@@ -1,0 +1,111 @@
+
+//Explore Page Containers
+.col-2-page-container {
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.col-2 {
+  padding: 20px 50px;
+  width: 100%;
+  display: block;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .col-2 {
+    margin: auto;
+    max-width: 1200px;
+    width: 50%;
+    padding: 50px;
+    float: left;
+  }
+}
+
+.text-box-container {
+  width: 100%;
+  background-color: white;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box-container {
+    width: 90%;
+    background-color: transparent;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box-container {
+    width: 40%;
+  }
+}
+
+.text-box {
+  background-color: $font-white;
+  padding: 0px;
+  position: relative;
+
+  .text-box-header {
+    font-weight: 300;
+    color: $primary-orange;
+    margin: 0;
+  }
+
+  .text-box-content {
+    font-size: 85%;
+    line-height: 120%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box {
+    padding: 35px;
+
+    .text-box-content {
+      font-size: 60%;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box {
+    .text-box-content {
+      font-size: 50%;
+    }
+  }
+}
+
+.explore-arrow-container {
+  position: absolute;
+  top: -140px;
+  right: -35px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .explore-arrow-container {
+    top: calc(50% - 32px);
+    right: -90px;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .explore-arrow-container {
+    top: calc(50% - 42px);
+    right: -25%;
+  }
+}
+
+//Explore Page Images
+.open-source-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Open_Source_Image.jpg') no-repeat center center fixed;
+}
+
+.tech-radar-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Tech_Radar_Image.jpg') no-repeat center center fixed;
+}

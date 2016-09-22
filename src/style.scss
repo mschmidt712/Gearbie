@@ -1,15 +1,30 @@
 // Variables
 $primary-blue: #0066cc;
+$secondary-blue: #1687B0;
 $primary-orange: #FF6601;
 $secondary-orange: #FF6600;
 $font-white: #FFFFFE;
 $font-gray: #434B53;
+$arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
+
+$phone-breakpoint: 650px;
+$tablet-breakpoint: 1200px;
 
 // Roboto Font
 @font-face {
   font-family: 'Roboto', sans-serif;
   src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+//Imports
+@import 'normalize.scss';
+@import './src/components/home/homePage.scss';
+@import './src/components/explore/explorePage.scss';
+@import './src/components/about/aboutPage.scss';
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -73,27 +88,36 @@ body {
   }
 }
 
+//Links
+a {
+  color: $font-white;
 
-//Home Page
-.home-page-container {
-  text-align: center;
-  margin: 15px auto;
-  max-width: 1200px;
-  padding-bottom: 100px;
+  &:visited {
+    color: $arrow-gray;
+  }
+}
+
+//Page Containers
+.image-container {
+  background-size: cover;
+  margin-bottom: -15px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .image-container {
+    height: 100%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .image-container {
+    display: flex;
+  }
 }
 
 //Headers
 .page-header {
   color: $font-white;
-  font-size: 4rem;
-  font-weight: 400;
-  letter-spacing: 0.5rem;
-  text-shadow: 4px 2px 4px #000;
-}
-
-.emphasis {
-  font-weight: 600;
-  color: $secondary-orange;
 }
 
 .page-sub-header {
@@ -104,11 +128,17 @@ body {
 
 .page-description {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 400;
   color: $font-white;
-  padding: 50px 50px;
+  line-height: 1.7rem;
 }
 
+@media(min-width: $tablet-breakpoint) {
+  .page-description {
+    padding: 20px 0px;
+    line-height: 2.25rem;
+  }
+}
 
 //Footer
 .page-footer {
@@ -151,4 +181,45 @@ body {
 
 .material-icons.md {
   font-size: 36px;
+}
+
+.material-icons.lg {
+  font-size: 48px;
+}
+
+.material-icons.shadow {
+  text-shadow: 1px 1px 4px black;
+}
+
+.arrow-container {
+  border-radius: 100%;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .material-icons.lg {
+    font-size: 48;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .arrow-container {
+      .material-icons.lg {
+        font-size: 64;
+      }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .arrow-container {
+      .material-icons.lg {
+        font-size: 84;
+      }
+  }
 }

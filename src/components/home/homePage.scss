@@ -1,0 +1,53 @@
+.page-container {
+  text-align: center;
+  margin: 15px auto;
+  max-width: 1200px;
+  padding:0px 50px 100px;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .button-container {
+    padding: 10% 0;
+  }
+}
+
+//Home Page
+.home-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/culture-11.jpg') no-repeat center center fixed;
+}
+
+.home-page-header {
+  color: $font-white;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 0.5rem;
+  text-shadow: 4px 2px 4px #000;
+}
+
+.emphasis {
+  font-weight: 600;
+  color: $secondary-orange;
+}
+
+.home-page-description {
+  font-weight: 800;
+  color: $font-white;
+  line-height: 1.5rem;
+  padding: 50px 0px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .home-page-description {
+    padding: 50px 0px 20px;
+    line-height: 2.25rem;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .home-page-header {
+    font-size: 4rem;
+  }
+}
