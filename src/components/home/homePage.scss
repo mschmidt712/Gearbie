@@ -1,6 +1,6 @@
 .page-container {
   text-align: center;
-  margin: 15px auto;
+  margin: 0px auto 15px;
   max-width: 1200px;
   padding:0px 50px 100px;
 }
@@ -21,7 +21,7 @@
 
 .home-page-header {
   color: $font-white;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
   letter-spacing: 0.5rem;
   text-shadow: 4px 2px 4px #000;
@@ -40,6 +40,10 @@
 }
 
 @media(min-width: $phone-breakpoint) {
+  .home-page-header {
+    font-size: 3rem;
+  }
+
   .home-page-description {
     padding: 50px 0px 20px;
     line-height: 2.25rem;
