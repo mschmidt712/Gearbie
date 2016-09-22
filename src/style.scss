@@ -33,29 +33,98 @@ body {
 // Navbar
 .navbar {
   background: white;
+
+  @media only screen and (max-width: 788px) {
+    .navbar-social-media {
+      display: none !important;
+      margin: 0 !important;
+
+    }
+
+    .menu-items {
+      li {
+      display: none !important;
+      }
+    }
+
+    .nav-menu {
+      margin-left: auto;
+      margin-right: 15px;
+      position: relative;
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+      }
+    }
+  }
+
   ul {
     list-style-type: none;
     display: flex;
     border-bottom: 2px solid $primary-orange;
     border-top: 15px solid $font-gray;
     margin: 0;
+    padding-left: 0;
 
-    li {
-      a {
+    .navbar-links {
+    display: flex;
+
+      img {
+        align-self: center;
+        height: 130px;
+        margin: -20px 10px -20px -10px;
+      }
+
+      @media only screen and (min-width: 788px) {
+        .mobile-nav {
+          display: none;
+        }
+      }
+
+      li {
         display: flex;
-        text-decoration: none;
-        color: $font-gray;
-        font-size: 1.5rem;
-        padding: 30px 10px 30px 10px;
-        transition: background .5s ease;
+        a {
+          display: flex;
+          text-decoration: none;
+          color: $font-gray;
+          font-size: 1.5rem;
+          align-items: center;
+          padding: 0 15px 0 15px;
+          transition: background .5s ease;
 
-        &:hover {
-        background-color: lightgray;
+          &:hover {
+          background-color: lightgray;
+          }
         }
       }
     }
+
+    .navbar-social-media {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: 20px;
+
+        img {
+          margin: 0 10px 0 10px;
+          height: 45px;
+          width: 45px;
+          filter: opacity(50%);
+          transition: filter .5s ease;
+
+          &:hover {
+            filter: opacity(100%);
+          }
+        }
+      }
   }
+
 }
+
+
+
 
 //Buttons
 .btn {
