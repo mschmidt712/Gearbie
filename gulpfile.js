@@ -4,6 +4,7 @@ const webpack = require('webpack-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const browerSync = require('browser-sync');
+let historyApiFallback = require('connect-history-api-fallback');
 const runSequence = require('run-sequence');
 const plumber = require('gulp-plumber');
 const imageMin = require('gulp-imagemin');
@@ -71,10 +72,11 @@ gulp.task('build:dev', (done) => {
 
 gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], () => {
   browerSync.init({
+    files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     server: {
       baseDir: ['./dist/', './'],
+      middleware: [ historyApiFallback() ]
     },
-    files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     port: 3000
   });
 });
