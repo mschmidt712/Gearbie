@@ -1,14 +1,17 @@
 // Variables
 $primary-blue: #0066cc;
-$primary-orange: #FF6601;
+$primary-orange: #FD7222;
 $secondary-orange: #FF6600;
 $font-white: #FFFFFE;
-$font-gray: #434B53;
+$primary-gray: #434B53;
 $footer-gray: #E9E8E4;
 
 // Media query breakpoints
-$phone: 320px;
-$tablet: 768px;
+$phone-header: 320px;
+$tablet-header: 768px;
+
+$phone-breakpoint: 650px;
+$tablet-breakpoint: 1200px;
 
 // Roboto Font
 @font-face {
@@ -16,8 +19,12 @@ $tablet: 768px;
   src: url('./assets/fonts/Roboto-Regular.ttf');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
-  height: 100%;
+  min-height: 100%;
   box-sizing: border-box;
 }
 
@@ -26,15 +33,27 @@ body {
   position: relative;
   margin: 0;
   padding-bottom: 6rem;
-  min-height: calc(100% - 6rem);
-  background-color: #3d3d3d;
+  min-height: 100%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  body{
+    font-size: 150%;
+    overflow: hidden;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  body{
+    font-size: 200%;
+  }
 }
 
 // Navbar
 .navbar {
   background: white;
 
-  @media only screen and (max-width: 788px) {
+  @media only screen and (max-width: $tablet-header) {
     .navbar-social-media {
       display: none !important;
       margin: 0 !important;
@@ -63,7 +82,7 @@ body {
     list-style-type: none;
     display: flex;
     border-bottom: 2px solid $primary-orange;
-    border-top: 15px solid $font-gray;
+    border-top: 15px solid $primary-gray;
     margin: 0;
     padding-left: 0;
 
@@ -76,7 +95,7 @@ body {
         margin: -20px 10px -20px -10px;
       }
 
-      @media only screen and (min-width: 788px) {
+      @media only screen and (min-width: $tablet-header) {
         .mobile-nav {
           display: none;
         }
@@ -87,11 +106,11 @@ body {
         a {
           display: flex;
           text-decoration: none;
-          color: $font-gray;
+          color: $primary-gray;
           font-size: 1.5rem;
           align-items: center;
           padding: 0 15px 0 15px;
-          transition: background .5s ease;
+          transition: background .3s ease;
 
           &:hover {
           background-color: lightgray;
@@ -112,7 +131,7 @@ body {
           height: 45px;
           width: 45px;
           filter: opacity(50%);
-          transition: filter .5s ease;
+          transition: filter .3s ease;
 
           &:hover {
             filter: opacity(100%);
@@ -120,50 +139,63 @@ body {
         }
       }
   }
-
 }
-
-
-
 
 //Buttons
 .btn {
+  font-size: 70%;
+  outline: none;
   padding: 15px 30px;
-  margin: 30px auto;
+  margin: 10px 5px;
   border: 1px solid $font-white;
   border-radius: 5px;
-  display: block;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
 }
 
 .btn-primary {
-  font-size: 1.5rem;
   color: $font-white;
   background-color: $primary-orange;
+
+  &:hover {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.7);
+  }
+
+  &:active {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.4);
+  }
 }
 
-@media(min-width: 800px) {
+@media(min-width: $phone-breakpoint) {
   .btn {
-    display: inline;
     margin: 30px;
   }
 }
 
-
 //Home Page
-.home-page-container {
-  text-align: center;
-  margin: 15px auto;
-  max-width: 1200px;
-  padding-bottom: 100px;
+.home-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/culture-11.jpg') no-repeat center center fixed;
 }
 
-//Headers
-.page-header {
+.home-page-header {
   color: $font-white;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   letter-spacing: 0.5rem;
-  text-shadow: 4px 2px 4px #000;
+  text-shadow: 4px 2px 6px #000;
 }
 
 .emphasis {
@@ -171,19 +203,208 @@ body {
   color: $secondary-orange;
 }
 
+.home-page-description {
+  font-weight: 800;
+  color: $font-white;
+  line-height: 1.5rem;
+  padding: 50px 0px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .home-page-description {
+    padding: 50px 0px 20px;
+    line-height: 2.25rem;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .home-page-header {
+    font-size: 4rem;
+  }
+}
+
+//Explore Page
+.open-source-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Open_Source_Image.jpg') no-repeat center center fixed;
+}
+
+.tech-radar-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Tech_Radar_Image.jpg') no-repeat center center fixed;
+}
+
+//Page Containers
+.image-container {
+  background-size: cover;
+  margin-bottom: -15px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .image-container {
+    height: 100%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .image-container {
+    display: flex;
+  }
+}
+
+.page-container {
+  text-align: center;
+  margin: 0px auto 15px;
+  max-width: 1200px;
+  padding:0px 50px 100px;
+}
+
+.col-2-page-container {
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.col-2 {
+  padding: 20px 50px;
+  width: 100%;
+  display: block;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .col-2 {
+    margin: auto;
+    max-width: 1200px;
+    width: 50%;
+    padding: 50px;
+    float: left;
+  }
+}
+
+.text-box-container {
+  width: 100%;
+  background-color: white;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box-container {
+    width: 90%;
+    background-color: transparent;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box-container {
+    width: 40%;
+  }
+}
+
+.text-box {
+  background-color: $font-white;
+  padding: 0px;
+  position: relative;
+
+  .text-box-header {
+    font-weight: 300;
+    color: $primary-orange;
+    margin: 0;
+  }
+
+  .text-box-content {
+    font-size: 85%;
+    line-height: 120%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box {
+    padding: 35px;
+
+    .text-box-content {
+      font-size: 60%;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box {
+    .text-box-content {
+      font-size: 50%;
+    }
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  top: -140px;
+  right: -35px;
+  border-radius: 100%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .material-icons.lg {
+    font-size: 48;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .arrow-container {
+    top: calc(50% - 32px);
+    right: -90px;
+
+      .material-icons.lg {
+        font-size: 64;
+      }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .arrow-container {
+    top: calc(50% - 42px);
+    right: -25%;
+
+      .material-icons.lg {
+        font-size: 84;
+      }
+  }
+}
+
+//Headers
+.page-header {
+  color: $font-white;
+}
+
 .page-sub-header {
   color: $font-white;
   font-weight: 400;
-  font-size: 2rem;
+  letter-spacing: 0.25rem;
+  padding-top:40px;
+  margin-top: 0px;
 }
 
 .page-description {
-  font-size: 1.5rem;
   font-weight: 800;
   color: $font-white;
-  padding: 50px 50px;
+  line-height: 1.5rem;
 }
 
+@media(min-width: $tablet-breakpoint) {
+  .page-description {
+    padding: 50px 0px;
+    line-height: 2.25rem;
+  }
+}
 
 //Footer
 .page-footer {
@@ -206,16 +427,22 @@ body {
   }
 
   .arrow-icon {
-    position: absolute;
+    position: relative;
     left:-100px;
     top: 6px;
   }
 
   .footer-text {
-    color: $font-gray;
+    color: $primary-gray;
     font-weight: 400;
     margin: 0;
     text-align: center;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page-footer {
+    position: fixed;
   }
 }
 
@@ -224,6 +451,18 @@ body {
   color: $primary-orange;
 }
 
+.material-icons.white {
+  color: $font-white;
+}
+
 .material-icons.md {
   font-size: 36px;
+}
+
+.material-icons.lg {
+  font-size: 48px;
+}
+
+.material-icons.shadow {
+  text-shadow: 1px 1px 4px black;
 }

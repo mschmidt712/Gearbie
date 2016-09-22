@@ -4,6 +4,7 @@ const webpack = require('webpack-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const browerSync = require('browser-sync');
+let historyApiFallback = require('connect-history-api-fallback');
 const runSequence = require('run-sequence');
 const plumber = require('gulp-plumber');
 const imageMin = require('gulp-imagemin');
@@ -40,9 +41,14 @@ gulp.task('copy:html', () => {
     .pipe(gulp.dest(dist));
 });
 
-gulp.task('copy:assets', () => {
+gulp.task('copy:images', () => {
   return gulp.src([src + 'assets/**/*.jpg', src + 'assets/**/*.png'])
     .pipe(imageMin())
+    .pipe(gulp.dest(dist + 'assets/'));
+});
+
+gulp.task('copy:assets', () => {
+  return gulp.src([src + 'assets/**/*.*', !src + 'assets/**/*.jpg', !src + 'assets/**/*.png'])
     .pipe(gulp.dest(dist + 'assets/'));
 });
 
@@ -60,16 +66,17 @@ gulp.task('watch:js', () => {
 
 gulp.task('build:dev', (done) => {
   runSequence('clean:dist',
-    ['compile:js', 'compile:sass', 'copy:html', 'copy:assets'],
+    ['compile:js', 'compile:sass', 'copy:html', 'copy:images', 'copy:assets'],
     done);
 });
 
 gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], () => {
   browerSync.init({
+    files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     server: {
       baseDir: ['./dist/', './'],
+      middleware: [ historyApiFallback() ]
     },
-    files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     port: 3000
   });
 });
