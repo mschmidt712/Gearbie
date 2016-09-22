@@ -40,9 +40,14 @@ gulp.task('copy:html', () => {
     .pipe(gulp.dest(dist));
 });
 
-gulp.task('copy:assets', () => {
+gulp.task('copy:images', () => {
   return gulp.src([src + 'assets/**/*.jpg', src + 'assets/**/*.png'])
     .pipe(imageMin())
+    .pipe(gulp.dest(dist + 'assets/'));
+});
+
+gulp.task('copy:assets', () => {
+  return gulp.src([src + 'assets/**/*.*', !src + 'assets/**/*.jpg', !src + 'assets/**/*.png'])
     .pipe(gulp.dest(dist + 'assets/'));
 });
 
@@ -60,7 +65,7 @@ gulp.task('watch:js', () => {
 
 gulp.task('build:dev', (done) => {
   runSequence('clean:dist',
-    ['compile:js', 'compile:sass', 'copy:html', 'copy:assets'],
+    ['compile:js', 'compile:sass', 'copy:html', 'copy:images', 'copy:assets'],
     done);
 });
 
