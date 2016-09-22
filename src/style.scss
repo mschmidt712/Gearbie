@@ -6,9 +6,12 @@ $font-white: #FFFFFE;
 $primary-gray: #434B53;
 $footer-gray: #E9E8E4;
 
+// Media query breakpoints
+$phone-header: 320px;
+$tablet-header: 768px;
+
 $phone-breakpoint: 650px;
 $tablet-breakpoint: 1200px;
-
 
 // Roboto Font
 @font-face {
@@ -48,32 +51,93 @@ body {
 
 // Navbar
 .navbar {
-  height: 3rem;
   background: white;
 
-  ul {
-    list-style-type: none;
-    display: flex;
-    border-bottom: 4px solid black;
-    border-top: 10px solid $primary-blue;
-    margin: 0;
+  @media only screen and (max-width: $tablet-header) {
+    .navbar-social-media {
+      display: none !important;
+      margin: 0 !important;
 
-    li {
-      a {
-        text-decoration: none;
-        color: black;
-        font-size: 32px;
-        padding: 10px 10px 10px 10px;
+    }
 
-        &:hover {
-        background-color: lightgray;
-        }
+    .menu-items {
+      li {
+      display: none !important;
+      }
+    }
+
+    .nav-menu {
+      margin-left: auto;
+      margin-right: 15px;
+      position: relative;
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
       }
     }
   }
 
-  .active {
-    background: white;
+  ul {
+    list-style-type: none;
+    display: flex;
+    border-bottom: 2px solid $primary-orange;
+    border-top: 15px solid $primary-gray;
+    margin: 0;
+    padding-left: 0;
+
+    .navbar-links {
+    display: flex;
+
+      img {
+        align-self: center;
+        height: 130px;
+        margin: -20px 10px -20px -10px;
+      }
+
+      @media only screen and (min-width: $tablet-header) {
+        .mobile-nav {
+          display: none;
+        }
+      }
+
+      li {
+        display: flex;
+        a {
+          display: flex;
+          text-decoration: none;
+          color: $primary-gray;
+          font-size: 1.5rem;
+          align-items: center;
+          padding: 0 15px 0 15px;
+          transition: background .3s ease;
+
+          &:hover {
+          background-color: lightgray;
+          }
+        }
+      }
+    }
+
+    .navbar-social-media {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: 20px;
+
+        img {
+          margin: 0 10px 0 10px;
+          height: 45px;
+          width: 45px;
+          filter: opacity(50%);
+          transition: filter .3s ease;
+
+          &:hover {
+            filter: opacity(100%);
+          }
+        }
+      }
   }
 }
 
@@ -87,7 +151,7 @@ body {
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease;
   font-weight: 300;
   letter-spacing: 0.05rem;
   text-decoration: none;
@@ -194,7 +258,7 @@ body {
 
 .page-container {
   text-align: center;
-  margin: 15px auto;
+  margin: 0px auto 15px;
   max-width: 1200px;
   padding:0px 50px 100px;
 }
@@ -279,7 +343,7 @@ body {
   top: -140px;
   right: -35px;
   border-radius: 100%;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: rgba(0,0,0,0.3);
@@ -326,6 +390,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.25rem;
   padding-top:40px;
+  margin-top: 0px;
 }
 
 .page-description {
