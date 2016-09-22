@@ -6,7 +6,7 @@ $font-white: #FFFFFE;
 $font-gray: #434B53;
 $footer-gray: #E9E8E4;
 
-$phone-breakpoint: 600px;
+$phone-breakpoint: 650px;
 $tablet-breakpoint: 1200px;
 
 
@@ -86,15 +86,30 @@ body {
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  transition:all 0.3s ease-out;
+  transition: all 0.3s ease-out;
   font-weight: 300;
   letter-spacing: 0.05rem;
+  text-decoration: none;
 }
 
 .btn-primary {
   font-size: 1.5rem;
   color: $font-white;
   background-color: $primary-orange;
+
+  &:hover {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.7);
+  }
+
+  &:active {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.4);
+  }
 }
 
 @media(min-width: 800px) {
@@ -120,7 +135,7 @@ body {
 
 .home-page-header {
   color: $font-white;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   letter-spacing: 0.5rem;
   text-shadow: 4px 2px 4px #000;
@@ -140,17 +155,30 @@ body {
 
 @media(min-width: $phone-breakpoint) {
   .home-page-description {
-    padding: 50px 0px;
+    padding: 50px 0px 20px;
     line-height: 2.25rem;
   }
 }
 
+@media(min-width: $tablet-breakpoint) {
+  .home-page-header {
+    font-size: 4rem;
+  }
+}
+
 //Explore Page
-.explore-page-image {
+.open-source-image {
     background: linear-gradient(
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.6)
-    ), url('./assets/Explore_Page_Image.jpg') no-repeat center center fixed;
+    ), url('./assets/Open_Source_Image.jpg') no-repeat center center fixed;
+}
+
+.tech-radar-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Tech_Radar_Image.jpg') no-repeat center center fixed;
 }
 
 //Page Containers
@@ -162,6 +190,12 @@ body {
 @media(min-width: $phone-breakpoint) {
   .image-container {
     height: 100%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .image-container {
+    display: flex;
   }
 }
 
@@ -180,13 +214,13 @@ body {
 
 .col-2 {
   padding: 20px 50px;
-  // max-width: 600px;
-  width: calc(100% - 100px);
+  width: 100%;
   display: block;
 }
 
 @media(min-width: $tablet-breakpoint) {
   .col-2 {
+    margin: auto;
     max-width: 1200px;
     width: 50%;
     padding: 50px;
@@ -199,15 +233,16 @@ body {
   background-color: white;
 }
 
-@media(min-width: $tablet-breakpoint) {
+@media(min-width: $phone-breakpoint) {
   .text-box-container {
-    width: 50%;
+    width: 90%;
+    background-color: transparent;
   }
 }
 
-@media(min-width: $phone-breakpoint) {
+@media(min-width: $tablet-breakpoint) {
   .text-box-container {
-    background-color: transparent;
+    width: 40%;
   }
 }
 
@@ -235,6 +270,56 @@ body {
     .text-box-content {
       font-size: 60%;
     }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .text-box {
+    .text-box-content {
+      font-size: 50%;
+    }
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  top: -140px;
+  right: -35px;
+  border-radius: 100%;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .material-icons.lg {
+    font-size: 48;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .arrow-container {
+    top: calc(50% - 32px);
+    right: -90px;
+
+      .material-icons.lg {
+        font-size: 64;
+      }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .arrow-container {
+    top: calc(50% - 42px);
+    right: -25%;
+
+      .material-icons.lg {
+        font-size: 84;
+      }
   }
 }
 
@@ -308,6 +393,18 @@ body {
   color: $primary-orange;
 }
 
+.material-icons.white {
+  color: $font-white;
+}
+
 .material-icons.md {
   font-size: 36px;
+}
+
+.material-icons.lg {
+  font-size: 48px;
+}
+
+.material-icons.shadow {
+  text-shadow: 1px 1px 4px black;
 }

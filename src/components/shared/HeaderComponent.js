@@ -5,7 +5,7 @@ const Header = () =>
   (<div>
     <div className="navbar">
       <ul>
-        <li><Link to="explore" activeClassName="active">Explore</Link></li>
+        <li><Link to="/explore/open-source" activeClassName="active">Explore</Link></li>
         <li><a href="a">About</a></li>
         <li><a href="a">Blog</a></li>
         <li><a href="a">Connect</a></li>
