@@ -28,21 +28,36 @@ $tablet-breakpoint: 1200px;
 }
 
 html {
-  height: 100%;
+  min-height: 100%;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-size: 100%;
   position: relative;
   margin: 0;
   padding-bottom: 6rem;
-  min-height: calc(100% - 6rem);
-  background-color: #3d3d3d;
+  min-height: 100%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  body{
+    font-size: 150%;
+    overflow: hidden;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  body{
+    font-size: 200%;
+  }
 }
 
 // Navbar
 .navbar {
+  height: 3rem;
+  background: white;
 
   ul {
     list-style-type: none;
@@ -64,26 +79,48 @@ body {
       }
     }
   }
+
+  .active {
+    background: white;
+  }
 }
 
 //Buttons
 .btn {
   padding: 15px 30px;
-  margin: 30px auto;
+  margin: 10px 5px;
   border: 1px solid $font-white;
   border-radius: 5px;
-  display: block;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
 }
 
 .btn-primary {
   font-size: 1.5rem;
   color: $font-white;
   background-color: $primary-orange;
+
+  &:hover {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.7);
+  }
+
+  &:active {
+    background-color: rgba(red($primary-orange),
+      green($primary-orange),
+      blue($primary-orange),
+      0.4);
+  }
 }
 
-@media(min-width: 800px) {
+@media(min-width: $phone-breakpoint) {
   .btn {
-    display: inline;
     margin: 30px;
   }
 }
@@ -94,6 +131,24 @@ a {
 
   &:visited {
     color: $arrow-gray;
+  }
+}
+
+//Page Containers
+.image-container {
+  background-size: cover;
+  margin-bottom: -15px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .image-container {
+    height: 100%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .image-container {
+    display: flex;
   }
 }
 
@@ -130,7 +185,7 @@ a {
   font-size: 1.5rem;
   font-weight: 400;
   color: $font-white;
-  line-height: 1.7rem;
+  line-height: 1.5rem;
 }
 
 @media(min-width: $tablet-breakpoint) {
@@ -161,7 +216,7 @@ a {
   }
 
   .arrow-icon {
-    position: absolute;
+    position: relative;
     left:-100px;
     top: 6px;
   }
@@ -174,9 +229,19 @@ a {
   }
 }
 
+@media(min-width: $phone-breakpoint) {
+  .page-footer {
+    position: fixed;
+  }
+}
+
 //Icons
 .material-icons.orange {
   color: $primary-orange;
+}
+
+.material-icons.white {
+  color: $font-white;
 }
 
 .material-icons.md {
@@ -192,6 +257,8 @@ a {
 }
 
 .arrow-container {
+  position: absolute;
+  top: calc(50% - 24px);
   border-radius: 100%;
   transition: all 0.3s ease-out;
 
@@ -210,6 +277,8 @@ a {
 
 @media(min-width: $phone-breakpoint) {
   .arrow-container {
+    top: calc(50% - 32px);
+
       .material-icons.lg {
         font-size: 64;
       }
@@ -218,6 +287,8 @@ a {
 
 @media(min-width: $tablet-breakpoint) {
   .arrow-container {
+    top: calc(50% - 42px);
+
       .material-icons.lg {
         font-size: 84;
       }

@@ -15,11 +15,11 @@ function OpenSourcePage() {
           <div className="col-2 text-box-container">
             <div className="text-box">
               <h3 className="text-box-header">KEYSTONE</h3>
-              <p className="text-box-content">An open source intiative by Kenzan with the objective of
-                supporting developers with the tools they need for easily setting up
-                and con guring a build system for a front-end project, by reducing
-                boilerplate code and providing out-of-the-box functionality for the
-                most common use cases.
+              <p className="text-box-content">An open source intiative by Kenzan
+                with the objective of supporting developers with the tools they
+                need for easily setting up and con guring a build system for a
+                front-end project, by reducing boilerplate code and providing
+                out-of-the-box functionality for the most common use cases.
 
                 Ut occulleni tempore est lat dolent lacerchil ilit
                 quia si ut fugitat. Oris endignihic tem reproruptur?
