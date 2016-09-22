@@ -6,3 +6,6 @@
 
 ##VS IDE
 /.vscode/*
+
+##DS_Store Files
+.DS_Store

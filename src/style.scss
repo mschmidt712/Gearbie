@@ -34,7 +34,6 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 100%;
   position: relative;
   margin: 0;
   padding-bottom: 6rem;
@@ -87,6 +86,8 @@ body {
 
 //Buttons
 .btn {
+  font-size: 70%;
+  outline: none;
   padding: 15px 30px;
   margin: 10px 5px;
   border: 1px solid $font-white;
@@ -100,7 +101,6 @@ body {
 }
 
 .btn-primary {
-  font-size: 1.5rem;
   color: $font-white;
   background-color: $primary-orange;
 
@@ -178,7 +178,8 @@ a {
 .page-sub-header {
   color: $font-white;
   font-weight: 400;
-  font-size: 2rem;
+  letter-spacing: 0.25rem;
+  padding-top:40px;
 }
 
 .page-description {
@@ -222,7 +223,7 @@ a {
   }
 
   .footer-text {
-    color: $font-gray;
+    color: $primary-gray;
     font-weight: 400;
     margin: 0;
     text-align: center;
