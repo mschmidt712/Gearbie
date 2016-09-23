@@ -102,15 +102,6 @@
     color: $arrow-gray;
     border: 1px solid $arrow-gray;
     border-radius: 100%;
-    transition: all 0.3s ease-out;
-
-    &:hover {
-      background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray), 0.3)
-    }
-
-    &:active {
-      background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray), 0.6)
-    }
   }
 }
 
@@ -118,17 +109,16 @@
   .arrow-forward-button {
     .material-icons {
       position: absolute;
-      bottom: 15px;
+      bottom: 5px;
       right: 30px;
     }
   }
 }
 
-
 @media(min-width: $tablet-breakpoint) {
   .arrow-forward-button {
     .material-icons {
-      bottom: 15px;
+      bottom: 5px;
       right: 30px;
     }
   }
@@ -144,15 +134,26 @@
   color: $secondary-blue;
   font-weight: 400;
   letter-spacing: 0.1rem;
+  width: 65%;
   display: block;
   float: left;
 }
 
+.content-link {
+  transition: all 0.3s ease-out;
+
+  //TODO: How to add some interactivity to these links
+  &:hover {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
 @media(min-width: $phone-breakpoint) {
-  .about-section-sub-header {
-    width: 65%;
+  .content-link {
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
+    width: 94%;
   }
 }
 
@@ -161,3 +162,5 @@
     padding-bottom: 60px;
   }
 }
+
+
