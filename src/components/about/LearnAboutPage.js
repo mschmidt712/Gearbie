@@ -29,8 +29,8 @@ function LearnAboutPage() {
             consulting and education.
           </p>
           <div className="arrow-forward-button">
-            <h4 className="about-section-sub-header"> CONNECT WITH KENZAN </h4>
-            <a href="connect_with_kenzan">
+            <a className="content-link" href="connect_with_kenzan">
+              <h4 className="about-section-sub-header"> CONNECT WITH KENZAN </h4>
               <i className="material-icons">arrow_forward</i>
             </a>
           </div>
@@ -46,8 +46,8 @@ function LearnAboutPage() {
             understand the world of development.
           </p>
           <div className="arrow-forward-button">
-            <h4 className="about-section-sub-header"> DISCOVER KENZAN </h4>
-            <a href="discover_kenzan">
+            <a className="content-link" href="discover_kenzan">
+              <h4 className="about-section-sub-header"> DISCOVER KENZAN </h4>
               <i className="material-icons">arrow_forward</i>
             </a>
           </div>
@@ -64,8 +64,8 @@ function LearnAboutPage() {
             consulting and education.
           </p>
           <div className="arrow-forward-button">
-            <h4 className="about-section-sub-header"> WORK WITH KENZAN </h4>
-            <a href="discover_kenzan">
+            <a className="content-link" href="discover_kenzan">
+              <h4 className="about-section-sub-header"> WORK WITH KENZAN </h4>
               <i className="material-icons">arrow_forward</i>
             </a>
           </div>

@@ -7,7 +7,7 @@ const Header = () =>
       <ul>
         <div className="navbar-links menu-items">
           <Link to="/">
-            <img src="./src/assets/Kenzan_Mark_PMS877.svg" alt="Kenzan Logo" />
+            <img src="/assets/Kenzan_Mark_PMS877.svg" alt="Kenzan Logo" />
           </Link>
           <li><Link to="/explore/open-source" activeClassName="active">Explore</Link></li>
           <li><Link to="/about/kenzan" activeClassName="active">About</Link></li>
