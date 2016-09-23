@@ -5,6 +5,7 @@ $primary-orange: #FD7222;
 $secondary-orange: #FF6600;
 $font-white: #FFFFFE;
 $primary-gray: #434B53;
+$font-gray: #434B53;
 $arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
 
@@ -21,7 +22,11 @@ $tablet-breakpoint: 1200px;
   src: url('./assets/fonts/Roboto-Regular.ttf');
 }
 
-@import './normalize.scss';
+//Imports
+@import 'normalize.scss';
+@import './src/components/home/homePage.scss';
+@import './src/components/explore/explorePage.scss';
+@import './src/components/about/aboutPage.scss';
 @import './components/connect/connectPage.scss';
 
 * {
@@ -35,9 +40,10 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-size: 80%;
   position: relative;
   margin: 0;
-  padding-bottom: 6rem;
+  padding-bottom: 65px;
   min-height: 100%;
 }
 
@@ -87,7 +93,7 @@ body {
     list-style-type: none;
     display: flex;
     border-bottom: 2px solid $primary-orange;
-    border-top: 15px solid $primary-gray;
+    border-top: 15px solid $font-gray;
     margin: 0;
     padding-left: 0;
 
@@ -111,7 +117,7 @@ body {
         a {
           display: flex;
           text-decoration: none;
-          color: $primary-gray;
+          color: $font-gray;
           font-size: 1.5rem;
           align-items: center;
           padding: 0 15px 0 15px;
@@ -187,72 +193,25 @@ body {
   }
 }
 
-//Home Page
-.home-page-image {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ), url('./assets/culture-11.jpg') no-repeat center center fixed;
-}
-
-.home-page-header {
+//Links
+a {
   color: $font-white;
-  font-size: 3rem;
-  font-weight: 400;
-  letter-spacing: 0.5rem;
-  text-shadow: 4px 2px 6px #000;
-}
 
-.emphasis {
-  font-weight: 600;
-  color: $secondary-orange;
-}
-
-.home-page-description {
-  font-weight: 800;
-  color: $font-white;
-  line-height: 1.5rem;
-  padding: 50px 0px;
-}
-
-@media(min-width: $phone-breakpoint) {
-  .home-page-description {
-    padding: 50px 0px 20px;
-    line-height: 2.25rem;
+  &:visited {
+    color: $arrow-gray;
   }
-}
-
-@media(min-width: $tablet-breakpoint) {
-  .home-page-header {
-    font-size: 4rem;
-  }
-}
-
-//Explore Page
-.open-source-image {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ), url('./assets/Open_Source_Image.jpg') no-repeat center center fixed;
-}
-
-.tech-radar-image {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ), url('./assets/Tech_Radar_Image.jpg') no-repeat center center fixed;
 }
 
 //Page Containers
 .image-container {
   background-size: cover;
   margin-bottom: -15px;
-}
-
-@media(min-width: $phone-breakpoint) {
-  .image-container {
-    height: 100%;
-  }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
 }
 
 @media(min-width: $tablet-breakpoint) {
@@ -266,12 +225,6 @@ body {
   margin: 0px auto 15px;
   max-width: 1200px;
   padding:0px 50px 100px;
-}
-
-.col-2-page-container {
-  max-width: 1500px;
-  margin: auto;
-  overflow: hidden;
 }
 
 .col-2 {
@@ -338,34 +291,23 @@ body {
 @media(min-width: $phone-breakpoint) {
   .text-box {
     padding: 35px;
-
-    .text-box-content {
-      font-size: 60%;
-    }
-  }
-}
-
-@media(min-width: $tablet-breakpoint) {
-  .text-box {
-    .text-box-content {
-      font-size: 50%;
-    }
   }
 }
 
 .arrow-container {
   position: absolute;
-  top: -140px;
-  right: -35px;
-  border-radius: 100%;
-  transition: all 0.3s ease;
 
-  &:hover {
-    background-color: rgba(0,0,0,0.3);
-  }
+  i {
+    border-radius: 100%;
+    transition: all 0.3s ease;
 
-  &:active {
-    background-color: rgba(0,0,0,0.5);
+    &:hover {
+      background-color: rgba(0,0,0,0.3);
+    }
+
+    &:active {
+      background-color: rgba(0,0,0,0.5);
+    }
   }
 
   .material-icons.lg {
@@ -402,21 +344,22 @@ body {
 
 .page-sub-header {
   color: $font-white;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.25rem;
   padding-top:40px;
-  margin-top: 0px;
+  margin: 0px;
 }
 
 .page-description {
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: $font-white;
   line-height: 1.5rem;
 }
 
 @media(min-width: $tablet-breakpoint) {
   .page-description {
-    padding: 50px 0px;
+    // padding: 20px 0px;
     line-height: 2.25rem;
   }
 }
@@ -461,7 +404,7 @@ body {
 .page-footer {
   background-color: $footer-gray;
   width: 100%;
-  height: 6rem;
+  height: 65px;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -484,10 +427,11 @@ body {
   }
 
   .footer-text {
-    color: $primary-gray;
+    color: $font-gray;
     font-weight: 400;
-    margin: 0;
     text-align: center;
+    position: relative;
+    bottom: 30px;
   }
 }
 

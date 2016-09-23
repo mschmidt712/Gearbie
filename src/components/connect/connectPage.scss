@@ -7,6 +7,7 @@
   .connect-page {
     .text-box-container {
       margin: auto;
+      font-size: 85%;
     }
   }
 }
@@ -21,6 +22,10 @@
       .arrow-forward {
         bottom: 30px;
       }
+    }
+
+    .text-box-container {
+      font-size: 70%;
     }
   }
 }
