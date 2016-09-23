@@ -4,6 +4,7 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import OpenSourcePage from './components/explore/OpenSourcePage';
 import TechRadarPage from './components/explore/TechRadarPage';
+import ConnectPage from './components/connect/ConnectPage';
 
 export default (
   <Route path="/" component={App}>
@@ -12,5 +13,6 @@ export default (
       <Route path="open-source" component={OpenSourcePage} />
       <Route path="tech-radar" component={TechRadarPage} />
     </Route>
+    <Route path="connect" component={ConnectPage} />
   </Route>
 );

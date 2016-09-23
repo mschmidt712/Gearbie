@@ -12,7 +12,7 @@ function OpenSourcePage() {
               Learn about Kenzan's contribution to the open source community.
             </p>
           </div>
-          <div className="col-2 text-box-container">
+          <div className="col-2 text-box-container carosel-container">
             <div className="text-box">
               <h3 className="text-box-header">KEYSTONE</h3>
               <p className="text-box-content">An open source intiative by Kenzan with the objective of

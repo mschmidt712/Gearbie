@@ -12,7 +12,7 @@ const Header = () =>
           <li><Link to="/explore/open-source" activeClassName="active">Explore</Link></li>
           <li><a href="a">About</a></li>
           <li><a href="a">Blog</a></li>
-          <li><a href="a">Connect</a></li>
+          <li><Link to="/connect" activeClassName="active">Connect</Link></li>
         </div>
         <div className="navbar-social-media">
           <img src="./src/assets/Twitter.png" alt="linked-in" />

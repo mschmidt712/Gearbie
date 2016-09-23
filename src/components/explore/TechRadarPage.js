@@ -12,7 +12,7 @@ function TechRadarPage() {
               Kenzan's view on subjects in the world of development.
             </p>
           </div>
-          <div className="col-2 text-box-container">
+          <div className="col-2 text-box-container carosel-container">
             <div className="text-box">
               <h3 className="text-box-header">SPRING CLOUD</h3>
               <p className="text-box-content">An open source intiative by Kenzan with the objective of

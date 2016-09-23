@@ -1,9 +1,11 @@
 // Variables
 $primary-blue: #0066cc;
+$secondary-blue: #1687B0;
 $primary-orange: #FD7222;
 $secondary-orange: #FF6600;
 $font-white: #FFFFFE;
 $primary-gray: #434B53;
+$arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
 
 // Media query breakpoints
@@ -18,6 +20,9 @@ $tablet-breakpoint: 1200px;
   font-family: 'Roboto', sans-serif;
   src: url('./assets/fonts/Roboto-Regular.ttf');
 }
+
+@import './normalize.scss';
+@import './components/connect/connectPage.scss';
 
 * {
   box-sizing: border-box;
@@ -270,9 +275,15 @@ body {
 }
 
 .col-2 {
-  padding: 20px 50px;
+  padding: 50px;
   width: 100%;
   display: block;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .col-2 {
+    padding: 20px 50px;
+  }
 }
 
 @media(min-width: $tablet-breakpoint) {
@@ -299,6 +310,10 @@ body {
 
 @media(min-width: $tablet-breakpoint) {
   .text-box-container {
+    width: 50%;
+  }
+
+  .carosel-container {
     width: 40%;
   }
 }
@@ -406,6 +421,42 @@ body {
   }
 }
 
+.arrow-forward-container {
+  position: relative;
+  padding: 1% 0px;
+  overflow: hidden;
+}
+
+.page-description-link {
+  color: $secondary-blue;
+  text-decoration: none;
+
+  &:visited {
+    color: $secondary-blue;
+  }
+
+  .arrow-forward {
+    position: absolute;
+    bottom: 1%;
+    right: 0px;
+  }
+}
+
+.page-description-link-text {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
+  width: 85%;
+  display: block;
+  float: left;
+
+  &:hover {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
 //Footer
 .page-footer {
   background-color: $footer-gray;
@@ -465,4 +516,8 @@ body {
 
 .material-icons.shadow {
   text-shadow: 1px 1px 4px black;
+}
+
+.arrow-forward {
+  border-radius: 100%;
 }
