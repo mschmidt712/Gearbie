@@ -438,6 +438,13 @@ a {
 @media(min-width: $phone-breakpoint) {
   .page-footer {
     position: fixed;
+    height: 90px;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .page-footer {
+    height: 105px;
   }
 }
 
