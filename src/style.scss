@@ -19,7 +19,54 @@ $tablet-breakpoint: 1200px;
 // Roboto Font
 @font-face {
   font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-Regular.ttf');
+  src: url('./assets/fonts/Roboto-Regular-webfont.eot');
+  src: url('/assets/fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto-Regular-webfont.woff') format('woff'),
+    url('/assets/fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Roboto-Regular-webfont.svg') format('svg');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('./assets/fonts/Roboto-Light-webfont.eot');
+  src: url('/assets/fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto-Light-webfont.woff') format('woff'),
+    url('/assets/fonts/Roboto-Light-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Roboto-Light-webfont.svg') format('svg');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('./assets/fonts/Roboto-LightItalic-webfont.eot');
+  src: url('/assets/fonts/Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto-LightItalic-webfont.woff') format('woff'),
+    url('/assets/fonts/Roboto-LightItalic-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Roboto-LightItalic-webfont.svg') format('svg');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('./assets/fonts/Roboto-Bold-webfont.eot');
+  src: url('/assets/fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto-Bold-webfont.woff') format('woff'),
+    url('/assets/fonts/Roboto-Bold-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Roboto-Bold-webfont.svg') format('svg');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('./assets/fonts/Roboto-BoldItalic-webfont.eot');
+  src: url('/assets/fonts/Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Roboto-BoldItalic-webfont.woff') format('woff'),
+    url('/assets/fonts/Roboto-BoldItalic-webfont.ttf') format('truetype'),
+    url('/assets/fonts/Roboto-BoldItalic-webfont.svg') format('svg');
+  font-weight: 600;
+  font-style: italic;
 }
 
 //Imports
@@ -224,7 +271,7 @@ a {
   text-align: center;
   margin: 0px auto 15px;
   max-width: 1200px;
-  padding:0px 50px 100px;
+  padding:0px 50px 30px;
 }
 
 .col-2 {
@@ -279,6 +326,11 @@ a {
   background-color: white;
 }
 
+.carosel-container {
+  padding-right: 70px;
+  padding-left: 70px;
+}
+
 @media(min-width: $phone-breakpoint) {
   .text-box-container {
     width: 90%;
@@ -298,7 +350,7 @@ a {
 
 .text-box {
   background-color: $font-white;
-  padding: 0px;
+  padding: 15px;
   position: relative;
 
   .text-box-header {
@@ -371,10 +423,16 @@ a {
 }
 
 .page-description {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 400;
   color: $font-white;
   line-height: 1.5rem;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page-description {
+    font-size: 1.3rem;
+  }
 }
 
 @media(min-width: $tablet-breakpoint) {
