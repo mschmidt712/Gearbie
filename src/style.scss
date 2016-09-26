@@ -249,6 +249,27 @@ a {
   }
 }
 
+.col-3 {
+  width: 100%;
+  padding: 3% 10%;
+  overflow: hidden;
+
+  &:last-child {
+    padding-bottom: 25px;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .col-3 {
+    margin-top: 15px;
+    flex: 1;
+    position: relative;
+    float: left;
+
+    border-right: 1px solid $arrow-gray;
+  }
+}
+
 .text-box-container {
   width: 100%;
   background-color: white;
@@ -281,16 +302,11 @@ a {
     color: $primary-orange;
     margin: 0;
   }
-
-  .text-box-content {
-    font-size: 85%;
-    line-height: 120%;
-  }
 }
 
 @media(min-width: $phone-breakpoint) {
   .text-box {
-    padding: 35px;
+    padding: 20px;
   }
 }
 
@@ -359,7 +375,6 @@ a {
 
 @media(min-width: $tablet-breakpoint) {
   .page-description {
-    // padding: 20px 0px;
     line-height: 2.25rem;
   }
 }
@@ -378,21 +393,26 @@ a {
     color: $secondary-blue;
   }
 
-  .arrow-forward {
-    position: absolute;
-    bottom: 1%;
-    right: 0px;
+  &::after {
+    content: "arrow_forward";
+    font-size: 1rem;
+    color: $arrow-gray;
+    border: 1px solid $arrow-gray;
+    border-radius: 100%;
+    margin-left: 10px;
   }
 }
 
 .page-description-link-text {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.05rem;
   text-decoration: none;
-  width: 85%;
-  display: block;
+  white-space: nowrap;
   float: left;
+
 
   &:hover {
     font-weight: bold;
@@ -467,8 +487,4 @@ a {
 
 .material-icons.shadow {
   text-shadow: 1px 1px 4px black;
-}
-
-.arrow-forward {
-  border-radius: 100%;
 }
