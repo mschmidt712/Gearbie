@@ -459,12 +459,20 @@ a {
   .page-footer {
     position: fixed;
     height: 90px;
+
+    .footer-text {
+      font-size: 1rem;
+    }
   }
 }
 
 @media(min-width: $tablet-breakpoint) {
   .page-footer {
     height: 105px;
+
+    .footer-text {
+      font-size: 1.3rem;
+    }
   }
 }
 

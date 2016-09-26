@@ -26,6 +26,12 @@
   }
 }
 
+@media(min-height: 800px) {
+  .about-image-container {
+    padding: 5%;
+  }
+}
+
 .about-page {
   .page-description {
     padding-right: 15%;
