@@ -26,40 +26,23 @@
   }
 }
 
-.about-page-description {
-  padding-right: 15%;
-}
-
-@media(min-width: $tablet-breakpoint) {
-  .about-page-header {
-    font-size: 150%;
-    margin: 1%;
-  }
-
-  .about-page-description {
-    padding-top: 0px;
+.about-page {
+  .page-description {
     padding-right: 15%;
   }
 }
 
-.about-arrow-container {
-  display: inline;
-  position: absolute;
-  top: calc(50% - 24px);
-  right: 20%;
-}
-
-@media(min-width: $phone-breakpoint) {
-  .about-arrow-container {
-    position: absolute;
-    top: calc(50% - 32px);
-    left: 90%;
-  }
-}
-
 @media(min-width: $tablet-breakpoint) {
-  .about-arrow-container {
-    top: calc(50% - 42px);
+  .about-page {
+    .page-header {
+      font-size: 150%;
+      margin: 1%;
+    }
+
+    .page-description {
+      padding-top: 0px;
+      padding-right: 15%;
+    }
   }
 }
 
@@ -76,93 +59,49 @@
   }
 }
 
-.col-3 {
-  width: 100%;
-  padding: 10px 20px;
-  overflow: hidden;
-}
-
 @media(min-width: $phone-breakpoint) {
-  .col-3 {
-    margin-top: 15px;
-    flex: 1;
-    position: relative;
-    padding: 0% 3%;
-    float: left;
-
-    border-right: 1px solid $arrow-gray;
+  .about-page {
+    .col-3 {
+      padding: 3% 5%;
+    }
   }
 }
 
-.arrow-forward-button {
-  .material-icons {
-    margin: 5px 0px;
-    display: block;
-    float: right;
-    color: $arrow-gray;
-    border: 1px solid $arrow-gray;
-    border-radius: 100%;
-  }
-}
+@media (min-width: $phone-breakpoint) {
+  .about-page {
+    .text-box {
+      position: relative;
+      padding: 20px;
+    }
 
-@media(min-width: $phone-breakpoint) {
-  .arrow-forward-button {
-    .material-icons {
+    .text-box-content {
+      padding-bottom: 10px;
+    }
+
+    .arrow-forward-container {
       position: absolute;
-      bottom: 5px;
-      right: 30px;
+      bottom: 0px;
+      left: 20px;
+      right: 0;
+    }
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-page {
+    .page-description-link-text {
+      white-space: normal;
+      width: 85%;
     }
   }
 }
 
 @media(min-width: $tablet-breakpoint) {
-  .arrow-forward-button {
-    .material-icons {
-      bottom: 5px;
-      right: 30px;
+  .about-page {
+    .page-description-link-text {
+      font-size: 1.2rem;
+      white-space: nowrap;
+      width: 100%;
     }
   }
 }
-
-.about-section-header {
-  color: $primary-orange;
-  font-weight: 300;
-  letter-spacing: 0.025rem;
-  margin: 10px 0px;
-}
-
-.about-section-sub-header {
-  color: $secondary-blue;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  margin: 5px 0px;
-  width: 65%;
-  display: block;
-  float: left;
-}
-
-.content-link {
-  transition: all 0.3s ease-out;
-
-  //TODO: How to add some interactivity to these links
-  &:hover {
-    font-weight: bold;
-    text-decoration: underline;
-  }
-}
-
-@media(min-width: $phone-breakpoint) {
-  .content-link {
-    position: absolute;
-    bottom: 0px;
-    width: 94%;
-  }
-}
-
-@media(min-width: $phone-breakpoint) {
-  .about-section-content {
-    padding-bottom: 60px;
-  }
-}
-
-
