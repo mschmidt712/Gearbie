@@ -27,6 +27,7 @@ function HomePage() {
       <Footer
         display="true"
         text="Explore. Contribute. Code."
+        link="/explore/open-source"
       />
     </div>
   );

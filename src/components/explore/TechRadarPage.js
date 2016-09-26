@@ -41,6 +41,7 @@ function TechRadarPage() {
       <Footer
         display="true"
         text="About Kenzan."
+        link="/about/kenzan"
       />
     </div>
   );

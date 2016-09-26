@@ -41,6 +41,7 @@ function OpenSourcePage() {
       <Footer
         display="true"
         text="Explore. Contribute. Code."
+        link="/explore/tech-radar"
       />
     </div>
   );

@@ -67,6 +67,7 @@ function LearnAboutPage() {
       <Footer
         display="true"
         text="Connect with Us."
+        link="/connect"
       />
     </div>
   );
