@@ -9,13 +9,13 @@
 
 .connect-page-container {
   max-width: 1200px;
-  font-size: 80%;
+  // font-size: 80%;
   margin: auto;
 }
 
-@media(min-width: $tablet-breakpoint) {
+@media(min-width: $phone-breakpoint) {
   .connect-page-container {
-    font-size: 70%
+    font-size: 60%
   }
 }
 
@@ -132,7 +132,7 @@
   }
 }
 
-@media(min-width: $phone-breakpoint) {
+@media(min-width: $tablet-breakpoint) {
   .connect-page {
     .page-description-link-text {
       font-size: 1.2rem;
