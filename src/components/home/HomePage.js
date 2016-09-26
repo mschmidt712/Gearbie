@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Footer from '../shared/FooterComponent';
 
 function HomePage() {
   return (
@@ -23,6 +24,10 @@ function HomePage() {
           </Link>
         </div>
       </div>
+      <Footer
+        display="true"
+        text="Explore. Contribute. Code."
+      />
     </div>
   );
 }

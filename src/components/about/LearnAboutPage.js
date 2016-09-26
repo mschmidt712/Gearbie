@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
+import Footer from '../shared/FooterComponent';
 
 function LearnAboutPage() {
   return (
@@ -63,6 +64,10 @@ function LearnAboutPage() {
           </div>
         </div>
       </div>
+      <Footer
+        display="true"
+        text="Connect with Us."
+      />
     </div>
   );
 }
