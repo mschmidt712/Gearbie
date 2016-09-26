@@ -1,0 +1,111 @@
+
+//Explore Page Images
+.kenzan-about-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Kenzan_About_Image.jpg') no-repeat center center;
+}
+
+.learn-about-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Learn_About_Image.jpg') no-repeat center center;
+}
+
+.about-image-container {
+  position: relative;
+  background-size: cover;
+  padding: 10%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-image-container {
+    padding: 1% 5%;
+  }
+}
+
+@media(min-height: 800px) {
+  .about-image-container {
+    padding: 5%;
+  }
+}
+
+.about-page {
+  .page-description {
+    padding-right: 15%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-page {
+    .page-header {
+      font-size: 150%;
+      margin: 1%;
+    }
+
+    .page-description {
+      padding-top: 0px;
+      padding-right: 15%;
+    }
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-content-container {
+    display: flex;
+    font-size: 65%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-content-container {
+    font-size: 60%;
+  }
+}
+
+.about-page {
+  .col-3 {
+    padding: 3% 5%;
+  }
+}
+
+@media (min-width: $phone-breakpoint) {
+  .about-page {
+    .text-box {
+      position: relative;
+      padding: 20px;
+    }
+
+    .text-box-content {
+      padding-bottom: 10px;
+    }
+
+    .arrow-forward-container {
+      position: absolute;
+      bottom: 0px;
+      left: 20px;
+      right: 0;
+    }
+  }
+}
+
+
+@media(min-width: $phone-breakpoint) {
+  .about-page {
+    .page-description-link-text {
+      white-space: normal;
+      width: 85%;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-page {
+    .page-description-link-text {
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}

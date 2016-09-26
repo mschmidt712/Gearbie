@@ -1,0 +1,62 @@
+
+//Explore Page Containers
+.explore-page-container {
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .explore-page-container {
+    .text-box {
+      .text-box-content {
+        font-size: 60%;
+      }
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .explore-page-container {
+    .text-box {
+      .text-box-content {
+        font-size: 50%;
+      }
+    }
+  }
+}
+
+.explore-arrow-container {
+  position: absolute;
+  top: -140px;
+  right: -35px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .explore-arrow-container {
+    top: calc(50% - 32px);
+    right: -90px;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .explore-arrow-container {
+    top: calc(50% - 42px);
+    right: -25%;
+  }
+}
+
+//Explore Page Images
+.open-source-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Open_Source_Image.jpg') no-repeat center center fixed;
+}
+
+.tech-radar-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Tech_Radar_Image.jpg') no-repeat center center fixed;
+}
