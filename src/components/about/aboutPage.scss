@@ -1,0 +1,167 @@
+
+//Explore Page Images
+.kenzan-about-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Kenzan_About_Image.jpg') no-repeat center center;
+}
+
+.learn-about-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ), url('./assets/Learn_About_Image.jpg') no-repeat center center;
+}
+
+.about-image-container {
+  position: relative;
+  background-size: cover;
+  padding: 10%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-image-container {
+    padding: 1% 5%;
+  }
+}
+
+.about-page-description {
+  padding-right: 15%;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-page-header {
+    font-size: 150%;
+    margin: 1%;
+  }
+
+  .about-page-description {
+    padding-top: 0px;
+    padding-right: 15%;
+  }
+}
+
+.about-arrow-container {
+  display: inline;
+  position: absolute;
+  top: calc(50% - 24px);
+  right: 20%;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-arrow-container {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: 90%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-arrow-container {
+    top: calc(50% - 42px);
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-content-container {
+    display: flex;
+    font-size: 65%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .about-content-container {
+    font-size: 60%;
+  }
+}
+
+.col-3 {
+  width: 100%;
+  padding: 3% 10%;
+  overflow: hidden;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .col-3 {
+    margin-top: 15px;
+    flex: 1;
+    position: relative;
+    padding: 0% 3%;
+    float: left;
+
+    border-right: 1px solid $arrow-gray;
+  }
+}
+
+.arrow-forward-button {
+  .material-icons {
+    margin: 15px 0px;
+    display: block;
+    float: right;
+
+    color: $arrow-gray;
+    border: 1px solid $arrow-gray;
+    border-radius: 100%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .arrow-forward-button {
+    .material-icons {
+      position: absolute;
+      bottom: 5px;
+      right: 30px;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .arrow-forward-button {
+    .material-icons {
+      bottom: 5px;
+      right: 30px;
+    }
+  }
+}
+
+.about-section-header {
+  color: $primary-orange;
+  font-weight: 300;
+  letter-spacing: 0.025rem;
+}
+
+.about-section-sub-header {
+  color: $secondary-blue;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: 65%;
+  display: block;
+  float: left;
+}
+
+.content-link {
+  transition: all 0.3s ease-out;
+
+  //TODO: How to add some interactivity to these links
+  &:hover {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .content-link {
+    position: absolute;
+    bottom: 0px;
+    width: 94%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .about-section-content {
+    padding-bottom: 60px;
+  }
+}
+
+
