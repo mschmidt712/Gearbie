@@ -267,6 +267,10 @@ a {
     float: left;
 
     border-right: 1px solid $arrow-gray;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
