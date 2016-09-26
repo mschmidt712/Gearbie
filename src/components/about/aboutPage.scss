@@ -78,7 +78,7 @@
 
 .col-3 {
   width: 100%;
-  padding: 3% 10%;
+  padding: 10px 20px;
   overflow: hidden;
 }
 
@@ -96,10 +96,9 @@
 
 .arrow-forward-button {
   .material-icons {
-    margin: 15px 0px;
+    margin: 5px 0px;
     display: block;
     float: right;
-
     color: $arrow-gray;
     border: 1px solid $arrow-gray;
     border-radius: 100%;
@@ -129,12 +128,14 @@
   color: $primary-orange;
   font-weight: 300;
   letter-spacing: 0.025rem;
+  margin: 10px 0px;
 }
 
 .about-section-sub-header {
   color: $secondary-blue;
   font-weight: 400;
   letter-spacing: 0.1rem;
+  margin: 5px 0px;
   width: 65%;
   display: block;
   float: left;
