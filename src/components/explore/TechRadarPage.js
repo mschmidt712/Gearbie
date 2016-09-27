@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Footer from '../shared/FooterComponent';
 
 function TechRadarPage() {
   return (
@@ -37,6 +38,11 @@ function TechRadarPage() {
           </div>
         </div>
       </div>
+      <Footer
+        display="true"
+        text="About Kenzan."
+        link="/about/kenzan"
+      />
     </div>
   );
 }

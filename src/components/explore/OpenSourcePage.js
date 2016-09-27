@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Footer from '../shared/FooterComponent';
 
 function OpenSourcePage() {
   return (
@@ -37,6 +38,11 @@ function OpenSourcePage() {
           </div>
         </div>
       </div>
+      <Footer
+        display="true"
+        text="Explore. Contribute. Code."
+        link="/explore/tech-radar"
+      />
     </div>
   );
 }

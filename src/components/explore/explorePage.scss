@@ -28,8 +28,8 @@
 
 .explore-arrow-container {
   position: absolute;
-  top: -140px;
-  right: -35px;
+  top: calc(50% - 24px);
+  right: -45px;
 }
 
 @media(min-width: $phone-breakpoint) {
