@@ -75,6 +75,7 @@ $tablet-breakpoint: 1200px;
 @import './src/components/explore/explorePage.scss';
 @import './src/components/about/aboutPage.scss';
 @import './components/connect/connectPage.scss';
+@import './components/explore/carousel.scss';
 
 * {
   box-sizing: border-box;
@@ -326,7 +327,7 @@ a {
   background-color: white;
 }
 
-.carosel-container {
+.carousel-container {
   padding-right: 70px;
   padding-left: 70px;
 }
@@ -367,11 +368,12 @@ a {
 }
 
 .arrow-container {
-  position: absolute;
+  cursor: pointer;
 
   i {
     border-radius: 100%;
     transition: all 0.3s ease;
+    color: white;
 
     &:hover {
       background-color: rgba(0,0,0,0.3);
@@ -389,9 +391,6 @@ a {
 
 @media(min-width: $phone-breakpoint) {
   .arrow-container {
-    top: calc(50% - 32px);
-    right: -90px;
-
       .material-icons.lg {
         font-size: 64;
       }
@@ -400,13 +399,15 @@ a {
 
 @media(min-width: $tablet-breakpoint) {
   .arrow-container {
-    top: calc(50% - 42px);
-    right: -25%;
-
       .material-icons.lg {
         font-size: 84;
       }
   }
+}
+
+.arrow-disabled {
+  display: none;
+  transition: ease-in 300;
 }
 
 //Headers

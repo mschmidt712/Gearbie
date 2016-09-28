@@ -79,6 +79,7 @@ gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], ()
       baseDir: ['./dist/', './'],
       middleware: [ historyApiFallback()]
     },
+    logLevel: "info",
     port: 3000
   });
 });
