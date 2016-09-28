@@ -4,8 +4,10 @@ import { LeftArrow, RightArrow } from './CarouselArrows';
 
 function SimpleSlider() {
   const settings = {
+    accessibility: true,
     dots: true,
-    infinite: false,
+    // dotsClass: 'carousel-dots',
+    infinite: true,
     speed: 500,
     draggable: true,
     nextArrow: <RightArrow />,

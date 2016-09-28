@@ -335,6 +335,7 @@ a {
 @media(min-width: $phone-breakpoint) {
   .text-box-container {
     width: 90%;
+    margin: auto;
     background-color: transparent;
   }
 }
@@ -369,11 +370,13 @@ a {
 
 .arrow-container {
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 
   i {
     border-radius: 100%;
     transition: all 0.3s ease;
-    color: white;
+    color: $font-white;
 
     &:hover {
       background-color: rgba(0,0,0,0.3);
@@ -394,6 +397,15 @@ a {
       .material-icons.lg {
         font-size: 64;
       }
+      i {
+        &:hover {
+          background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.3);
+        }
+
+        &:active {
+          background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.5);
+        }
+      }
   }
 }
 
@@ -407,7 +419,7 @@ a {
 
 .arrow-disabled {
   display: none;
-  transition: ease-in 300;
+  transition: ease-in 3 00;
 }
 
 //Headers
