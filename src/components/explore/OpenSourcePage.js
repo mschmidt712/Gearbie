@@ -1,9 +1,23 @@
 import React from 'react';
 // import { Link } from 'react-router';
-import SimpleSlider from './OpenSourceCarousel';
+import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
 
 function OpenSourcePage() {
+  const data = [{
+    header: 'KEYSTONE',
+    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
+  }, {
+    header: 'KEYSTONE',
+    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint asd fasdfsdafasdfasdfasdfasd fasefasdasdfasdfasdf asdfasdfasdfasdfasd asdasdfasdf qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
+  }, {
+    header: 'KEYSTONE',
+    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
+  }, {
+    header: 'KEYSTONE',
+    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
+  }];
+
   return (
     <div>
       <div className="open-source-image image-container" />
@@ -15,7 +29,7 @@ function OpenSourcePage() {
           </p>
         </div>
         <div className="col-2 text-box-container carosel-container">
-          <SimpleSlider />
+          <ExploreCarousel data={data} />
         </div>
       </div>
       <Footer
