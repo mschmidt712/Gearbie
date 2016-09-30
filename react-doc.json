@@ -42,5 +42,18 @@
   "./src/components/shared/HeaderComponent.js": {
     "description": "The App Header including navigation and social media links.",
     "methods": []
+  },
+  "./src/components/App.js": {
+    "description": "The App component for the project.\nOverarching parent component that contains all the app components.",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "element"
+        },
+        "required": true,
+        "description": "The child elements of the app."
+      }
+    }
   }
 }

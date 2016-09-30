@@ -6,7 +6,7 @@
   "scripts": {
     "test": "",
     "start": "gulp serve:dev",
-    "documentation": "react-docgen ./src/components/**/*.js  -o react-doc.json --pretty"
+    "documentation": "react-docgen ./src/components/**/*.js ./src/components/*.js  -o react-doc.json --pretty"
   },
   "babel": {
     "presets": [
