@@ -29,20 +29,42 @@
 .explore-arrow-container {
   position: absolute;
   top: calc(50% - 24px);
+}
+
+.explore-right-arrow-container {
   right: -45px;
+}
+
+.explore-left-arrow-container {
+  left: -45px;
 }
 
 @media(min-width: $phone-breakpoint) {
   .explore-arrow-container {
     top: calc(50% - 32px);
+  }
+
+  .explore-right-arrow-container {
     right: -90px;
   }
+
+  .explore-left-arrow-container {
+    left: -90px;
+  }
+
 }
 
 @media(min-width: $tablet-breakpoint) {
-  .explore-arrow-container {
+  .explore-right-arrow-container {
     top: calc(50% - 42px);
-    right: -25%;
+  }
+
+  .explore-right-arrow-container {
+    right: -100px;
+  }
+
+  .explore-left-arrow-container {
+    left: -100px;
   }
 }
 
