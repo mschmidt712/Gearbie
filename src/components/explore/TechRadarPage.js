@@ -1,8 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router';
 import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
 
+/**
+ * The stateful component for the Tech Radar page.
+ * Page details new technologies on Kenzan's radar.
+ * Data is currently mocked out.
+ */
 function TechRadarPage() {
   const data = [{
     header: 'SPRING CLOUD',

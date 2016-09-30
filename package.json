@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "gulp serve:dev"
+    "start": "gulp serve:dev",
+    "documentation": "react-docgen ./src/components/**/*.js  -o react-doc.json --pretty"
   },
   "babel": {
     "presets": [
@@ -50,6 +51,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "install": "^0.8.1",
     "npm": "^3.10.7",
+    "react-docgen": "^2.10.0",
     "run-sequence": "^1.2.2",
     "webpack": "^1.13.2",
     "webpack-stream": "^3.2.0"

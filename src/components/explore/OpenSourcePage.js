@@ -1,8 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router';
 import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
 
+/**
+ * The stateful component for the Open Source page.
+ * Page details Kenzan's open source projects.
+ * Data is currently mocked out.
+ */
 function OpenSourcePage() {
   const data = [{
     header: 'KEYSTONE',

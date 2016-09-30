@@ -1,8 +1,11 @@
 import React from 'react';
-// import { Link } from 'react-router';
 import Footer from '../shared/FooterComponent';
 
-function TechRadarPage() {
+/**
+ * The stateless component for the Connect page.
+ * Details office locations, contact information, and upcoming Kenzan events.
+ */
+function ConnectPage() {
   return (
     <div className="connect-page">
       <div className="connect-page-container">
@@ -44,7 +47,9 @@ function TechRadarPage() {
             </p>
             <div className="arrow-forward-container">
               <a className="page-description-link material-icons" href="connect_with_kenzan">
-                <h4 className="text-box-content page-description-link-text"> JOIN THE COMMUNITY </h4>
+                <h4 className="text-box-content page-description-link-text">
+                  JOIN THE COMMUNITY
+                </h4>
               </a>
             </div>
             <p className="text-box-content">An open source intiative by Kenzan with the objective of
@@ -69,4 +74,4 @@ function TechRadarPage() {
   );
 }
 
-export default TechRadarPage;
+export default ConnectPage;

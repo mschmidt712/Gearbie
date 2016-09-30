@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react';
 import Header from './shared/HeaderComponent';
 
+/**
+ * The App component for the project.
+ * Overarching parent component that contains all the app components.
+ */
 class App extends React.Component {
   render() {
     return (
@@ -13,7 +17,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
+    /**
+   * The child elements of the app.
+   */
+  children: PropTypes.element.isRequired,
 };
 
 export default App;
