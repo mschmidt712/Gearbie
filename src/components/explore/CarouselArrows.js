@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * The stateless component for the right arrow of the carousel.
+ * Incoming props include class names and click events
+ */
 export function RightArrow(props) {
   const rightProps = Object.assign({}, props);
   let disabled = false;
@@ -29,6 +33,10 @@ export function RightArrow(props) {
   );
 }
 
+/**
+ * The stateless component for the left arrow of the carousel.
+ * Incoming props include class names and click events
+ */
 export function LeftArrow(props) {
   const leftProps = Object.assign({}, props);
   let disabled = false;

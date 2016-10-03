@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import Footer from '../shared/FooterComponent';
 
+/**
+ * The stateless component for the Home page.
+ * Serves as an entry to the .IO page with a breif description of Kenzan and links to the explore section.
+ */
 function HomePage() {
   return (
     <div>

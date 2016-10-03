@@ -2,6 +2,12 @@ import React from 'react';
 // import { Link } from 'react-router';
 import Footer from '../shared/FooterComponent';
 
+/**
+ * The stateful component for the Learn About page.
+ * Details what we do at Kenzan, the purpose of the .IO page, and our company culture.
+ * Currently contains same data at Kenzan About page.
+ * Data is currently hardcoded.
+ */
 function LearnAboutPage() {
   return (
     <div>

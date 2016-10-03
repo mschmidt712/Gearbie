@@ -1,0 +1,59 @@
+{
+  "./src/components/about/KenzanAboutPage.js": {
+    "description": "The stateful component for the Kenzan About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.\nData is currently hardcoded.",
+    "methods": []
+  },
+  "./src/components/about/LearnAboutPage.js": {
+    "description": "The stateful component for the Learn About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.\nCurrently contains same data at Kenzan About page.\nData is currently hardcoded.",
+    "methods": []
+  },
+  "./src/components/connect/ConnectPage.js": {
+    "description": "The stateless component for the Connect page.\nDetails office locations, contact information, and upcoming Kenzan events.",
+    "methods": []
+  },
+  "./src/components/explore/ExploreCarousel.js": {
+    "description": "The stateless carousel component for use in the explore section of the site.",
+    "methods": [],
+    "props": {
+      "data": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": true,
+        "description": "An array of data objects, containing header and content for each carousel box."
+      }
+    }
+  },
+  "./src/components/explore/OpenSourcePage.js": {
+    "description": "The stateful component for the Open Source page.\nPage details Kenzan's open source projects.\nData is currently mocked out.",
+    "methods": []
+  },
+  "./src/components/explore/TechRadarPage.js": {
+    "description": "The stateful component for the Tech Radar page.\nPage details new technologies on Kenzan's radar.\nData is currently mocked out.",
+    "methods": []
+  },
+  "./src/components/home/HomePage.js": {
+    "description": "The stateless component for the Home page.\nServes as an entry to the .IO page with a breif description of Kenzan and links to the explore section.",
+    "methods": []
+  },
+  "./src/components/shared/HeaderComponent.js": {
+    "description": "The App Header including navigation and social media links.",
+    "methods": []
+  },
+  "./src/components/App.js": {
+    "description": "The App component for the project.\nOverarching parent component that contains all the app components.",
+    "methods": [],
+    "props": {
+      "children": {
+        "type": {
+          "name": "element"
+        },
+        "required": true,
+        "description": "The child elements of the app."
+      }
+    }
+  }
+}

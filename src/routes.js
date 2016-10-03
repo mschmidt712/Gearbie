@@ -8,6 +8,9 @@ import KenzanAboutPage from './components/about/KenzanAboutPage';
 import LearnAboutPage from './components/about/LearnAboutPage';
 import ConnectPage from './components/connect/ConnectPage';
 
+/**
+ * Defines project routes.
+ */
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />

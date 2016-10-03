@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+/**
+ * The App Header including navigation and social media links.
+ */
 const Header = () =>
   (<div>
     <div className="navbar">
