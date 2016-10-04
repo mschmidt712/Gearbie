@@ -10,7 +10,7 @@ import Footer from '../shared/FooterComponent';
  */
 function LearnAboutPage() {
   return (
-    <div>
+    <div className="page">
       <div className="about-image-container learn-about-image">
         <h1 className="page-header about-page-header"> Learn with us. </h1>
         <p className="about-page-description page-description"> Find out more

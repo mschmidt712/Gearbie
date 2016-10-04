@@ -26,13 +26,14 @@
   }
 }
 
-@media(min-height: 800px) {
+@media(min-height: 900px) {
   .about-image-container {
     padding: 5%;
   }
 }
 
 .about-page {
+  background-color: white;
   .page-description {
     padding-right: 15%;
   }

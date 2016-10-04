@@ -7,7 +7,7 @@ import Footer from '../shared/FooterComponent';
  */
 function ConnectPage() {
   return (
-    <div className="connect-page">
+    <div className="connect-page page">
       <div className="connect-page-container">
         <div className="connect-contact-info col-2">
           <h1> Kenzan </h1>

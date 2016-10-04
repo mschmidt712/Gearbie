@@ -37,7 +37,7 @@ Footer.propTypes = {
     /**
    * A string that contains the route for the footer link.
    */
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
 };
 
 export default Footer;

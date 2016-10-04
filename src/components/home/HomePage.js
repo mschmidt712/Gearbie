@@ -8,7 +8,7 @@ import Footer from '../shared/FooterComponent';
  */
 function HomePage() {
   return (
-    <div>
+    <div className="page">
       <div className="home-page-image" />
       <div className="page-container">
         <h2 className="page-sub-header">KENZAN</h2>
@@ -20,10 +20,10 @@ function HomePage() {
           from ideation to deployment since 2004.
         </p>
         <div className="button-container">
-          <Link to="/explore/open-source" className="btn btn-primary">
+          <Link to="/open-source" className="btn btn-primary">
             Open Source
           </Link>
-          <Link to="/explore/tech-radar" className="btn btn-primary">
+          <Link to="/tech-radar" className="btn btn-primary">
             Tech Radar
           </Link>
         </div>
@@ -31,7 +31,7 @@ function HomePage() {
       <Footer
         display="true"
         text="Explore. Contribute. Code."
-        link="/explore/open-source"
+        link="/open-source"
       />
     </div>
   );
