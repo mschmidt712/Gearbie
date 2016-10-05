@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import Footer from '../shared/FooterComponent';
 
@@ -29,11 +30,19 @@ function HomePage() {
           </Link>
         </div>
       </div>
-      <Footer
-        display="true"
-        text="Explore. Contribute. Code."
-        link="/open-source"
-      />
+      <ReactCSSTransitionGroup
+        transitionName="footer"
+        transitionAppear={true}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={500}
+        transitionAppearTimeout={500}
+      >
+        <Footer
+          display="true"
+          text="Explore. Contribute. Code."
+          link="/open-source"
+        />
+      </ReactCSSTransitionGroup>
     </div>
   );
 }
