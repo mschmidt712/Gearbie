@@ -87,7 +87,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 80%;
   position: relative;
   margin: 0;
@@ -514,7 +514,7 @@ a {
     border-radius: 100%;
     height: 50px;
     width: 50px;
-    position: relative;
+    position: absolute;
     top: -20px;
     left: calc(50% - 25px);
   }
@@ -529,10 +529,7 @@ a {
     color: $font-gray;
     font-weight: 400;
     text-align: center;
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 0px;
-    bottom: 30px;
+    margin-top: 35px;
   }
 }
 
@@ -542,6 +539,7 @@ a {
     height: 90px;
 
     .footer-text {
+      margin-top: 40px;
       font-size: 1rem;
     }
   }
@@ -552,6 +550,7 @@ a {
     height: 105px;
 
     .footer-text {
+      margin-top: 45px;
       font-size: 1.3rem;
     }
   }

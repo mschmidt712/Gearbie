@@ -10,10 +10,10 @@ import Footer from '../shared/FooterComponent';
  */
 function LearnAboutPage() {
   return (
-    <div className="page">
+    <div className="about-page page">
       <div className="about-image-container learn-about-image">
-        <h1 className="page-header about-page-header"> Learn with us. </h1>
-        <p className="about-page-description page-description"> Find out more
+        <h1 className="page-header"> Learn with us. </h1>
+        <p className="page-description"> Find out more
          about our Hack Nights and other events. Visit our
           <a href="https://www.meetup.com/Kenzan-Media-Denver-Hack-Nights/" target="blank"> meetup page</a> to take part.
         </p>
