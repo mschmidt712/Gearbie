@@ -12,6 +12,7 @@ const constants = {
   baseUrl: 'http://kenzanio.kenzan-dev.com/wp-json/wp/v2/',
   postCategories: {
     openSource: 2,
+    techRadar: 4,
   },
   getPostHeader: obj => (
     obj.title.rendered

@@ -11,8 +11,8 @@ import Footer from '../shared/FooterComponent';
  */
 class OpenSourcePage extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.carouselQuery = 'posts?categories='.concat(constants.postCategories.openSource);
     this.pageQuery = 'pages?slug=open-source';
     this.state = {
