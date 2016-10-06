@@ -536,6 +536,10 @@ a {
   }
 }
 
+.shadow {
+  box-shadow: 1px 1px 3px rgba(red($primary-gray), green($primary-gray), blue($primary-gray), 0.15);
+}
+
 @media(min-width: $phone-breakpoint) {
   .page-footer {
     position: fixed;
@@ -566,10 +570,10 @@ a {
   opacity: 0;
 }
 
-.page-footer:hover {
+.animation:hover {
   transform: translatey(-15px);
   .arrow-link {
-    animation: bounce 1s ease-out;
+    animation: bounce 600ms ease-out;
   }
 }
 
@@ -578,17 +582,11 @@ a {
   transform: translateY(-15px);
 }
 
-.footer-appear.footer-appear-active {
-  transform: translateY(0px);
-  transition: 1s;
-  transition-timing-function: cubic-bezier(0.5, 0.0, 0.3, 1);
-}
-
 @keyframes bounce {
   0% {transform:translateY(0%);}
-  25% {transform:translateY(-20%);}
-  50% {transform:translateY(5%);}
-  65% {transform:translateY(-10%);}
+  25% {transform:translateY(-30%);}
+  50% {transform:translateY(0%);}
+  65% {transform:translateY(-15%);}
   75% {transform:translateY(0%);}
   85% {transform:translateY(-5%);}
   90% {transform:translateY(0%);}

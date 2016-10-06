@@ -9,6 +9,12 @@
   }
 }
 
+@media(min-width: $phone-breakpoint) {
+  .connect-page-container {
+    font-size: 55%
+  }
+}
+
 .connect-page {
   .col-2 {
     padding: 5px;

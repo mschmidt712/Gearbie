@@ -10,9 +10,9 @@ const Footer = ({ display, text, link }) => {
   let footer = '';
 
   if (display === 'true') {
-    footer = (<div className="page-footer">
+    footer = (<div className="page-footer animation shadow">
       <Link to={link} >
-        <div className="arrow-link">
+        <div className="arrow-link shadow">
           <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
         </div>
         <h5 className="footer-text"> {text} </h5>

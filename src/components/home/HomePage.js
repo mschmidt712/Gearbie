@@ -22,10 +22,10 @@ function HomePage() {
           from ideation to deployment since 2004.
         </p>
         <div className="button-container">
-          <Link to="/open-source" className="btn btn-primary">
+          <Link to="/open-source" className="btn btn-primary shadow">
             Open Source
           </Link>
-          <Link to="/tech-radar" className="btn btn-primary">
+          <Link to="/tech-radar" className="btn btn-primary shadow">
             Tech Radar
           </Link>
         </div>
