@@ -20,10 +20,6 @@ function ExploreCarousel(props) {
     swipe: true,
   };
 
-  function setInnerHtml(content) {
-    return { __html: content };
-  }
-
   const items = props.data.map((obj, index) => (
     <div className="text-box" key={index}>
       <h3 className="text-box-header uppercase">{obj.header}</h3>

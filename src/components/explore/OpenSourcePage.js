@@ -13,7 +13,7 @@ class OpenSourcePage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.carouselQuery = 'posts?categories=' + constants.postCategories.openSource;
+    this.carouselQuery = 'posts?categories='.concat(constants.postCategories.openSource);
     this.pageQuery = 'pages?slug=open-source';
     this.state = {
       header: '',
@@ -60,6 +60,7 @@ class OpenSourcePage extends React.Component {
 
   componentWillUnmount() {
     this.carouselRequest.abort();
+    this.pageRequest.abort();
   }
 
   render() {

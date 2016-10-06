@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+import constants from '../../constants';
 import Footer from '../shared/FooterComponent';
 
 /**
@@ -7,35 +9,68 @@ import Footer from '../shared/FooterComponent';
  * Serves as an entry to the .IO page with a breif description of Kenzan and links to the explore section.
  */
 
-function HomePage() {
-  return (
-    <div>
-      <div className="home-page-image" />
-      <div className="page-container">
-        <h2 className="page-sub-header">KENZAN</h2>
-        <h1 className="home-page-header">MAKE NEXT
-          <span className="emphasis"> POSSIBLE.</span>
-        </h1>
-        <p className="home-page-description">
-          We've been delivering innovative solutions that support our clients,
-          from ideation to deployment since 2004.
-        </p>
-        <div className="button-container">
-          <Link to="/explore/open-source" className="btn btn-primary">
-            Open Source
-          </Link>
-          <Link to="/explore/tech-radar" className="btn btn-primary">
-            Tech Radar
-          </Link>
+class HomePage extends React.Component {
+  constructor() {
+    super();
+    this.pageQuery = 'pages?slug=home';
+    this.state = {
+      header: '',
+      subHeader: '',
+      description: '',
+    };
+  }
+
+  componentWillMount() {
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (results) => {
+      const result = results[0];
+
+      let pageHeader = constants.getPageHeader(result).split(' ');
+      const pageSubHeader = constants.getPageSubHeader(result);
+      const pageDescription = constants.getPageDescription(result);
+
+      this.setState({
+        header: pageHeader,
+        subHeader: pageSubHeader,
+        description: pageDescription,
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.pageRequest.abort();
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="home-page-image" />
+        <div className="page-container">
+          <h2 className="page-sub-header uppercase"> {this.state.subHeader} </h2>
+          <h1 className="home-page-header uppercase">
+            {this.state.header[0]} {this.state.header[1]}
+            <span className="emphasis"> {this.state.header[2]} </span>
+          </h1>
+          <p
+            className="home-page-description"
+            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
+          />
+          <div className="button-container">
+            <Link to="/explore/open-source" className="btn btn-primary">
+              Open Source
+            </Link>
+            <Link to="/explore/tech-radar" className="btn btn-primary">
+              Tech Radar
+            </Link>
+          </div>
         </div>
+        <Footer
+          display="true"
+          text="Explore. Contribute. Code."
+          link="/explore/open-source"
+        />
       </div>
-      <Footer
-        display="true"
-        text="Explore. Contribute. Code."
-        link="/explore/open-source"
-      />
-    </div>
-  );
+    );
+  }
 }
 
 export default HomePage;

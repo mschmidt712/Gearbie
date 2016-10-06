@@ -31,6 +31,18 @@ const constants = {
 
     return removeHtmlTags(pageHeader);
   },
+  getPageSubHeader: (obj) => {
+    const pageElements = splitConentString(obj.content.rendered);
+    let pageSubHeader = '';
+
+    pageElements.forEach((element) => {
+      if (element.indexOf('h2') > -1) {
+        pageSubHeader = element;
+      }
+    });
+
+    return removeHtmlTags(pageSubHeader);
+  },
   getPageDescription: (obj) => {
     const pageElements = splitConentString(obj.content.rendered);
     let pageDescription = '';
