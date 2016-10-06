@@ -8,6 +8,7 @@ $primary-gray: #434B53;
 $font-gray: #434B53;
 $arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
+$custon-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
@@ -175,7 +176,7 @@ body {
           font-size: 1.5rem;
           align-items: center;
           padding: 0 15px 0 15px;
-          transition: background .3s ease;
+          transition: background .3s $custom-ease;
 
           &:hover {
           background-color: lightgray;
@@ -196,7 +197,7 @@ body {
           height: 45px;
           width: 45px;
           filter: opacity(50%);
-          transition: filter .3s ease;
+          transition: filter .3s $custom-ease;
 
           &:hover {
             filter: opacity(100%);
@@ -216,7 +217,7 @@ body {
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s $custom-ease;
   font-weight: 300;
   letter-spacing: 0.05rem;
   text-decoration: none;
@@ -381,7 +382,7 @@ a {
 
   i {
     border-radius: 100%;
-    transition: all 0.3s ease;
+    transition: all 0.3s $custom-ease;
     color: $font-white;
 
     &:hover {
@@ -425,7 +426,7 @@ a {
 
 .arrow-disabled {
   display: none;
-  transition: ease-in 3 00;
+  transition: $custom-ease 3 00;
 }
 
 //Headers
@@ -510,7 +511,7 @@ a {
   bottom: -15px;
   right: 0;
   transition: all 200ms;
-  transition-timing-function: cubic-bezier(0.5, 0.0, 0.3, 1);
+  transition-timing-function: $custom-ease;
 
   .arrow-link {
     background-color: white;
@@ -573,7 +574,7 @@ a {
 .animation:hover {
   transform: translatey(-15px);
   .arrow-link {
-    animation: bounce 600ms ease-out;
+    animation: bounce 600ms $custom-ease;
   }
 }
 
@@ -648,7 +649,7 @@ a {
 
 .pageSlider-down-enter.pageSlider-down-enter-active {
   transform: translate3d(0, 0, 0);
-  transition-timing-function: cubic-bezier(0.5, 0.0, 0.3, 1);
+  transition-timing-function: $custom-ease;
   transition-duration: 800ms;
   z-index: 1;
 
@@ -660,7 +661,7 @@ a {
 
 .pageSlider-down-leave.pageSlider-down-leave-active {
   transform: translate3d(0, 100%, 0);
-  transition-timing-function: cubic-bezier(0.5, 0.0, 0.3, 1);
+  transition-timing-function: $custom-ease;
   transition-duration: 800ms;
   z-index: 1;
 }
