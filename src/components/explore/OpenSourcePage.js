@@ -23,7 +23,7 @@ function OpenSourcePage() {
   }];
 
   return (
-    <div>
+    <div className="page">
       <div className="open-source-image image-container" />
       <div className="explore-page-container">
         <div className="col-2">
@@ -39,7 +39,7 @@ function OpenSourcePage() {
       <Footer
         display="true"
         text="Explore. Contribute. Code."
-        link="/explore/tech-radar"
+        link="/tech-radar"
       />
     </div>
   );

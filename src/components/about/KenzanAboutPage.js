@@ -9,7 +9,7 @@ import Footer from '../shared/FooterComponent';
  */
 function KenzanAboutPage() {
   return (
-    <div className="about-page">
+    <div className="about-page page">
       <div className="about-image-container kenzan-about-image">
         <h1 className="page-header"> Kenzan </h1>
         <p className="page-description"> Leadership,

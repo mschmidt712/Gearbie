@@ -23,7 +23,7 @@ function TechRadarPage() {
   }];
 
   return (
-    <div>
+    <div className="page">
       <div className="image-container tech-radar-image" />
       <div className="explore-page-container">
         <div className="col-2">
@@ -39,7 +39,7 @@ function TechRadarPage() {
       <Footer
         display="true"
         text="About Kenzan."
-        link="/about/kenzan"
+        link="/kenzan"
       />
     </div>
   );
