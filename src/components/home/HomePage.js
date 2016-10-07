@@ -17,6 +17,7 @@ class HomePage extends React.Component {
       header: '',
       subHeader: '',
       description: '',
+      footerText: '',
     };
   }
 
@@ -24,14 +25,16 @@ class HomePage extends React.Component {
     this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (results) => {
       const result = results[0];
 
-      let pageHeader = constants.getPageHeader(result).split(' ');
-      const pageSubHeader = constants.getPageSubHeader(result);
-      const pageDescription = constants.getPageDescription(result);
+      const pageHeader = result.acf.header.split(' ');
+      const pageSubHeader = result.acf.home_subheader;
+      const pageDescription = result.acf.description;
+      const pageFooter = result.acf.footer_text;
 
       this.setState({
         header: pageHeader,
         subHeader: pageSubHeader,
         description: pageDescription,
+        footerText: pageFooter,
       });
     });
   }
@@ -50,10 +53,9 @@ class HomePage extends React.Component {
             {this.state.header[0]} {this.state.header[1]}
             <span className="emphasis"> {this.state.header[2]} </span>
           </h1>
-          <p
-            className="home-page-description"
-            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
-          />
+          <p className="home-page-description">
+            {this.state.description}
+          </p>
           <div className="button-container">
             <Link to="/explore/open-source" className="btn btn-primary">
               Open Source
@@ -65,7 +67,7 @@ class HomePage extends React.Component {
         </div>
         <Footer
           display="true"
-          text="Explore. Contribute. Code."
+          text={this.state.footerText}
           link="/explore/open-source"
         />
       </div>

@@ -17,7 +17,8 @@ class TechRadarPage extends React.Component {
     this.state = {
       header: '',
       description: '',
-      data: [{
+      footerText: '',
+      posts: [{
         header: '',
         text: '',
       }],
@@ -36,21 +37,20 @@ class TechRadarPage extends React.Component {
       });
 
       this.setState({
-        data: resultData,
+        posts: resultData,
       });
     });
 
-    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (results) => {
-      const result = results[0];
-      let resultHeader = '';
-      let resultDescription = '';
-
-      resultHeader = constants.getPageHeader(result);
-      resultDescription = constants.getPageDescription(result);
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+      const page = pages[0];
+      const pageHeader = page.acf.header;
+      const pageDescription = page.acf.description;
+      const pageFooterText = page.acf.footer_text;
 
       this.setState({
-        header: resultHeader,
-        description: resultDescription,
+        header: pageHeader,
+        description: pageDescription,
+        footerText: pageFooterText,
       });
     });
   }
@@ -67,18 +67,17 @@ class TechRadarPage extends React.Component {
         <div className="explore-page-container">
           <div className="col-2">
             <h1 className="page-header"> {this.state.header} </h1>
-            <p
-              className="page-description"
-              dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
-            />
+            <p className="page-description">
+              {this.state.description}
+            </p>
           </div>
           <div className="col-2 text-box-container carosel-container">
-            <ExploreCarousel data={this.state.data} />
+            <ExploreCarousel data={this.state.posts} />
           </div>
         </div>
         <Footer
           display="true"
-          text="About Kenzan."
+          text={this.state.footerText}
           link="/about/kenzan"
         />
       </div>

@@ -13,6 +13,7 @@ const constants = {
   postCategories: {
     openSource: 2,
     techRadar: 4,
+    kenzanAbout: 5,
   },
   getPostHeader: obj => (
     obj.title.rendered
