@@ -12,6 +12,7 @@ const constants = {
     techRadar: 4,
     kenzanAbout: 5,
     learnAbout: 6,
+    connect: 7,
   },
   getPostHeader: obj => (
     obj.title.rendered

@@ -44,8 +44,8 @@ class KenzanAboutPage extends React.Component {
         const obj = {};
         obj.title = constants.getPostHeader(result);
         obj.text = constants.getPostText(result);
-        obj.linkText = result.acf.about_link_text;
-        obj.link = result.acf.about_link_url;
+        obj.linkText = result.acf.link_text;
+        obj.link = result.acf.link_url;
         resultsData.push(obj);
       });
 
