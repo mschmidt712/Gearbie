@@ -7,14 +7,20 @@ import constants from '../../constants';
 function TextBoxContainer(props) {
   return (
     <div className="col-3 text-box">
-      <h2 className="text-box-header">{props.title}</h2>
+      <h2
+        className="text-box-header"
+        dangerouslySetInnerHTML={constants.setInnerHtml(props.title)}
+      />
       <p
         className="text-box-content"
         dangerouslySetInnerHTML={constants.setInnerHtml(props.text)}
       />
       <div className="arrow-forward-container">
         <a className="page-description-link material-icons" href={props.link} target="new">
-          <h4 className="page-description-link-text uppercase"> {props.linkText} </h4>
+          <h4
+            className="page-description-link-text uppercase"
+            dangerouslySetInnerHTML={constants.setInnerHtml(props.linkText)}
+          />
         </a>
       </div>
     </div>

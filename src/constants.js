@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 
 function removeHtmlTags(text) {
   return text.replace(/(<\/?)\w+(>)/g, '');
@@ -19,7 +20,7 @@ const constants = {
     removeHtmlTags(obj.content.rendered)
   ),
   setInnerHtml: content => ({
-    __html: content,
+    __html: DOMPurify.sanitize(content),
   }),
 };
 

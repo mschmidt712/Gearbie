@@ -69,7 +69,10 @@ class OpenSourcePage extends React.Component {
         <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
-            <h1 className="page-header"> {this.state.header} </h1>
+            <h1
+              className="page-header"
+              dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
+            />
             <p
               className="page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}

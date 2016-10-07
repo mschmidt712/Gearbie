@@ -49,7 +49,10 @@ class HomePage extends React.Component {
       <div className="page">
         <div className="home-page-image" />
         <div className="page-container">
-          <h2 className="page-sub-header uppercase"> {this.state.subHeader} </h2>
+          <h2
+            className="page-sub-header uppercase"
+            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.subHeader)}
+          />
           <h1 className="home-page-header uppercase">
             {this.state.header[0]} {this.state.header[1]}
             <span className="emphasis"> {this.state.header[2]} </span>

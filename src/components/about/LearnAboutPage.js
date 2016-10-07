@@ -75,10 +75,14 @@ class LearnAboutPage extends React.Component {
     return (
       <div className="about-page page">
         <div className="about-image-container learn-about-image">
-          <h1 className="page-header about-page-header"> {this.state.header} </h1>
-          <p className="about-page-description page-description">
-            {this.state.description}
-          </p>
+          <h1
+            className="page-header"
+            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
+          />
+          <p
+            className="page-description"
+            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
+          />
         </div>
         <div className="about-content-container">
           {this.state.textBoxItems}
