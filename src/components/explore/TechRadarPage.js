@@ -7,8 +7,8 @@ import Footer from '../shared/FooterComponent';
 /**
  * The stateful component for the Tech Radar page.
  * Page details new technologies on Kenzan's radar.
- * Data is currently mocked out.
  */
+
 class TechRadarPage extends React.Component {
   constructor() {
     super();
@@ -62,7 +62,7 @@ class TechRadarPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <div className="image-container tech-radar-image" />
         <div className="explore-page-container">
           <div className="col-2">
@@ -78,7 +78,7 @@ class TechRadarPage extends React.Component {
         <Footer
           display="true"
           text={this.state.footerText}
-          link="/about/kenzan"
+          link="/kenzan"
         />
       </div>
     );

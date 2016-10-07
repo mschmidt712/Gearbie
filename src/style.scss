@@ -8,6 +8,7 @@ $primary-gray: #434B53;
 $font-gray: #434B53;
 $arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
+$custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
@@ -18,8 +19,8 @@ $tablet-breakpoint: 1200px;
 
 // Roboto Font
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-Regular-webfont.eot');
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto-Regular-webfont.eot');
   src: url('/assets/fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
     url('/assets/fonts/Roboto-Regular-webfont.woff') format('woff'),
     url('/assets/fonts/Roboto-Regular-webfont.ttf') format('truetype'),
@@ -28,8 +29,8 @@ $tablet-breakpoint: 1200px;
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-Light-webfont.eot');
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto-Light-webfont.eot');
   src: url('/assets/fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
     url('/assets/fonts/Roboto-Light-webfont.woff') format('woff'),
     url('/assets/fonts/Roboto-Light-webfont.ttf') format('truetype'),
@@ -38,20 +39,20 @@ $tablet-breakpoint: 1200px;
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-LightItalic-webfont.eot');
-  src: url('/assets/fonts/Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/Roboto-LightItalic-webfont.woff') format('woff'),
-    url('/assets/fonts/Roboto-LightItalic-webfont.ttf') format('truetype'),
-    url('/assets/fonts/Roboto-LightItalic-webfont.svg') format('svg');
+  font-family: 'Roboto';
+  src: url('/src/assets/fonts/Roboto-LightItalic-webfont.eot');
+  src: url('/src/assets/fonts/Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/src/assets/fonts/Roboto-LightItalic-webfont.woff') format('woff'),
+    url('/src/assets/fonts/Roboto-LightItalic-webfont.ttf') format('truetype'),
+    url('/src/assets/fonts/Roboto-LightItalic-webfont.svg') format('svg');
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-Bold-webfont.eot');
-  src: url('/assets/fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+  font-family: 'Roboto';
+  src: url('/src/assets/fonts/Roboto-Bold-webfont.eot');
+  src: url('/src/assets/fonts/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
     url('/assets/fonts/Roboto-Bold-webfont.woff') format('woff'),
     url('/assets/fonts/Roboto-Bold-webfont.ttf') format('truetype'),
     url('/assets/fonts/Roboto-Bold-webfont.svg') format('svg');
@@ -59,8 +60,8 @@ $tablet-breakpoint: 1200px;
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url('./assets/fonts/Roboto-BoldItalic-webfont.eot');
+  font-family: 'Roboto';
+  src: url('/assets/fonts/Roboto-BoldItalic-webfont.eot');
   src: url('/assets/fonts/Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
     url('/assets/fonts/Roboto-BoldItalic-webfont.woff') format('woff'),
     url('/assets/fonts/Roboto-BoldItalic-webfont.ttf') format('truetype'),
@@ -91,14 +92,15 @@ body {
   font-size: 80%;
   position: relative;
   margin: 0;
+  padding-top: 107px;
   padding-bottom: 65px;
   min-height: 100%;
+  background-color: $footer-gray;
 }
 
 @media(min-width: $phone-breakpoint) {
   body{
     font-size: 150%;
-    overflow: hidden;
   }
 }
 
@@ -111,6 +113,11 @@ body {
 // Navbar
 .navbar {
   background: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
 
   @media only screen and (max-width: $tablet-header) {
     .navbar-social-media {
@@ -169,7 +176,7 @@ body {
           font-size: 1.5rem;
           align-items: center;
           padding: 0 15px 0 15px;
-          transition: background .3s ease;
+          transition: background .3s $custom-ease;
 
           &:hover {
           background-color: lightgray;
@@ -190,7 +197,7 @@ body {
           height: 45px;
           width: 45px;
           filter: opacity(50%);
-          transition: filter .3s ease;
+          transition: filter .3s $custom-ease;
 
           &:hover {
             filter: opacity(100%);
@@ -210,7 +217,7 @@ body {
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s $custom-ease;
   font-weight: 300;
   letter-spacing: 0.05rem;
   text-decoration: none;
@@ -253,10 +260,9 @@ a {
 //Page Containers
 .image-container {
   background-size: cover;
-  margin-bottom: -15px;
   position: fixed;
   top: 0;
-  bottom: 0;
+  bottom: 15;
   right: 0;
   left: 0;
   z-index: -1;
@@ -265,6 +271,7 @@ a {
 @media(min-width: $tablet-breakpoint) {
   .image-container {
     display: flex;
+    margin-bottom: -15px;
   }
 }
 
@@ -375,7 +382,7 @@ a {
 
   i {
     border-radius: 100%;
-    transition: all 0.3s ease;
+    transition: all 0.3s $custom-ease;
     color: $font-white;
 
     &:hover {
@@ -419,7 +426,7 @@ a {
 
 .arrow-disabled {
   display: none;
-  transition: ease-in 3 00;
+  transition: $custom-ease 3 00;
 }
 
 //Headers
@@ -503,18 +510,19 @@ a {
 .page-footer {
   background-color: $footer-gray;
   width: 100%;
-  height: 65px;
+  height: 80px;
   position: absolute;
-  bottom: 0;
+  bottom: -15px;
   right: 0;
-  left: 0;
+  transition: all 200ms;
+  transition-timing-function: $custom-ease;
 
   .arrow-link {
     background-color: white;
     border-radius: 100%;
     height: 50px;
     width: 50px;
-    position: relative;
+    position: absolute;
     top: -20px;
     left: calc(50% - 25px);
   }
@@ -529,9 +537,12 @@ a {
     color: $font-gray;
     font-weight: 400;
     text-align: center;
-    position: relative;
-    bottom: 30px;
+    margin-top: 35px;
   }
+}
+
+.shadow {
+  box-shadow: 1px 1px 3px rgba(red($primary-gray), green($primary-gray), blue($primary-gray), 0.15);
 }
 
 @media(min-width: $phone-breakpoint) {
@@ -540,6 +551,7 @@ a {
     height: 90px;
 
     .footer-text {
+      margin-top: 40px;
       font-size: 1rem;
     }
   }
@@ -550,9 +562,41 @@ a {
     height: 105px;
 
     .footer-text {
+      margin-top: 4
+      5px;
       font-size: 1.3rem;
     }
   }
+}
+
+.page-footer-top {
+  position: absolute;
+  top: -105;
+  opacity: 0;
+}
+
+.animation:hover {
+  transform: translatey(-15px);
+  .arrow-link {
+    animation: bounce 600ms $custom-ease;
+  }
+}
+
+
+.footer-appear {
+  transform: translateY(-15px);
+}
+
+@keyframes bounce {
+  0% {transform:translateY(0%);}
+  25% {transform:translateY(-30%);}
+  50% {transform:translateY(0%);}
+  65% {transform:translateY(-15%);}
+  75% {transform:translateY(0%);}
+  85% {transform:translateY(-5%);}
+  90% {transform:translateY(0%);}
+  95% {transform:translateY(-3%);}
+  100% {transform:translateY(0);}
 }
 
 //Icons
@@ -574,4 +618,65 @@ a {
 
 .material-icons.shadow {
   text-shadow: 1px 1px 4px black;
+}
+
+// Page Animations
+
+.pageSlider-up-enter {
+  transform: translate3d(0, 100%, 0);
+  z-index: 1;
+}
+
+.pageSlider-up-enter.pageSlider-up-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition-duration: 600ms;
+  z-index: 1;
+
+}
+
+.pageSlider-up-leave {
+  transform: translate3d(0, 0, 0);
+}
+
+.pageSlider-up-leave.pageSlider-up-leave-active {
+  transform: translate3d(0, -100%, 0);
+  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition-duration: 600ms;
+  z-index: 1;
+}
+
+.pageSlider-down-enter {
+  transform: translate3d(0, -100%, 0);
+  z-index: 1;
+}
+
+.pageSlider-down-enter.pageSlider-down-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition-timing-function: $custom-ease;
+  transition-duration: 800ms;
+  z-index: 1;
+
+}
+
+.pageSlider-down-leave {
+  transform: translate3d(0, 0, 0);
+}
+
+.pageSlider-down-leave.pageSlider-down-leave-active {
+  transform: translate3d(0, 100%, 0);
+  transition-timing-function: $custom-ease;
+  transition-duration: 800ms;
+  z-index: 1;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page {
+    position: absolute;
+    top: 107px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import $ from 'jquery';
 import constants from '../../constants';
@@ -45,7 +46,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <div className="home-page-image" />
         <div className="page-container">
           <h2 className="page-sub-header uppercase"> {this.state.subHeader} </h2>
@@ -57,19 +58,27 @@ class HomePage extends React.Component {
             {this.state.description}
           </p>
           <div className="button-container">
-            <Link to="/explore/open-source" className="btn btn-primary">
+            <Link to="/open-source" className="btn btn-primary shadow">
               Open Source
             </Link>
-            <Link to="/explore/tech-radar" className="btn btn-primary">
+            <Link to="/tech-radar" className="btn btn-primary shadow">
               Tech Radar
             </Link>
           </div>
         </div>
-        <Footer
-          display="true"
-          text={this.state.footerText}
-          link="/explore/open-source"
-        />
+        <ReactCSSTransitionGroup
+          transitionName="footer"
+          transitionAppear={true}
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+          transitionAppearTimeout={500}
+        >
+          <Footer
+            display="true"
+            text={this.state.footerText}
+            link="/open-source"
+          />
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

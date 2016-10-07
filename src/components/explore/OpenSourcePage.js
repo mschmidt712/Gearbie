@@ -7,8 +7,8 @@ import Footer from '../shared/FooterComponent';
 /**
  * The stateful component for the Open Source page.
  * Page details Kenzan's open source projects.
- * Data is currently mocked out.
  */
+
 class OpenSourcePage extends React.Component {
 
   constructor() {
@@ -65,7 +65,7 @@ class OpenSourcePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
@@ -81,7 +81,7 @@ class OpenSourcePage extends React.Component {
         <Footer
           display="true"
           text={this.state.footerText}
-          link="/explore/tech-radar"
+          link="/tech-radar"
         />
       </div>);
   }

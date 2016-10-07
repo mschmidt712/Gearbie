@@ -9,16 +9,35 @@ import Footer from '../shared/FooterComponent';
  * Details what we do at Kenzan, the purpose of the .IO page, and our company culture.
  * Currently contains same data at Kenzan About page.
  */
+
 class LearnAboutPage extends React.Component {
   constructor() {
     super();
+    this.pageQuery = 'pages?slug=kenzan-about';
     this.postQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
     this.state = {
+      header: '',
+      description: '',
+      footerText: '',
       textBoxItems: [],
     };
   }
 
   componentWillMount() {
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+      const page = pages[0];
+
+      const pageHeader = page.acf.header;
+      const pageDescription = page.acf.description;
+      const pageFooterText = page.acf.footer_text;
+
+      this.setState({
+        header: pageHeader,
+        description: pageDescription,
+        footerText: pageFooterText,
+      });
+    });
+
     this.postRequest = $.get(constants.baseUrl + this.postQuery, (results) => {
       const resultsData = [];
 
@@ -48,17 +67,17 @@ class LearnAboutPage extends React.Component {
   }
 
   componentWillUnmount() {
+    this.pageRequest.abort();
     this.postRequest.abort();
   }
 
   render() {
     return (
-      <div className="about-page">
+      <div className="about-page page">
         <div className="about-image-container learn-about-image">
-          <h1 className="page-header about-page-header"> Learn with us. </h1>
-          <p className="about-page-description page-description"> Find out more
-          about our Hack Nights and other events. Visit our
-            <a href="https://www.meetup.com/Kenzan-Media-Denver-Hack-Nights/" target="blank"> meetup page</a> to take part.
+          <h1 className="page-header about-page-header"> {this.state.header} </h1>
+          <p className="about-page-description page-description">
+            {this.state.description}
           </p>
         </div>
         <div className="about-content-container">
@@ -66,7 +85,7 @@ class LearnAboutPage extends React.Component {
         </div>
         <Footer
           display="true"
-          text="Connect with Us."
+          text={this.state.footerText}
           link="/connect"
         />
       </div>

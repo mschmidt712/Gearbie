@@ -8,6 +8,7 @@ import Footer from '../shared/FooterComponent';
  * The stateful component for the Kenzan About page.
  * Details what we do at Kenzan, the purpose of the .IO page, and our company culture.
  */
+
 class KenzanAboutPage extends React.Component {
   constructor() {
     super();
@@ -65,16 +66,17 @@ class KenzanAboutPage extends React.Component {
   }
 
   componentWillUnmount() {
+    this.pageRequest.abort();
     this.postRequest.abort();
   }
 
   render() {
     return (
-      <div className="about-page">
+      <div className="about-page page">
         <div className="about-image-container kenzan-about-image">
           <h1 className="page-header"> {this.state.header} </h1>
           <p className="page-description">
-            {this.state.header}
+            {this.state.description}
           </p>
         </div>
         <div className="about-content-container">
