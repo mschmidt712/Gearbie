@@ -13,8 +13,8 @@ import Footer from '../shared/FooterComponent';
 class LearnAboutPage extends React.Component {
   constructor() {
     super();
-    this.pageQuery = 'pages?slug=kenzan-about';
-    this.postQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
+    this.pageQuery = 'pages?slug=learn-about';
+    this.postQuery = 'posts?categories='.concat(constants.postCategories.learnAbout);
     this.state = {
       header: '',
       description: '',
