@@ -70,9 +70,10 @@ class OpenSourcePage extends React.Component {
         <div className="explore-page-container">
           <div className="col-2">
             <h1 className="page-header"> {this.state.header} </h1>
-            <p className="page-description">
-              {this.state.description}
-            </p>
+            <p
+              className="page-description"
+              dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
+            />
           </div>
           <div className="col-2 text-box-container carosel-container">
             <ExploreCarousel data={this.state.posts} />

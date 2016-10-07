@@ -54,9 +54,10 @@ class HomePage extends React.Component {
             {this.state.header[0]} {this.state.header[1]}
             <span className="emphasis"> {this.state.header[2]} </span>
           </h1>
-          <p className="home-page-description">
-            {this.state.description}
-          </p>
+          <p
+            className="home-page-description"
+            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
+          />
           <div className="button-container">
             <Link to="/open-source" className="btn btn-primary shadow">
               Open Source

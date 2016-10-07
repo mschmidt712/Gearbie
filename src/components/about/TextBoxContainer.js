@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import constants from '../../constants';
 
 /**
  * A stateless component to hold the posts on the about page.
@@ -7,9 +8,10 @@ function TextBoxContainer(props) {
   return (
     <div className="col-3 text-box">
       <h2 className="text-box-header">{props.title}</h2>
-      <p className="text-box-content">
-        {props.text}
-      </p>
+      <p
+        className="text-box-content"
+        dangerouslySetInnerHTML={constants.setInnerHtml(props.text)}
+      />
       <div className="arrow-forward-container">
         <a className="page-description-link material-icons" href={props.link} target="new">
           <h4 className="page-description-link-text uppercase"> {props.linkText} </h4>
