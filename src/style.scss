@@ -310,7 +310,7 @@ a {
   overflow: hidden;
 
   &:last-child {
-    padding-bottom: 25px;
+    padding-bottom: 55px;
   }
 }
 
@@ -359,7 +359,7 @@ a {
 
 .text-box {
   background-color: $font-white;
-  padding: 15px;
+  padding: 20px;
   position: relative;
 
   .text-box-header {
@@ -379,6 +379,8 @@ a {
   cursor: pointer;
   background-color: transparent;
   border: none;
+  position: absolute;
+  z-index: 10;
 
   i {
     border-radius: 100%;
@@ -604,6 +606,10 @@ a {
   color: $primary-orange;
 }
 
+.material-icons.gray {
+  color: $primary-gray;
+}
+
 .material-icons.white {
   color: $font-white;
 }
@@ -616,7 +622,7 @@ a {
   font-size: 48px;
 }
 
-.material-icons.shadow {
+.material-icons.icon-shadow {
   text-shadow: 1px 1px 4px black;
 }
 
