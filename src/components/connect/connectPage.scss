@@ -1,10 +1,7 @@
 .connect-page {
   background-color: $footer-gray;
-  position: fixed;
-  top: 107;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  overflow: hidden;
+  height: 100%;
 }
 
 .connect-page-container {

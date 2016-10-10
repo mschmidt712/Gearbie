@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Header from './shared/HeaderComponent';
+import HeaderComponent from './shared/HeaderComponent';
 
 /**
  * The App component for the project.
@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <HeaderComponent />
         {this.props.children}
       </div>
     );

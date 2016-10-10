@@ -1,0 +1,32 @@
+.drop-down-container {
+  position: relative;
+  .header-menu-dropdown {
+    z-index: 5;
+    background: white;
+    color: #434B53;
+    width: 100%;
+    position: absolute;
+
+    .dropdown-icon {
+      margin-right: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      font-size: 40px;
+      margin: 0;
+
+      li {
+        margin: 5px 0 5px 0;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:visited {
+      color: $font-gray;
+      }
+    }
+  }
+}
