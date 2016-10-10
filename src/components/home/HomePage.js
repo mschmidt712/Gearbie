@@ -2,6 +2,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import Footer from '../shared/FooterComponent';
 
@@ -15,6 +16,7 @@ class HomePage extends React.Component {
     super();
     this.pageQuery = 'pages?slug=home';
     this.state = {
+      loadingHeading: true,
       header: '',
       subHeader: '',
       description: '',
@@ -32,6 +34,7 @@ class HomePage extends React.Component {
       const pageFooter = result.acf.footer_text;
 
       this.setState({
+        loadingHeading: false,
         header: pageHeader,
         subHeader: pageSubHeader,
         description: pageDescription,
@@ -45,8 +48,17 @@ class HomePage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingHeading,
+    });
+
     return (
       <div className="page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="home-page-image" />
         <div className="page-container">
           <h2

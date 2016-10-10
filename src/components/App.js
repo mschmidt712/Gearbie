@@ -16,7 +16,7 @@ class App extends React.Component {
     this.scrollEnabled = true;
     this.mobile = false;
     this.state = {
-      locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/learn', '/connect'],
+      locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/learn', '/blog', '/connect'],
       scrollThreshold: 60,
     };
     this.render = this.render.bind(this);
