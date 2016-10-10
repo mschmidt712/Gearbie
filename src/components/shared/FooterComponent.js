@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import constants from '../../constants';
 
 /**
  * The App Footer which handles some page navigation.
@@ -15,7 +16,10 @@ const Footer = ({ display, text, link }) => {
         <div className="arrow-link shadow">
           <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
         </div>
-        <h5 className="footer-text"> {text} </h5>
+        <h5
+          className="footer-text"
+          dangerouslySetInnerHTML={constants.setInnerHtml(text)}
+        />
       </Link>
     </div>);
   } else {

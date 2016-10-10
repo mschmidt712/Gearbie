@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Slider from 'react-slick';
+import constants from '../../constants';
 import { LeftArrow, RightArrow } from './CarouselArrows';
 
 /**
@@ -22,10 +23,8 @@ function ExploreCarousel(props) {
 
   const items = props.data.map((obj, index) => (
     <div className="text-box" key={index}>
-      <h3 className="text-box-header">{obj.header}</h3>
-      <p className="text-box-content">
-        {obj.text}
-      </p>
+      <h3 className="text-box-header uppercase">{obj.header}</h3>
+      <p className="text-box-content" dangerouslySetInnerHTML={constants.setInnerHtml(obj.text)} />
     </div>)
   );
 
