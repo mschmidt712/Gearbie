@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
@@ -15,6 +16,8 @@ class TechRadarPage extends React.Component {
     this.carouselQuery = 'posts?categories='.concat(constants.postCategories.techRadar);
     this.pageQuery = 'pages?slug=tech-radar';
     this.state = {
+      loadingHeading: true,
+      loadingPosts: true,
       header: '',
       description: '',
       footerText: '',
@@ -37,6 +40,7 @@ class TechRadarPage extends React.Component {
       });
 
       this.setState({
+        loadingPosts: false,
         posts: resultData,
       });
     });
@@ -48,6 +52,7 @@ class TechRadarPage extends React.Component {
       const pageFooterText = page.acf.footer_text;
 
       this.setState({
+        loadingHeading: false,
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
@@ -61,8 +66,17 @@ class TechRadarPage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingPosts || this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingPosts && !this.state.loadingHeading,
+    });
+
     return (
       <div className="page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="image-container tech-radar-image" />
         <div className="explore-page-container">
           <div className="col-2">

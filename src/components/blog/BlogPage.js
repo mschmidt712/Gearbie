@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import Footer from '../shared/FooterComponent';
 
@@ -13,6 +14,7 @@ class BlogPage extends React.Component {
     super();
     this.pageQuery = 'pages?slug=blog';
     this.state = {
+      loadingHeading: true,
       header: '',
       description: '',
       footerText: '',
@@ -29,6 +31,7 @@ class BlogPage extends React.Component {
       const pageFooterText = page.acf.footer_text;
 
       this.setState({
+        loadingHeading: false,
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
@@ -41,8 +44,17 @@ class BlogPage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingHeading,
+    });
+
     return (
       <div className="page blog-page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
@@ -55,7 +67,7 @@ class BlogPage extends React.Component {
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />
             <p className="page-description blog-page-link">
-              <a href="http://techblog.kenzan.com/">
+              <a href="http://techblog.kenzan.com/" target="new">
                 Check out the blog now.
               </a>
             </p>

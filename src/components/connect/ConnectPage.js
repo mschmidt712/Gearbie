@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import ContactInfo from './ContactInfo';
 import EventContainer from './EventContainer';
@@ -14,6 +15,7 @@ class ConnectPage extends React.Component {
     super();
     this.postQuery = 'posts?categories='.concat(constants.postCategories.connect);
     this.state = {
+      loadingPosts: true,
       events: [],
     };
   }
@@ -40,6 +42,7 @@ class ConnectPage extends React.Component {
       ));
 
       this.setState({
+        loadingPosts: false,
         events: eventItems,
       });
     });
@@ -50,8 +53,17 @@ class ConnectPage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingPosts,
+      'loading-disabled': !this.state.loadingPosts,
+    });
+
     return (
       <div className="connect-page page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="connect-page-container">
           <div className="connect-contact-info col-2">
             <h1> Kenzan </h1>
