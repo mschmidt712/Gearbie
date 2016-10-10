@@ -1,48 +1,92 @@
 import React from 'react';
+import $ from 'jquery';
+import constants from '../../constants';
 import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
 
 /**
  * The stateful component for the Tech Radar page.
  * Page details new technologies on Kenzan's radar.
- * Data is currently mocked out.
  */
-function TechRadarPage() {
-  const data = [{
-    header: 'SPRING CLOUD',
-    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
-  }, {
-    header: 'SPRING CLOUD',
-    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
-  }, {
-    header: 'SPRING CLOUD',
-    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
-  }, {
-    header: 'SPRING CLOUD',
-    text: 'An open source intiative by Kenzan with the objective of supporting developers with the tools they need for easily setting up and con guring a build system for a front-end project, by reducing boilerplate code and providing out-of-the-box functionality for the most common use cases. Ut occulleni tempore est lat dolent lacerchil ilit quia si ut fugitat. Oris endignihic tem reproruptur? Itam hario ex eum qui quia doles sanim re nobit int doluptus dererumquas cum exerum. Orro blam fugit entiasp edignatendit et peris sum ilitatur aut et autem fuga. Name endios re eaque oditiasperit viducimi, sint qui quid magnatur, quo maio. Upta que modit ulluptisque est el ius sunti omnis molo mod el',
-  }];
 
-  return (
-    <div className="page">
-      <div className="image-container tech-radar-image" />
-      <div className="explore-page-container">
-        <div className="col-2">
-          <h1 className="page-header"> Tech Radar </h1>
-          <p className="page-description">
-            Kenzan's view on subjects in the world of development.
-          </p>
+class TechRadarPage extends React.Component {
+  constructor() {
+    super();
+    this.carouselQuery = 'posts?categories='.concat(constants.postCategories.techRadar);
+    this.pageQuery = 'pages?slug=tech-radar';
+    this.state = {
+      header: '',
+      description: '',
+      footerText: '',
+      posts: [{
+        header: '',
+        text: '',
+      }],
+    };
+  }
+
+  componentWillMount() {
+    this.carouselRequest = $.get(constants.baseUrl + this.carouselQuery, (results) => {
+      const resultData = [];
+
+      results.forEach((result) => {
+        const obj = {};
+        obj.header = constants.getPostHeader(result);
+        obj.text = constants.getPostText(result);
+        resultData.push(obj);
+      });
+
+      this.setState({
+        posts: resultData,
+      });
+    });
+
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+      const page = pages[0];
+      const pageHeader = page.acf.header;
+      const pageDescription = page.acf.description;
+      const pageFooterText = page.acf.footer_text;
+
+      this.setState({
+        header: pageHeader,
+        description: pageDescription,
+        footerText: pageFooterText,
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.carouselRequest.abort();
+    this.pageRequest.abort();
+  }
+
+  render() {
+    return (
+      <div className="page">
+        <div className="image-container tech-radar-image" />
+        <div className="explore-page-container">
+          <div className="col-2">
+            <h1
+              className="page-header"
+              dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
+            />
+            <p
+              className="page-description"
+              dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
+            />
+          </div>
+          <div className="col-2 text-box-container carosel-container">
+            <ExploreCarousel data={this.state.posts} />
+          </div>
         </div>
-        <div className="col-2 text-box-container carosel-container">
-          <ExploreCarousel data={data} />
-        </div>
+        <Footer
+          display="true"
+          text={this.state.footerText}
+          link="/kenzan"
+        />
       </div>
-      <Footer
-        display="true"
-        text="About Kenzan."
-        link="/kenzan"
-      />
-    </div>
-  );
+    );
+  }
 }
 
 export default TechRadarPage;

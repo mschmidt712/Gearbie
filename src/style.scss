@@ -8,7 +8,7 @@ $primary-gray: #434B53;
 $font-gray: #434B53;
 $arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
-$custon-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
+$custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
@@ -432,6 +432,10 @@ a {
 //Headers
 .page-header {
   color: $font-white;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .page-sub-header {
