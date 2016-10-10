@@ -27,7 +27,7 @@ export function RightArrow(props) {
   return (
     <div {... rightProps}>
       <button className={rightArrowClasses}>
-        <i className="material-icons lg shadow">keyboard_arrow_right</i>
+        <i className="material-icons lg icon-shadow">keyboard_arrow_right</i>
       </button>
     </div>
   );
@@ -59,7 +59,7 @@ export function LeftArrow(props) {
   return (
     <div {... leftProps}>
       <button className={leftArrowClasses}>
-        <i className="material-icons lg shadow">keyboard_arrow_left</i>
+        <i className="material-icons lg icon-shadow">keyboard_arrow_left</i>
       </button>
     </div>
   );

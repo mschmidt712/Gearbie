@@ -8,7 +8,7 @@ $primary-gray: #434B53;
 $font-gray: #434B53;
 $arrow-gray: #C7C8C6;
 $footer-gray: #E9E8E4;
-$custon-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
+$custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
@@ -602,6 +602,10 @@ a {
   color: $primary-orange;
 }
 
+.material-icons.gray {
+  color: $primary-gray;
+}
+
 .material-icons.white {
   color: $font-white;
 }
@@ -614,7 +618,7 @@ a {
   font-size: 48px;
 }
 
-.material-icons.shadow {
+.material-icons.icon-shadow {
   text-shadow: 1px 1px 4px black;
 }
 
