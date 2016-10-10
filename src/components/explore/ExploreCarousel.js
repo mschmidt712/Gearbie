@@ -9,6 +9,7 @@ function ExploreCarousel(props) {
   const settings = {
     accessibility: true,
     dots: true,
+    dotsClass: 'carousel-dots',
     infinite: true,
     speed: 500,
     draggable: true,

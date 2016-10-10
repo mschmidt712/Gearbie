@@ -2,6 +2,42 @@
   height: auto;
 }
 
-.slick-dots {
-  color: white;
+.carousel-dots {
+  text-align: center;
+  margin-top: 10px;
+  padding: 0;
+
+  .slick-active {
+    button {
+      transform: scale(1.4, 1.4);
+      opacity: 0.8;
+    }
+  }
+
+  li {
+    margin: 5px;
+    display: inline-block;
+  }
+  button {
+    @extend .shadow;
+    cursor: pointer;
+    margin: 0px 5px;
+    padding: 0;
+    font-size: 0%;
+    border-radius: 100%;
+    border: none;
+    background-color: $primary-gray;
+    opacity: 0.6;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .carousel-dots {
+    button {
+      background-color: $font-white;
+      opacity: 0.6;
+    }
+  }
 }
