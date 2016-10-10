@@ -75,6 +75,7 @@ $tablet-breakpoint: 1200px;
 @import './src/components/home/homePage.scss';
 @import './src/components/explore/explorePage.scss';
 @import './src/components/about/aboutPage.scss';
+@import './components/blog/blogPage.scss';
 @import './components/connect/connectPage.scss';
 @import './components/explore/carousel.scss';
 
@@ -251,10 +252,6 @@ body {
 //Links
 a {
   color: $font-white;
-
-  &:visited {
-    color: $arrow-gray;
-  }
 }
 
 //Page Containers

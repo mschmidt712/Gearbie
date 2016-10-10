@@ -13,7 +13,7 @@ const Header = ({ clickEvent }) =>
       </Link>
       <li><Link to="/open-source" activeClassName="active" onClick={clickEvent}>Explore</Link></li>
       <li><Link to="/kenzan" activeClassName="active" onClick={clickEvent}>About</Link></li>
-      <li><a href="a">Blog</a></li>
+      <li><Link to="/blog" activeClassName="active" onClick={clickEvent}>Blog</Link></li>
       <li><Link to="/connect" activeClassName="active" onClick={clickEvent}>Connect</Link></li>
     </div>
     <div className="navbar-social-media">
