@@ -2,49 +2,28 @@ import React from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
-import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
 
 /**
- * The stateful component for the Tech Radar page.
- * Page details new technologies on Kenzan's radar.
+ * The stateful component for the Open Source page.
+ * Page details Kenzan's open source projects.
  */
+class BlogPage extends React.Component {
 
-class TechRadarPage extends React.Component {
   constructor() {
     super();
-    this.carouselQuery = 'posts?categories='.concat(constants.postCategories.techRadar);
-    this.pageQuery = 'pages?slug=tech-radar';
+    this.pageQuery = 'pages?slug=blog';
     this.state = {
       loadingHeading: true,
-      loadingPosts: true,
       header: '',
       description: '',
       footerText: '',
-      posts: [{
-        header: '',
-        text: '',
-      }],
     };
+
+    this.render = this.render.bind(this);
   }
 
   componentWillMount() {
-    this.carouselRequest = $.get(constants.baseUrl + this.carouselQuery, (results) => {
-      const resultData = [];
-
-      results.forEach((result) => {
-        const obj = {};
-        obj.header = constants.getPostHeader(result);
-        obj.text = constants.getPostText(result);
-        resultData.push(obj);
-      });
-
-      this.setState({
-        loadingPosts: false,
-        posts: resultData,
-      });
-    });
-
     this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
       const page = pages[0];
       const pageHeader = page.acf.header;
@@ -61,23 +40,22 @@ class TechRadarPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this.carouselRequest.abort();
     this.pageRequest.abort();
   }
 
   render() {
     const loadingClass = classNames({
       loading: true,
-      'loading-active': this.state.loadingPosts || this.state.loadingHeading,
-      'loading-disabled': !this.state.loadingPosts && !this.state.loadingHeading,
+      'loading-active': this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingHeading,
     });
 
     return (
-      <div className="page">
+      <div className="page blog-page">
         <div className={loadingClass}>
           <img src="./assets/loader.gif" alt="Loading" />
         </div>
-        <div className="image-container tech-radar-image" />
+        <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
             <h1
@@ -88,19 +66,20 @@ class TechRadarPage extends React.Component {
               className="page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />
-          </div>
-          <div className="col-2 text-box-container carosel-container">
-            <ExploreCarousel data={this.state.posts} />
+            <p className="page-description blog-page-link">
+              <a href="http://techblog.kenzan.com/" target="new">
+                Check out the blog now.
+              </a>
+            </p>
           </div>
         </div>
         <Footer
           display="true"
           text={this.state.footerText}
-          link="/kenzan"
+          link="/connect"
         />
-      </div>
-    );
+      </div>);
   }
 }
 
-export default TechRadarPage;
+export default BlogPage;

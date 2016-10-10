@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import ExploreCarousel from './ExploreCarousel';
 import Footer from '../shared/FooterComponent';
@@ -16,6 +17,8 @@ class OpenSourcePage extends React.Component {
     this.carouselQuery = 'posts?categories='.concat(constants.postCategories.openSource);
     this.pageQuery = 'pages?slug=open-source';
     this.state = {
+      loadingHeading: true,
+      loadingPosts: true,
       header: '',
       description: '',
       footerText: '',
@@ -40,6 +43,7 @@ class OpenSourcePage extends React.Component {
       });
 
       this.setState({
+        loadingPosts: false,
         posts: resultData,
       });
     });
@@ -51,6 +55,7 @@ class OpenSourcePage extends React.Component {
       const pageFooterText = page.acf.footer_text;
 
       this.setState({
+        loadingHeading: false,
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
@@ -64,8 +69,17 @@ class OpenSourcePage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingPosts || this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingPosts && !this.state.loadingHeading,
+    });
+
     return (
       <div className="page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
