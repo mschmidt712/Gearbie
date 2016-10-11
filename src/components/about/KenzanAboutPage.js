@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import classNames from 'classnames';
 import constants from '../../constants';
 import TextBoxContainer from './TextBoxContainer';
 import Footer from '../shared/FooterComponent';
@@ -15,6 +16,8 @@ class KenzanAboutPage extends React.Component {
     this.pageQuery = 'pages?slug=kenzan-about';
     this.postQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
     this.state = {
+      loadingHeading: true,
+      loadingPosts: true,
       header: '',
       description: '',
       footerText: '',
@@ -31,6 +34,7 @@ class KenzanAboutPage extends React.Component {
       const pageFooterText = page.acf.footer_text;
 
       this.setState({
+        loadingHeading: false,
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
@@ -60,6 +64,7 @@ class KenzanAboutPage extends React.Component {
       );
 
       this.setState({
+        loadingPosts: false,
         textBoxItems: resultsTextBoxItems,
       });
     });
@@ -71,8 +76,17 @@ class KenzanAboutPage extends React.Component {
   }
 
   render() {
+    const loadingClass = classNames({
+      loading: true,
+      'loading-active': this.state.loadingPosts || this.state.loadingHeading,
+      'loading-disabled': !this.state.loadingPosts && !this.state.loadingHeading,
+    });
+
     return (
       <div className="about-page page">
+        <div className={loadingClass}>
+          <img src="./assets/loader.gif" alt="Loading" />
+        </div>
         <div className="about-image-container kenzan-about-image">
           <h1
             className="page-header"
