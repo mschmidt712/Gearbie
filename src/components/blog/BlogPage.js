@@ -56,8 +56,8 @@ class BlogPage extends React.Component {
           <img src="./assets/loader.gif" alt="Loading" />
         </div>
         <div className="open-source-image image-container" />
-        <div className="explore-page-container">
-          <div className="col-2">
+        <div className="blog-page-container">
+          <div>
             <h1
               className="page-header"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}

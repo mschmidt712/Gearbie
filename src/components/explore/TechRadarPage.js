@@ -21,10 +21,7 @@ class TechRadarPage extends React.Component {
       header: '',
       description: '',
       footerText: '',
-      posts: [{
-        header: '',
-        text: '',
-      }],
+      posts: [],
     };
   }
 
@@ -39,9 +36,11 @@ class TechRadarPage extends React.Component {
         resultData.push(obj);
       });
 
+      const carousel = <ExploreCarousel data={resultData} />;
+
       this.setState({
         loadingPosts: false,
-        posts: resultData,
+        posts: carousel,
       });
     });
 
@@ -90,7 +89,7 @@ class TechRadarPage extends React.Component {
             />
           </div>
           <div className="col-2 text-box-container carosel-container">
-            <ExploreCarousel data={this.state.posts} />
+            {this.state.posts}
           </div>
         </div>
         <Footer
