@@ -137,11 +137,44 @@ body {
       margin-left: auto;
       margin-right: 15px;
       position: relative;
+      display: flex;
+
+      .nav-menu {
+        margin-right: 15px;
+        color: $font-gray;
+        position: relative;
+        align-self: center;
+        font-size: 30px;
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+        }
 
       .dropdown-content {
         display: none;
         position: absolute;
       }
+
+      .nav-menu .mobile-social-media {
+        margin-left: 20px;
+      }
+
+      .nav-menu .mobile-social-media {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $tablet-header) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: $tablet-header) {
+    .mobile-nav {
+      display: none;
     }
   }
 
@@ -704,3 +737,13 @@ a {
   transition: all 1s $custom-ease;
   display: none;
 }
+
+// Helper Classes
+
+// Remove button styles from link
+  .no-button {
+    border: none;
+    background: none;
+  }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
