@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import $ from 'jquery';
-import Header from './shared/HeaderComponent';
+import HeaderComponent from './shared/HeaderComponent';
 
 /**
  * The App component for the project.
@@ -123,12 +123,12 @@ class App extends React.Component {
 
     if (this.mobile) {
       app = (<div>
-        <Header clickEvent={this.navBarClick} />
+        <HeaderComponent clickEvent={this.navBarClick} />
           {this.props.children}
       </div>);
     } else if (!this.mobile && this.scrollDown) {
       app = (<div>
-        <Header clickEvent={this.navBarClick} />
+        <HeaderComponent clickEvent={this.navBarClick} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-down"
           transitionEnterTimeout={600}
@@ -139,7 +139,7 @@ class App extends React.Component {
       </div>);
     } else {
       app = (<div>
-        <Header clickEvent={this.navBarClick} />
+        <HeaderComponent clickEvent={this.navBarClick} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-up"
           transitionEnterTimeout={600}
