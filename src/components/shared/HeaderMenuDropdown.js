@@ -27,7 +27,7 @@ const HeaderMenuDropdown = ({ clearBoth }) => (
               </li>
             </Link>
             <Link to="/connect" activeClassName="active" onClick={clearBoth}>
-              <li>
+              <li className="last">
                 <FontAwesome name="globe" className="dropdown-icon" />
                 Connect
               </li>
