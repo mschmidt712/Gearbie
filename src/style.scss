@@ -12,7 +12,8 @@ $custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
-$tablet-header: 768px;
+$tablet-header: 674px;
+$tablet-nav-medium: 852px;
 
 $phone-breakpoint: 650px;
 $tablet-breakpoint: 1200px;
@@ -78,6 +79,7 @@ $tablet-breakpoint: 1200px;
 @import './components/blog/blogPage.scss';
 @import './components/connect/connectPage.scss';
 @import './components/explore/carousel.scss';
+@import './components/shared/navDropdowns.scss';
 
 * {
   box-sizing: border-box;
@@ -93,7 +95,7 @@ body {
   font-size: 80%;
   position: relative;
   margin: 0;
-  padding-top: 107px;
+  padding-top: 77px;
   padding-bottom: 65px;
   min-height: 100%;
   background-color: $footer-gray;
@@ -102,6 +104,12 @@ body {
 @media(min-width: $phone-breakpoint) {
   body{
     font-size: 150%;
+  }
+}
+
+@media(min-width: $tablet-nav-medium) {
+  body {
+    padding-top: 107px;
   }
 }
 
@@ -127,21 +135,62 @@ body {
 
     }
 
-    .menu-items {
+    .kenzan-icon {
+      height: 80%;
+    }
+
+    .full-nav {
       li {
       display: none !important;
       }
     }
 
-    .nav-menu {
+    .mobile-nav-container {
       margin-left: auto;
-      margin-right: 15px;
-      position: relative;
+      display: flex;
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
+      .nav-menu {
+        margin-right: 15px;
+        color: $font-gray;
+        position: relative;
+        align-self: center;
+        font-size: 30px;
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+        }
       }
+
+      .nav-menu .mobile-social-media {
+        margin-left: 20px;
+      }
+
+      .nav-menu .mobile-social-media {
+        margin-left: 20px;
+      }
+
+      .nav-menu .mobile-social-media {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $tablet-header) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: $tablet-header) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: $tablet-header) {
+    .mobile-nav {
+      display: none;
     }
   }
 
@@ -153,23 +202,33 @@ body {
     margin: 0;
     padding-left: 0;
 
+    @media only screen and (max-width: $tablet-nav-medium) {
+      border-top: 5px solid $font-gray;
+    }
     .navbar-links {
     display: flex;
 
-      img {
-        align-self: center;
-        height: 130px;
-        margin: -20px 10px -20px -10px;
+    @media only screen and (max-width: $tablet-nav-medium) {
+      .kenzan-logo {
+        height: 60px !important;
       }
 
-      @media only screen and (min-width: $tablet-header) {
-        .mobile-nav {
-          display: none;
+      li {
+        a {
+          font-size: 1.3rem !important;
         }
+      }
+    }
+
+      .kenzan-logo {
+        align-self: center;
+        height: 80px;
+        margin: 5px 15px 5px 20px;
       }
 
       li {
         display: flex;
+        position: relative;
         a {
           display: flex;
           text-decoration: none;
@@ -177,13 +236,50 @@ body {
           font-size: 1.5rem;
           align-items: center;
           padding: 0 15px 0 15px;
-          transition: background .3s $custom-ease;
 
           &:hover {
-          background-color: lightgray;
           }
+
+          .active-nav {
+            font-weight: 700;
+          }
+
+        }
+        &::after {
+          position: absolute;
+          top: 78%;
+          left: 10%;
+          width: 80%;
+          height: 4px;
+          background: $primary-orange;
+          content: '';
+          opacity: 0;
+          -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+          -moz-transition: opacity 0.3s, -moz-transform 0.3s;
+          transition: opacity 0.3s, transform 0.3s;
+          -webkit-transform: translateY(10px);
+          -moz-transform: translateY(10px);
+          transform: translateY(10px);
+        }
+
+        &:hover::after,
+        &:focus::after {
+          opacity: 1;
+          -webkit-transform: translateY(0px);
+          -moz-transform: translateY(0px);
+          transform: translateY(0px);
         }
       }
+    }
+
+    @media only screen and (max-width: $tablet-nav-medium) {
+      .navbar-social-media {
+          img {
+            margin: 0 5px 0 5px;
+            height: 35px !important;
+            width: 35px !important;
+          }
+        }
     }
 
     .navbar-social-media {
@@ -225,7 +321,7 @@ body {
 }
 
 .btn-primary {
-  color: $font-white;
+  color: white !important;
   background-color: $primary-orange;
 
   &:hover {
@@ -263,6 +359,7 @@ a {
   right: 0;
   left: 0;
   z-index: -1;
+  filter: brightness(50%);
 }
 
 @media(min-width: $tablet-breakpoint) {
@@ -715,3 +812,11 @@ a {
   transition: all 1s $custom-ease;
   display: none;
 }
+
+// Helper Classes
+
+// Remove button styles from link
+  .no-button {
+    border: none;
+    background: none;
+  }

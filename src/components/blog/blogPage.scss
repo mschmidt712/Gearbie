@@ -6,9 +6,14 @@
   display: initial;
 }
 
+.blog-page-container {
+  padding: 5%;
+}
+
 @media(min-width: $tablet-breakpoint) {
   .blog-page-container {
     max-width: 1200px;
     margin: auto;
+    padding: 0px;
   }
 }

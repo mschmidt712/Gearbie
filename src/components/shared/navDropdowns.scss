@@ -1,0 +1,177 @@
+.drop-down-container {
+  position: relative;
+  .mobile-menu-dropdown {
+    z-index: 5;
+    background: white;
+    color: $primary-gray;
+    width: 80%;
+    position: absolute;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    .dropdown-icon {
+      margin-right: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      font-size: 40px;
+      margin: 0;
+
+      li {
+        margin: 5px 0 5px 0;
+      }
+
+      a {
+        color: $primary-gray;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .mobile-social-dropdown {
+    z-index: 5;
+    background: white;
+    color: $primary-gray;
+    width: 20%;
+    position: absolute;
+    right: 0;
+
+    .dropdown-icon {
+      margin-right: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      font-size: 40px;
+      margin: 0;
+
+      li {
+        margin: 5px 0 5px 0;
+      }
+
+      a {
+        color: $primary-gray;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Remove menu when window is not .mobile
+@media(min-width: $tablet-header) {
+  .drop-down-container {
+    display: none;
+  }
+
+  .dimmer {
+    display: none;
+  }
+}
+
+// Animations for mobile menu dropdown
+.mobile-menu-animation-enter {
+  .mobile-menu-dropdown {
+    transform: translateX(-100%);
+  }
+
+  .dimmer {
+    opacity: 0.01;
+  }
+}
+
+.mobile-menu-animation-enter.mobile-menu-animation-enter-active {
+  .mobile-menu-dropdown {
+    transform: translateX(0);
+    transition: 200ms ease;
+    z-index: 10;
+  }
+
+  .dimmer {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+  }
+}
+
+.mobile-menu-animation-leave {
+  .mobile-menu-dropdown {
+
+  transform: translateX(0);
+  }
+
+  .dimmer {
+    opacity: 1;
+
+  }
+}
+
+.mobile-menu-animation-leave.mobile-menu-animation-leave-active {
+  .mobile-menu-dropdown {
+    transform: translateX(-100%);
+    transition: 200ms ease;
+  }
+  .dimmer {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+
+  }
+}
+
+// Animations for mobile social media dropdown
+.mobile-social-animation-enter {
+  .mobile-social-dropdown {
+    transform: translateX(100%);
+  }
+
+  .dimmer {
+    opacity: 0.01;
+  }
+}
+
+.mobile-social-animation-enter.mobile-social-animation-enter-active {
+  .mobile-social-dropdown {
+    transform: translateX(0);
+    transition: 200ms ease;
+    z-index: 10;
+  }
+
+  .dimmer {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+  }
+}
+
+.mobile-social-animation-leave {
+  .mobile-social-dropdown {
+
+  transform: translateX(0);
+  }
+
+  .dimmer {
+    opacity: 1;
+
+  }
+}
+
+.mobile-social-animation-leave.mobile-social-animation-leave-active {
+  .mobile-social-dropdown {
+    transform: translateX(100%);
+    transition: 200ms ease;
+  }
+  .dimmer {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+
+  }
+}
+
+// Used to make opaque backgrounds
+.dimmer {
+    background: black;
+    position: absolute;
+    filter: opacity(50%);
+    top: 77px;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+  }
