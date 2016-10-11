@@ -4,6 +4,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import React from 'react';
 import HeaderMenuDropdown from './HeaderMenuDropdown';
+import SocialMenuDropdown from './SocialMenuDropdown';
+
 
 /**
  * The App Header including navigation and social media links.
@@ -13,9 +15,11 @@ class HeaderComponent extends React.Component {
     super();
     this.state = {
       showMenu: false,
+      showSocial: false,
     };
     this.showMenu = this.showMenu.bind(this);
-    this.clearMenu = this.clearMenu.bind(this);
+    this.showSocial = this.showSocial.bind(this);
+    this.clearBoth = this.clearBoth.bind(this);
     this.render = this.render.bind(this);
   }
 
@@ -26,8 +30,16 @@ class HeaderComponent extends React.Component {
     this.render();
   }
 
-  clearMenu() {
+  showSocial() {
     this.setState({
+      showSocial: !this.state.showSocial,
+    });
+    this.render();
+  }
+
+  clearBoth() {
+    this.setState({
+      showSocial: false,
       showMenu: false,
     });
   }
@@ -64,20 +76,23 @@ class HeaderComponent extends React.Component {
               <button className="nav-menu mobile-nav no-button" onClick={this.showMenu}>
                 Menu
               </button>
-              <button className="nav-menu mobile-nav mobile-social-media no-button">
-                <li> Social </li>
-              </button>
-              <FontAwesome name="rocket" />
+              <FontAwesome name="share-alt" className="nav-menu mobile-nav mobile-social-media no-button" onClick={this.showSocial} />
             </div>
           </ul>
         </div>
         <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={201}
+          transitionName="mobile-menu-animation"
+          transitionEnterTimeout={200}
           transitionLeaveTimeout={200}
-
         >
-          {this.state.showMenu && <HeaderMenuDropdown clearMenu={this.clearMenu} />}
+          {this.state.showMenu && <HeaderMenuDropdown clearBoth={this.clearBoth} />}
+        </ReactCSSTransitionGroup>
+        <ReactCSSTransitionGroup
+          transitionName="mobile-social-animation"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
+        >
+          {this.state.showSocial && <SocialMenuDropdown clearBoth={this.clearBoth} />}
         </ReactCSSTransitionGroup>
       </div>
     );

@@ -2,38 +2,46 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 
-const HeaderMenuDropdown = ({ clearMenu }) => (
+const HeaderMenuDropdown = ({ clearBoth }) => (
   <div>
     <div className="drop-down-container" key="key">
-      <div className="header-menu-dropdown">
+      <div className="mobile-menu-dropdown">
         <div>
           <ul>
-            <li>
-              <FontAwesome name="rocket" className="dropdown-icon" />
-              <Link to="/explore/open-source" activeClassName="active">Explore</Link>
-            </li>
-            <li>
-              <FontAwesome name="suitcase" className="dropdown-icon" />
-              <Link to="/about/kenzan" activeClassName="active">About</Link>
-            </li>
-            <li>
-              <FontAwesome name="pencil" className="dropdown-icon" />
-              <a href="http://techblog.kenzan.com/">Blog</a>
-            </li>
-            <li>
-              <FontAwesome name="globe" className="dropdown-icon" />
-              <Link to="/connect" activeClassName="active">Connect</Link>
-            </li>
+            <Link to="/explore/open-source" activeClassName="active" onClick={clearBoth}>
+              <li>
+                <FontAwesome name="rocket" className="dropdown-icon" />
+                Explore
+              </li>
+            </Link>
+            <Link to="/about/kenzan" activeClassName="active" onClick={clearBoth}>
+              <li>
+                <FontAwesome name="suitcase" className="dropdown-icon" />
+                About
+              </li>
+            </Link>
+            <Link to="/blog" activeClassName="active" onClick={clearBoth}>
+              <li>
+                <FontAwesome name="pencil" className="dropdown-icon" />
+                Blog
+              </li>
+            </Link>
+            <Link to="/connect" activeClassName="active" onClick={clearBoth}>
+              <li>
+                <FontAwesome name="globe" className="dropdown-icon" />
+                Connect
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
     </div>
-    <div className="dimmer" onClick={clearMenu} />
+    <div className="dimmer" onClick={clearBoth} />
   </div>
 );
 
 HeaderMenuDropdown.propTypes = {
-  clearMenu: React.PropTypes.func.isRequired,
+  clearBoth: React.PropTypes.func.isRequired,
 };
 
 export default HeaderMenuDropdown;
