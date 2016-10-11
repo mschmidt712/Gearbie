@@ -335,6 +335,8 @@ a {
 }
 
 .carousel-container {
+  display: initial;
+  align-items: initial;
   padding-right: 70px;
   padding-left: 70px;
 }
@@ -673,10 +675,18 @@ a {
 @media(min-width: $phone-breakpoint) {
   .page {
     position: absolute;
-    top: 107px;
-    bottom: 0;
+    top: 0px;
+    bottom: 0px;
     left: 0;
     right: 0;
     z-index: 1;
+    padding: 107px 0px 80px 0px;
+  }
+}
+
+@media(min-height: 800px) {
+  .page {
+    display: flex;
+    align-items: center;
   }
 }

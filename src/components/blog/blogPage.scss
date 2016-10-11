@@ -1,0 +1,34 @@
+.blog-post {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  line-height: 16px;
+  max-height: calc(16px * 3);
+}
+
+@media(min-width: $phone-breakpoint) {
+  .blog-post {
+    line-height: 16px;
+    max-height: calc(16px * 1);
+  }
+}
+
+.blog-link {
+  color: $secondary-blue;
+}
+
+.blog-page {
+  width: 90%;
+  margin: auto;
+}
+
+.blog-page.page {
+  display: initial;
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .blog-page-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+}

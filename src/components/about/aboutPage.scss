@@ -39,6 +39,11 @@
   }
 }
 
+.about-page.page {
+  display: initial;
+  align-items: initial;
+}
+
 @media(min-width: $tablet-breakpoint) {
   .about-page {
     .page-header {
