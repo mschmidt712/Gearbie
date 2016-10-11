@@ -1,6 +1,5 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import { Link } from 'react-router';
 
 /**
  * Social media menu dropdown on mobile.
@@ -8,29 +7,29 @@ import { Link } from 'react-router';
 const SocialMenuDropdown = ({ clearBoth }) => (
   <div>
     <div className="drop-down-container" key="key">
-      <div className="mobile-social-dropdown">
+      <div className="mobile-social-dropdown mobile-menu-dropdown">
         <div>
           <ul>
-            <Link to="htttp://www.twitter.com" onClick={clearBoth}>
+            <a href="htttp://www.twitter.com" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="twitter" className="dropdown-icon" />
               </li>
-            </Link>
-            <Link to="htttp://www.linkedin.com" onClick={clearBoth}>
+            </a>
+            <a href="htttp://www.linkedin.com" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="linkedin" className="dropdown-icon" />
               </li>
-            </Link>
-            <Link to="htttp://www.github.com" onClick={clearBoth}>
+            </a>
+            <a href="htttp://www.github.com" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="github" className="dropdown-icon" />
               </li>
-            </Link>
-            <Link to="htttp://www.facebook.com" onClick={clearBoth}>
-              <li>
+            </a>
+            <a href="htttp://www.facebook.com" target="new" onClick={clearBoth}>
+              <li className="last">
                 <FontAwesome name="facebook" className="dropdown-icon" />
               </li>
-            </Link>
+            </a>
           </ul>
         </div>
       </div>

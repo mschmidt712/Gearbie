@@ -4,22 +4,34 @@
     z-index: 5;
     background: white;
     color: $primary-gray;
-    width: 80%;
+    width: 70%;
     position: absolute;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 
     .dropdown-icon {
-      margin-right: 20px;
+      margin: 0px 20px;
     }
 
     ul {
       list-style-type: none;
-      font-size: 40px;
       margin: 0;
+      padding: 0;
 
       li {
-        margin: 5px 0 5px 0;
+        font-size: 1rem;
+        padding: 2rem 1.5rem;
+        border-bottom: 1px solid $footer-gray;
+
+        &:active {
+          background-color: $primary-gray;
+          opacity: 0.8;
+          color: $font-white;
+        }
+      }
+
+      li.last {
+        border-bottom: none;
       }
 
       a {
@@ -30,29 +42,17 @@
   }
 
   .mobile-social-dropdown {
-    z-index: 5;
-    background: white;
-    color: $primary-gray;
-    width: 20%;
+    width: 30%;
     position: absolute;
     right: 0;
 
-    .dropdown-icon {
-      margin-right: 20px;
-    }
-
     ul {
       list-style-type: none;
-      font-size: 40px;
-      margin: 0;
 
       li {
-        margin: 5px 0 5px 0;
-      }
-
-      a {
-        color: $primary-gray;
-        text-decoration: none;
+        font-size: 2rem;
+        padding: 1.34rem 1rem;
+        text-align: center;
       }
     }
   }

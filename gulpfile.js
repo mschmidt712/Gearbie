@@ -33,7 +33,7 @@ gulp.task('compile:sass', () => {
   return gulp.src(src + 'style.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([ autoprefixer({ browsers: ['> 1%'] }) ]))
+    .pipe(postcss([ autoprefixer({ browsers: ['> 5%', 'iOS 7'] }) ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(dist));
 });
