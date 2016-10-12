@@ -15,7 +15,7 @@ $phone-header: 320px;
 $tablet-header: 674px;
 $tablet-nav-medium: 852px;
 
-$phone-breakpoint: 650px;
+$phone-breakpoint: 750px;
 $tablet-breakpoint: 1200px;
 
 // Roboto Font
@@ -354,6 +354,11 @@ body {
   }
 }
 
+.button-container {
+  display: block;
+  margin-bottom:1px;
+}
+
 //Links
 a {
   color: $font-white;
@@ -364,7 +369,7 @@ a {
   background-size: cover;
   position: fixed;
   top: 0;
-  bottom: 15;
+  bottom: 0;
   right: 0;
   left: 0;
   z-index: -1;
