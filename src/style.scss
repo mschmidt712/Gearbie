@@ -211,6 +211,7 @@ body {
     @media only screen and (max-width: $tablet-nav-medium) {
       .kenzan-logo {
         height: 60px !important;
+        width: 30px;
       }
 
       li {
@@ -235,6 +236,43 @@ body {
         margin: 5px 15px 5px 20px;
       }
 
+      .hoverable-dropdown {
+        position: relative;
+
+        .navbar-sub-menu {
+          display: none;
+        }
+      }
+
+      .hoverable-dropdown:hover .navbar-sub-menu {
+          top: 92px;
+          left: 10px;
+          background: white;
+          width: 132px;
+          position: absolute;
+          display: block;
+          box-shadow: 0 1px 1px 0 #888888;
+          a {
+            font-size: 1.2rem;
+            padding: 5px 0 5px 5px;
+            border-bottom: 1px solid lightgray;
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+        }
+
+      @media only screen and (max-width: $tablet-nav-medium) {
+        .hoverable-dropdown:hover .navbar-sub-menu {
+          top: 72px;
+          width: 115px;
+          a {
+            font-size: 1rem !important;
+          }
+        }
+      }
+
       li {
         display: flex;
         position: relative;
@@ -246,37 +284,32 @@ body {
           align-items: center;
           padding: 0 15px 0 15px;
 
-          &:hover {
-          }
-
-          .active-nav {
-            font-weight: 700;
-          }
-
         }
         &::after {
           position: absolute;
-          top: 78%;
+          top: 94%;
           left: 10%;
           width: 80%;
-          height: 4px;
+          height: 5px;
           background: $primary-orange;
           content: '';
           opacity: 0;
-          -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-          -moz-transition: opacity 0.3s, -moz-transform 0.3s;
-          transition: opacity 0.3s, transform 0.3s;
-          -webkit-transform: translateY(10px);
-          -moz-transform: translateY(10px);
-          transform: translateY(10px);
         }
 
-        &:hover::after,
-        &:focus::after {
+        &:hover::after {
           opacity: 1;
-          -webkit-transform: translateY(0px);
-          -moz-transform: translateY(0px);
-          transform: translateY(0px);
+        }
+
+        .active-nav {
+          &::after {
+          position: absolute;
+          top: 94%;
+          left: 10%;
+          width: 80%;
+          height: 5px;
+          background: $primary-orange;
+          content: '';
+          }
         }
       }
     }
@@ -840,3 +873,43 @@ a {
     border: none;
     background: none;
   }
+
+.kenzan-logo {
+  width: 40px;
+  }
+
+.cls-1 {
+  transition: .4s cubic-bezier(.77,-0.06,1,1);
+  fill:#455560;
+}
+
+.cls-1:hover {
+  transform: TranslateY(-400px);
+}
+
+.cls-2 {
+  fill: #c9cacc;
+  transition: .4s cubic-bezier(.77,-0.06,1,1);
+}
+
+.cls-2:hover {
+  transform: TranslateY(-400px);
+}
+
+.cls-3 {
+  fill:#c9cacc;
+  transition: .4s cubic-bezier(.77,-0.06,1,1);
+}
+
+.cls-3:hover {
+  transform: TranslateY(-400px);
+}
+
+.cls-4 {
+  fill: #c9cacc;
+  transition: .4s cubic-bezier(.77,-0.06,1,1);
+}
+
+.cls-4:hover {
+  transform: TranslateY(-400px);
+}
