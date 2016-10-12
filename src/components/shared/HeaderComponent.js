@@ -1,3 +1,4 @@
+import classNames from 'classNames';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
@@ -43,6 +44,18 @@ class HeaderComponent extends React.Component {
   }
 
   render() {
+    let exploreActiveClass = '';
+    let aboutActiveClass = '';
+
+    if (this.props.currentPath === '/tech-radar') {
+      exploreActiveClass = classNames({
+        'active-nav-short': true,
+      });
+    } else if (this.props.currentPath === '/learn') {
+      aboutActiveClass = classNames({
+        'active-nav-short': true,
+      });
+    }
     return (
       <div>
         <div className="navbar">
@@ -53,24 +66,29 @@ class HeaderComponent extends React.Component {
                   <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.6 221.7">
                     <path
                       className="cls-1"
-                      d="M70.4,0S60.2,55.4,60.2,110.1s9,111.6,9,111.6S78,156.4,78,116.9,70.4,0,70.4,0Z" />
+                      d="M70.4,0S60.2,55.4,60.2,110.1s9,111.6,9,111.6S78,156.4,78,116.9,70.4,0,70.4,0Z"
+                    />
                     <path
                       className="cls-2"
-                      d="M39.1,86.3S30,119.4,30,151.7s8,69.9,8,69.9,7.8-42.5,7.8-65.8S39.1,86.3,39.1,86.3Z" />
+                      d="M39.1,86.3S30,119.4,30,151.7s8,69.9,8,69.9,7.8-42.5,7.8-65.8S39.1,86.3,39.1,86.3Z"
+                    />
                     <path
                       className="cls-3"
-                      d="M8.4,122.1S0,148.9,0,175.4s7.3,46.2,7.3,46.2,7.2-26.9,7.2-46.1S8.4,122.1,8.4,122.1Z" />
+                      d="M8.4,122.1S0,148.9,0,175.4s7.3,46.2,7.3,46.2,7.2-26.9,7.2-46.1S8.4,122.1,8.4,122.1Z"
+                    />
                     <path
                       className="cls-4"
-                      d="M99.3,127.5s-8.5,25.2-8.5,50.4a127.74,127.74,0,0,0,7.5,43.7s7.3-25.4,7.3-43.6S99.3,127.5,99.3,127.5Z" />
+                      d="M99.3,127.5s-8.5,25.2-8.5,50.4a127.74,127.74,0,0,0,7.5,43.7s7.3-25.4,7.3-43.6S99.3,127.5,99.3,127.5Z"
+                    />
                   </svg>
                 </div>
               </Link>
-              <li className="hoverable-dropdown">
+              <li className="hoverable-dropdown explore">
                 <Link
                   to="/open-source"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
+                  className={exploreActiveClass}
                 >
                   Explore
                 </Link>
@@ -83,11 +101,12 @@ class HeaderComponent extends React.Component {
                   </Link>
                 </div>
               </li>
-              <li className="hoverable-dropdown">
+              <li className="hoverable-dropdown about">
                 <Link
                   to="/kenzan"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
+                  className={aboutActiveClass}
                 >
                   About
                 </Link>
@@ -165,10 +184,14 @@ class HeaderComponent extends React.Component {
 }
 
 HeaderComponent.propTypes = {
-    /**
+  /**
    * A functions that sends click events to the app component for conditional animations.
    */
   clickEvent: PropTypes.func.isRequired,
+  /**
+   * Current page used to highlight active class for sub pages
+   */
+  currentPath: PropTypes.string.isRequired,
 };
 
 export default HeaderComponent;

@@ -128,7 +128,7 @@ class App extends React.Component {
       </div>);
     } else if (!this.mobile && this.scrollDown) {
       app = (<div>
-        <HeaderComponent clickEvent={this.navBarClick} />
+        <HeaderComponent clickEvent={this.navBarClick} currentPath={path} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-down"
           transitionEnterTimeout={600}
@@ -139,7 +139,7 @@ class App extends React.Component {
       </div>);
     } else {
       app = (<div>
-        <HeaderComponent clickEvent={this.navBarClick} />
+        <HeaderComponent clickEvent={this.navBarClick} currentPath={path} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-up"
           transitionEnterTimeout={600}
