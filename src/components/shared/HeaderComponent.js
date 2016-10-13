@@ -61,7 +61,7 @@ class HeaderComponent extends React.Component {
         <div className="navbar">
           <ul>
             <div className="navbar-links menu-items full-nav">
-              <Link to="/" onClick={this.props.clickEvent}>
+              <Link to="/" onClick={() => { this.props.clickEvent(); this.clearBoth(); }}>
                 <div className="kenzan-logo">
                   <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.6 221.7">
                     <path

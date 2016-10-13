@@ -39,6 +39,10 @@ const SocialMenuDropdown = ({ clearBoth }) => (
 );
 
 SocialMenuDropdown.propTypes = {
+  /**
+   * Function that tells parent component to close dropdowns
+   * when links are clicked.
+   **/
   clearBoth: React.PropTypes.func.isRequired,
 };
 

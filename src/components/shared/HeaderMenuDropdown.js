@@ -2,6 +2,9 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 
+/**
+ * Mobile dropdown that holds links to navigate through the site.
+ */
 const HeaderMenuDropdown = ({ clearBoth }) => (
   <div>
     <div className="drop-down-container" key="key">
@@ -41,6 +44,10 @@ const HeaderMenuDropdown = ({ clearBoth }) => (
 );
 
 HeaderMenuDropdown.propTypes = {
+  /**
+   * Function that tells parent component to close dropdowns
+   * when links are clicked.
+   **/
   clearBoth: React.PropTypes.func.isRequired,
 };
 
