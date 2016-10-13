@@ -37,7 +37,7 @@ Footer.propTypes = {
     /**
    * A string that contains the text to display in the footer.
    */
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
     /**
    * A string that contains the route for the footer link.
    */

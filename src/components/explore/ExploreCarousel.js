@@ -36,7 +36,7 @@ function ExploreCarousel(props) {
 }
 
 ExploreCarousel.propTypes = {
-    /**
+  /**
    * An array of data objects, containing header and content for each carousel box.
    */
   data: PropTypes.arrayOf(PropTypes.object).isRequired,

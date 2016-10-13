@@ -63,7 +63,7 @@ class BlogPage extends React.Component {
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
             />
             <p
-              className="page-description"
+              className="page-description blog-page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />
             <p className="page-description blog-page-link">

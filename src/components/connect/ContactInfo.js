@@ -16,7 +16,7 @@ function ContactInfo(props) {
     <div className="col-2">
       <div className="connect-email">
         <i className="material-icons">{category}</i>
-        <a href={href}> {text} </a>
+        <a href={href}>{text}</a>
       </div>
     </div>
   );

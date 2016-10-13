@@ -23,6 +23,7 @@ class KenzanAboutPage extends React.Component {
       footerText: '',
       textBoxItems: [],
     };
+    this.buildTextBoxContainer = this.buildTextBoxContainer.bind(this);
   }
 
   componentWillMount() {
@@ -42,37 +43,42 @@ class KenzanAboutPage extends React.Component {
     });
 
     this.postRequest = $.get(constants.baseUrl + this.postQuery, (results) => {
-      const resultsData = [];
-
-      results.forEach((result) => {
-        const obj = {};
-        obj.title = constants.getPostHeader(result);
-        obj.text = constants.getPostText(result);
-        obj.linkText = result.acf.link_text;
-        obj.link = result.acf.link_url;
-        resultsData.push(obj);
-      });
-
-      const resultsTextBoxItems = resultsData.map((obj, index) => (
-        <TextBoxContainer
-          title={obj.title}
-          text={obj.text}
-          linkText={obj.linkText}
-          link={obj.link}
-          key={index}
-        />)
-      );
-
-      this.setState({
-        loadingPosts: false,
-        textBoxItems: resultsTextBoxItems,
-      });
+      this.buildTextBoxContainer(results);
     });
   }
 
   componentWillUnmount() {
     this.pageRequest.abort();
     this.postRequest.abort();
+  }
+
+  buildTextBoxContainer(results) {
+    const resultsData = [];
+
+    results.forEach((result) => {
+      const obj = {};
+      obj.title = constants.getPostHeader(result);
+      obj.text = constants.getPostText(result);
+      obj.linkText = result.acf.link_text;
+      obj.link = result.acf.link_url;
+
+      resultsData.push(obj);
+    });
+
+    const resultsTextBoxItems = resultsData.map((obj, index) => (
+      <TextBoxContainer
+        title={obj.title}
+        text={obj.text}
+        linkText={obj.linkText}
+        link={obj.link}
+        key={index}
+      />)
+    );
+
+    this.setState({
+      loadingPosts: false,
+      textBoxItems: resultsTextBoxItems,
+    });
   }
 
   render() {
