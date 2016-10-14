@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -24,7 +24,8 @@ class BlogPage extends React.Component {
   }
 
   componentWillMount() {
-    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery)
+    .done((pages) => {
       const page = pages[0];
       const pageHeader = page.acf.header;
       const pageDescription = page.acf.description;
@@ -35,6 +36,12 @@ class BlogPage extends React.Component {
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
+      });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+      this.setState({
+        loadingHeading: false,
       });
     });
   }
@@ -63,7 +70,7 @@ class BlogPage extends React.Component {
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
             />
             <p
-              className="page-description"
+              className="page-description blog-page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />
             <p className="page-description blog-page-link">
@@ -74,12 +81,19 @@ class BlogPage extends React.Component {
           </div>
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/connect"
         />
       </div>);
   }
 }
+
+BlogPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default BlogPage;

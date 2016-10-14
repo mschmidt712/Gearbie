@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -23,6 +23,7 @@ class KenzanAboutPage extends React.Component {
       footerText: '',
       textBoxItems: [],
     };
+    this.buildTextBoxContainer = this.buildTextBoxContainer.bind(this);
   }
 
   componentWillMount() {
@@ -39,33 +40,21 @@ class KenzanAboutPage extends React.Component {
         description: pageDescription,
         footerText: pageFooterText,
       });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+      this.setState({
+        loadingHeading: false,
+      });
     });
 
     this.postRequest = $.get(constants.baseUrl + this.postQuery, (results) => {
-      const resultsData = [];
-
-      results.forEach((result) => {
-        const obj = {};
-        obj.title = constants.getPostHeader(result);
-        obj.text = constants.getPostText(result);
-        obj.linkText = result.acf.link_text;
-        obj.link = result.acf.link_url;
-        resultsData.push(obj);
-      });
-
-      const resultsTextBoxItems = resultsData.map((obj, index) => (
-        <TextBoxContainer
-          title={obj.title}
-          text={obj.text}
-          linkText={obj.linkText}
-          link={obj.link}
-          key={index}
-        />)
-      );
-
+      this.buildTextBoxContainer(results);
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
       this.setState({
         loadingPosts: false,
-        textBoxItems: resultsTextBoxItems,
       });
     });
   }
@@ -73,6 +62,35 @@ class KenzanAboutPage extends React.Component {
   componentWillUnmount() {
     this.pageRequest.abort();
     this.postRequest.abort();
+  }
+
+  buildTextBoxContainer(results) {
+    const resultsData = [];
+
+    results.forEach((result) => {
+      const obj = {};
+      obj.title = constants.getPostHeader(result);
+      obj.text = constants.getPostText(result);
+      obj.linkText = result.acf.link_text;
+      obj.link = result.acf.link_url;
+
+      resultsData.push(obj);
+    });
+
+    const resultsTextBoxItems = resultsData.map((obj, index) => (
+      <TextBoxContainer
+        title={obj.title}
+        text={obj.text}
+        linkText={obj.linkText}
+        link={obj.link}
+        key={index}
+      />)
+    );
+
+    this.setState({
+      loadingPosts: false,
+      textBoxItems: resultsTextBoxItems,
+    });
   }
 
   render() {
@@ -101,7 +119,7 @@ class KenzanAboutPage extends React.Component {
           {this.state.textBoxItems}
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/connect"
         />
@@ -109,5 +127,12 @@ class KenzanAboutPage extends React.Component {
     );
   }
 }
+
+KenzanAboutPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default KenzanAboutPage;

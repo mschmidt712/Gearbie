@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -18,38 +18,50 @@ class ConnectPage extends React.Component {
       loadingPosts: true,
       events: [],
     };
+    this.buildEventContainer = this.buildEventContainer.bind(this);
   }
 
   componentWillMount() {
-    this.postRequest = $.get(constants.baseUrl + this.postQuery, (events) => {
-      const eventsData = [];
-
-      events.forEach((event) => {
-        const obj = {};
-        obj.description = constants.getPostText(event);
-        obj.linkText = event.acf.link_text;
-        obj.linkUrl = event.acf.link_url;
-        eventsData.push(obj);
-      });
-
-      const eventItems = eventsData.map((obj, index) => (
-        <EventContainer
-          description={obj.description}
-          linkText={obj.linkText}
-          linkUrl={obj.linkUrl}
-          key={index}
-        />
-      ));
-
+    this.postRequest = $.get(constants.baseUrl + this.postQuery)
+    .done((events) => {
+      this.buildEventContainer(events);
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
       this.setState({
         loadingPosts: false,
-        events: eventItems,
       });
     });
   }
 
   componentWillUnmount() {
     this.postRequest.abort();
+  }
+
+  buildEventContainer(events) {
+    const eventsData = [];
+
+    events.forEach((event) => {
+      const obj = {};
+      obj.description = constants.getPostText(event);
+      obj.linkText = event.acf.link_text;
+      obj.linkUrl = event.acf.link_url;
+      eventsData.push(obj);
+    });
+
+    const eventItems = eventsData.map((obj, index) => (
+      <EventContainer
+        description={obj.description}
+        linkText={obj.linkText}
+        linkUrl={obj.linkUrl}
+        key={index}
+      />
+    ));
+
+    this.setState({
+      loadingPosts: false,
+      events: eventItems,
+    });
   }
 
   render() {
@@ -96,12 +108,19 @@ class ConnectPage extends React.Component {
           </div>
         </div>
         <Footer
-          display="false"
+          display={false}
           text=""
         />
       </div>
     );
-  };
+  }
 }
+
+ConnectPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default ConnectPage;
