@@ -68,6 +68,11 @@
   }
 }
 
+.slick-slide {
+  @extend .text-box;
+  padding: 0 !important;
+}
+
 //Explore Page Images
 .open-source-image {
     background: linear-gradient(
