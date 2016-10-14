@@ -4,8 +4,10 @@
   "description": "An io page for Kenzan",
   "main": "index.js",
   "scripts": {
-    "test": "",
-    "start": "gulp serve:dev",
+    "test": "ava --verbose",
+    "test:watch": "ava --verbose --watch",
+    "start": "npm test && gulp serve:dev",
+    "build": "npm test && gulp build:dev",
     "documentation": "react-docgen ./src/components/**/*.js ./src/components/*.js  -o react-doc.json --pretty"
   },
   "babel": {
@@ -17,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "babel-polyfill": "^6.13.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
@@ -30,6 +33,7 @@
     "react-fontawesome": "^1.2.0",
     "react-router": "^2.8.1",
     "react-slick": "^0.14.4",
+    "react-toastr": "^2.8.1",
     "slick-carousel": "^1.6.0"
   },
   "devDependencies": {

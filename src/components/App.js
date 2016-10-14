@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { ToastContainer, ToastMessage } from 'react-toastr';
 import $ from 'jquery';
 import HeaderComponent from './shared/HeaderComponent';
+
+const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 /**
  * The App component for the project.
@@ -20,6 +23,7 @@ class App extends React.Component {
       scrollThreshold: 60,
     };
     this.render = this.render.bind(this);
+    this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
@@ -115,37 +119,66 @@ class App extends React.Component {
     return false;
   }
 
+  addAlert(err) {
+    this.toastr.error(
+      'There was an errow with the page load, please try again later',
+      err.statusText,
+      {
+        timeOut: 10000,
+        closeButton: true,
+        preventDuplicates: true,
+      });
+  }
+
   render() {
     const path = this.props.location.pathname;
     const segment = path.split('/')[1] || '';
+    const newChildren = React.Children.map(this.props.children, child => (
+      React.cloneElement(child, { key: segment, errorHandler: this.addAlert })
+    ));
 
     let app = '';
 
     if (this.mobile) {
       app = (<div>
+        <ToastContainer
+          ref={(ref) => { this.toastr = ref; }}
+          toastMessageFactory={ToastMessageFactory}
+          className="toast-top-right"
+        />
         <HeaderComponent clickEvent={this.navBarClick} />
           {this.props.children}
       </div>);
     } else if (!this.mobile && this.scrollDown) {
       app = (<div>
+        <ToastContainer
+          ref={(ref) => { this.toastr = ref; }}
+          toastMessageFactory={ToastMessageFactory}
+          className="toast-top-right"
+        />
         <HeaderComponent clickEvent={this.navBarClick} currentPath={path} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-down"
           transitionEnterTimeout={600}
           transitionLeaveTimeout={600}
         >
-          {React.cloneElement(this.props.children, { key: segment })}
+          {newChildren}
         </ReactCSSTransitionGroup>
       </div>);
     } else {
       app = (<div>
+        <ToastContainer
+          ref={(ref) => { this.toastr = ref; }}
+          toastMessageFactory={ToastMessageFactory}
+          className="toast-top-right"
+        />
         <HeaderComponent clickEvent={this.navBarClick} currentPath={path} />
         <ReactCSSTransitionGroup
           transitionName="pageSlider-up"
           transitionEnterTimeout={600}
           transitionLeaveTimeout={600}
         >
-          {React.cloneElement(this.props.children, { key: segment })}
+          {newChildren}
         </ReactCSSTransitionGroup>
       </div>);
     }

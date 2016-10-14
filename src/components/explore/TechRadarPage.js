@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -42,6 +42,13 @@ class TechRadarPage extends React.Component {
         loadingPosts: false,
         posts: carousel,
       });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingPosts: false,
+      });
     });
 
     this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
@@ -55,6 +62,13 @@ class TechRadarPage extends React.Component {
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
+      });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingHeading: false,
       });
     });
   }
@@ -93,7 +107,7 @@ class TechRadarPage extends React.Component {
           </div>
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/kenzan"
         />
@@ -101,5 +115,13 @@ class TechRadarPage extends React.Component {
     );
   }
 }
+
+TechRadarPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
+
 
 export default TechRadarPage;

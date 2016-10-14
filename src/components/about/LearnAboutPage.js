@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -24,6 +24,7 @@ class LearnAboutPage extends React.Component {
       footerText: '',
       textBoxItems: [],
     };
+    this.buildTextBoxContainer = this.buildTextBoxContainer.bind(this);
   }
 
   componentWillMount() {
@@ -40,33 +41,23 @@ class LearnAboutPage extends React.Component {
         description: pageDescription,
         footerText: pageFooterText,
       });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingHeading: false,
+      });
     });
 
     this.postRequest = $.get(constants.baseUrl + this.postQuery, (results) => {
-      const resultsData = [];
-
-      results.forEach((result) => {
-        const obj = {};
-        obj.title = constants.getPostHeader(result);
-        obj.text = constants.getPostText(result);
-        obj.linkText = result.acf.link_text;
-        obj.linkUrl = result.acf.link_url;
-        resultsData.push(obj);
-      });
-
-      const resultsTextBoxItems = resultsData.map((obj, index) => (
-        <TextBoxContainer
-          title={obj.title}
-          text={obj.text}
-          linkText={obj.linkText}
-          linkUrl={obj.linkUrl}
-          key={index}
-        />)
-      );
+      this.buildTextBoxContainer(results);
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
 
       this.setState({
         loadingPosts: false,
-        textBoxItems: resultsTextBoxItems,
       });
     });
   }
@@ -74,6 +65,34 @@ class LearnAboutPage extends React.Component {
   componentWillUnmount() {
     this.pageRequest.abort();
     this.postRequest.abort();
+  }
+
+  buildTextBoxContainer(results) {
+    const resultsData = [];
+
+    results.forEach((result) => {
+      const obj = {};
+      obj.title = constants.getPostHeader(result);
+      obj.text = constants.getPostText(result);
+      obj.linkText = result.acf.link_text;
+      obj.linkUrl = result.acf.link_url;
+      resultsData.push(obj);
+    });
+
+    const resultsTextBoxItems = resultsData.map((obj, index) => (
+      <TextBoxContainer
+        title={obj.title}
+        text={obj.text}
+        linkText={obj.linkText}
+        linkUrl={obj.linkUrl}
+        key={index}
+      />)
+    );
+
+    this.setState({
+      loadingPosts: false,
+      textBoxItems: resultsTextBoxItems,
+    });
   }
 
   render() {
@@ -102,7 +121,7 @@ class LearnAboutPage extends React.Component {
           {this.state.textBoxItems}
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/connect"
         />
@@ -110,5 +129,12 @@ class LearnAboutPage extends React.Component {
     );
   }
 }
+
+LearnAboutPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default LearnAboutPage;

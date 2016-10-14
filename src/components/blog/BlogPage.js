@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -35,6 +35,13 @@ class BlogPage extends React.Component {
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
+      });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingHeading: false,
       });
     });
   }
@@ -74,12 +81,19 @@ class BlogPage extends React.Component {
           </div>
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/connect"
         />
       </div>);
   }
 }
+
+BlogPage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default BlogPage;

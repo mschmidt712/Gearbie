@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import $ from 'jquery';
@@ -12,8 +12,8 @@ import Footer from '../shared/FooterComponent';
  */
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.pageQuery = 'pages?slug=home';
     this.state = {
       loadingHeading: true,
@@ -39,6 +39,13 @@ class HomePage extends React.Component {
         subHeader: pageSubHeader,
         description: pageDescription,
         footerText: pageFooter,
+      });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingHeading: false,
       });
     });
   }
@@ -84,13 +91,13 @@ class HomePage extends React.Component {
         </div>
         <ReactCSSTransitionGroup
           transitionName="footer"
-          transitionAppear={true}
+          transitionAppear
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
           transitionAppearTimeout={500}
         >
           <Footer
-            display="true"
+            display
             text={this.state.footerText}
             link="/open-source"
           />
@@ -99,5 +106,12 @@ class HomePage extends React.Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default HomePage;

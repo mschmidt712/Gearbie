@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
 import constants from '../../constants';
@@ -12,8 +12,8 @@ import Footer from '../shared/FooterComponent';
 
 class OpenSourcePage extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.carouselQuery = 'posts?categories='.concat(constants.postCategories.openSource);
     this.pageQuery = 'pages?slug=open-source';
     this.state = {
@@ -45,6 +45,13 @@ class OpenSourcePage extends React.Component {
         loadingPosts: false,
         posts: carousel,
       });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingPosts: false,
+      });
     });
 
     this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
@@ -58,6 +65,13 @@ class OpenSourcePage extends React.Component {
         header: pageHeader,
         description: pageDescription,
         footerText: pageFooterText,
+      });
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+
+      this.setState({
+        loadingHeading: false,
       });
     });
   }
@@ -96,12 +110,19 @@ class OpenSourcePage extends React.Component {
           </div>
         </div>
         <Footer
-          display="true"
+          display
           text={this.state.footerText}
           link="/tech-radar"
         />
       </div>);
   }
 }
+
+OpenSourcePage.propTypes = {
+  /**
+   * The error handler for ajax calls
+   */
+  errorHandler: PropTypes.func,
+};
 
 export default OpenSourcePage;
