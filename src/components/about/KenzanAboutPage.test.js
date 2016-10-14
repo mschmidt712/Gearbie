@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import KenzanAboutPage from './KenzanAboutPage';
 
 let KenzanAboutComponent;
@@ -35,7 +35,7 @@ const mockResults = [{
 }];
 
 test.before(() => {
-  KenzanAboutComponent = mount(<KenzanAboutPage />);
+  KenzanAboutComponent = shallow(<KenzanAboutPage />);
 });
 
 test('spinner: should show spinner when heading and posts loading true', (t) => {
@@ -91,13 +91,13 @@ test('Should: populate header and description from state', (t) => {
 });
 
 test('buildTextBoxContainer: should create text box item in the state for each result', (t) => {
-  KenzanAboutComponent.node.buildTextBoxContainer(mockResults);
+  KenzanAboutComponent.instance().buildTextBoxContainer(mockResults);
 
   t.is(KenzanAboutComponent.state().textBoxItems.length, 2);
 });
 
 test('buildTextBoxContainer: the text box items should be TextBoxContainer elements', (t) => {
-  KenzanAboutComponent.node.buildTextBoxContainer(mockResults);
+  KenzanAboutComponent.instance().buildTextBoxContainer(mockResults);
 
   const textBoxElement1 = KenzanAboutComponent.state().textBoxItems[0];
   const textBoxElement2 = KenzanAboutComponent.state().textBoxItems[1];

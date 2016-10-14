@@ -7,8 +7,7 @@ import { browserHistory } from 'react-router';
 import { shallow, mount } from 'enzyme';
 import App from './App';
 
-let ShallowAppComponent;
-let MountAppComponent;
+let AppComponent;
 let props = {
   location: {
     pathname: 'string',
@@ -21,64 +20,61 @@ let browserHistoryStub;
 let toastrStub;
 
 test.before(() => {
-  ShallowAppComponent = shallow(<App {...props} />);
-  MountAppComponent = mount(<App {...props} />);
+  AppComponent = shallow(<App {...props} />);
 });
 
 test.beforeEach(() => {
   browserHistoryStub = sinon.stub(browserHistory, 'push', () => {});
-  toastrStub = sinon.stub(MountAppComponent.node.toastr, 'error', () => {});
 });
 
 test.afterEach(() => {
   browserHistoryStub.restore();
-  toastrStub.restore();
 });
 
 // render Function
 test('render: should render the app component in a div with default state', (t) => {
-  t.is(ShallowAppComponent.type(), 'div');
+  t.is(AppComponent.type(), 'div');
 });
 
 // render Function
 test('render: should disable transitions when mobile state true', (t) => {
-  ShallowAppComponent.setState({
+  AppComponent.setState({
     mobile: true,
   });
 
-  t.notRegex(ShallowAppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
+  t.notRegex(AppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
 });
 
 // render Function
 test('render: should enable transitions when mobile state false', (t) => {
-  ShallowAppComponent.setState({
+  AppComponent.setState({
     mobile: false,
   });
 
-  t.regex(ShallowAppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
+  t.regex(AppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
 });
 
 // navBarClick Function
 test('navBarClick: should set animation direction down on navbar click', (t) => {
-  MountAppComponent.node.navBarClick({ type: 'click' });
+  AppComponent.instance().navBarClick({ type: 'click' });
 
-  t.true(MountAppComponent.node.scrollDown);
+  t.true(AppComponent.instance().scrollDown);
 });
 
 // initiateScrollNav Function
 test('initiateScrollNav: should update mobile and scrollEnabled in state', (t) => {
-  MountAppComponent.node.initiateScrollNav();
+  AppComponent.instance().initiateScrollNav();
 
-  t.true(MountAppComponent.node.state.scrollEnabled);
-  t.false(MountAppComponent.node.state.mobile);
+  t.true(AppComponent.instance().state.scrollEnabled);
+  t.false(AppComponent.instance().state.mobile);
 });
 
 // disableScrollNav Function
 test('disableScrollNav: should update mobile and scrollEnabled in state', (t) => {
-  MountAppComponent.node.disableScrollNav();
+  AppComponent.instance().disableScrollNav();
 
-  t.false(MountAppComponent.node.state.scrollEnabled);
-  t.true(MountAppComponent.node.state.mobile);
+  t.false(AppComponent.instance().state.scrollEnabled);
+  t.true(AppComponent.instance().state.mobile);
 });
 
 // setLocation Function
@@ -89,8 +85,8 @@ test('setLocation: should navigate to next page when passed next from home page'
     },
   };
 
-  const CustomAppComponent = mount(<App {...props} />);
-  CustomAppComponent.node.setLocation('next');
+  const CustomAppComponent = shallow(<App {...props} />);
+  CustomAppComponent.instance().setLocation('next');
 
   t.true(browserHistoryStub.called);
 });
@@ -102,8 +98,8 @@ test('setLocation: should not navigate to next page when passed next from connec
     },
   };
 
-  const CustomAppComponent = mount(<App {...props} />);
-  CustomAppComponent.node.setLocation('next');
+  const CustomAppComponent = shallow(<App {...props} />);
+  CustomAppComponent.instance().setLocation('next');
 
   t.false(browserHistoryStub.called);
 });
@@ -115,8 +111,8 @@ test('setLocation: should navigate to last page when passed next from connect pa
     },
   };
 
-  const CustomAppComponent = mount(<App {...props} />);
-  CustomAppComponent.node.setLocation('last');
+  const CustomAppComponent = shallow(<App {...props} />);
+  CustomAppComponent.instance().setLocation('last');
 
   t.true(browserHistoryStub.called);
 });
@@ -128,14 +124,18 @@ test('setLocation: should not navigate to last page when passed next from home p
     },
   };
 
-  const CustomAppComponent = mount(<App {...props} />);
-  CustomAppComponent.node.setLocation('last');
+  const CustomAppComponent = shallow(<App {...props} />);
+  CustomAppComponent.instance().setLocation('last');
 
   t.false(browserHistoryStub.called);
 });
 
 test('addAlert: should generate an error toastr box', (t) => {
-  MountAppComponent.node.addAlert(mockError);
+  // Need to mount ToastContainer child to define this.toastr ref.
+  const CustomAppComponent = mount(<App {...props} />);
+  toastrStub = sinon.stub(CustomAppComponent.instance().toastr, 'error', () => {});
+
+  CustomAppComponent.instance().addAlert(mockError);
 
   t.true(toastrStub.called);
 });

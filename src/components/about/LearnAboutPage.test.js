@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import LearnAboutPage from './LearnAboutPage';
 
 let LearnAboutComponent;
@@ -35,7 +35,7 @@ const mockResults = [{
 }];
 
 test.before(() => {
-  LearnAboutComponent = mount(<LearnAboutPage />);
+  LearnAboutComponent = shallow(<LearnAboutPage />);
 });
 
 test('spinner: should show spinner when heading and posts loading true', (t) => {
@@ -91,13 +91,13 @@ test('Should: populate header and description from state', (t) => {
 });
 
 test('buildTextBoxContainer: should create text box item in the state for each result', (t) => {
-  LearnAboutComponent.node.buildTextBoxContainer(mockResults);
+  LearnAboutComponent.instance().buildTextBoxContainer(mockResults);
 
   t.is(LearnAboutComponent.state().textBoxItems.length, 2);
 });
 
 test('buildTextBoxContainer: the text box items should be TextBoxContainer elements', (t) => {
-  LearnAboutComponent.node.buildTextBoxContainer(mockResults);
+  LearnAboutComponent.instance().buildTextBoxContainer(mockResults);
 
   const textBoxElement1 = LearnAboutComponent.state().textBoxItems[0];
   const textBoxElement2 = LearnAboutComponent.state().textBoxItems[1];
