@@ -25,7 +25,8 @@ class HomePage extends React.Component {
   }
 
   componentWillMount() {
-    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (results) => {
+    this.pageRequest = $.ajax(constants.baseUrl + this.pageQuery)
+    .done((results) => {
       const result = results[0];
 
       const pageHeader = result.acf.header.split(' ');
@@ -43,7 +44,6 @@ class HomePage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingHeading: false,
       });

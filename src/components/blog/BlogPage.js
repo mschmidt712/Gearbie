@@ -12,7 +12,7 @@ class BlogPage extends React.Component {
 
   constructor() {
     super();
-    this.pageQuery = 'pages?slug=blog';
+    this.pageQuery = 'page?slug=blog';
     this.state = {
       loadingHeading: true,
       header: '',
@@ -24,7 +24,8 @@ class BlogPage extends React.Component {
   }
 
   componentWillMount() {
-    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery)
+    .done((pages) => {
       const page = pages[0];
       const pageHeader = page.acf.header;
       const pageDescription = page.acf.description;
@@ -39,7 +40,6 @@ class BlogPage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingHeading: false,
       });

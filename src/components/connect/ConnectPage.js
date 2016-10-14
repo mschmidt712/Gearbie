@@ -22,12 +22,12 @@ class ConnectPage extends React.Component {
   }
 
   componentWillMount() {
-    this.postRequest = $.get(constants.baseUrl + this.postQuery, (events) => {
+    this.postRequest = $.get(constants.baseUrl + this.postQuery)
+    .done((events) => {
       this.buildEventContainer(events);
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingPosts: false,
       });

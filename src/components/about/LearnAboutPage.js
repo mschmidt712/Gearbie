@@ -44,7 +44,6 @@ class LearnAboutPage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingHeading: false,
       });
@@ -55,7 +54,6 @@ class LearnAboutPage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingPosts: false,
       });

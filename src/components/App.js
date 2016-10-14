@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { ToastContainer, ToastMessage } from 'react-toastr';
 import $ from 'jquery';
 import HeaderComponent from './shared/HeaderComponent';
+import constants from '../constants';
 
 const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
@@ -126,9 +127,12 @@ class App extends React.Component {
   }
 
   addAlert(err) {
+    const errCode = err.status;
+    const errText = constants.statusCodes(errCode);
+
     this.toastr.error(
-      'There was an errow with the page load, please try again later',
-      err.statusText,
+      errCode + ' - ' + errText,
+      'Page Load Error',
       {
         timeOut: 10000,
         closeButton: true,

@@ -29,7 +29,8 @@ class OpenSourcePage extends React.Component {
   }
 
   componentWillMount() {
-    this.carouselRequest = $.get(constants.baseUrl + this.carouselQuery, (results) => {
+    this.carouselRequest = $.get(constants.baseUrl + this.carouselQuery)
+    .done((results) => {
       const resultData = [];
 
       results.forEach((result) => {
@@ -48,13 +49,13 @@ class OpenSourcePage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingPosts: false,
       });
     });
 
-    this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery)
+    .done((pages) => {
       const page = pages[0];
       const pageHeader = page.acf.header;
       const pageDescription = page.acf.description;
@@ -69,7 +70,6 @@ class OpenSourcePage extends React.Component {
     })
     .fail((err) => {
       this.props.errorHandler(err);
-
       this.setState({
         loadingHeading: false,
       });
