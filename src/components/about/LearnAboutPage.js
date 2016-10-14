@@ -75,7 +75,8 @@ class LearnAboutPage extends React.Component {
       obj.title = constants.getPostHeader(result);
       obj.text = constants.getPostText(result);
       obj.linkText = result.acf.link_text;
-      obj.linkUrl = result.acf.link_url;
+      obj.link = result.acf.link_url;
+
       resultsData.push(obj);
     });
 
@@ -84,7 +85,7 @@ class LearnAboutPage extends React.Component {
         title={obj.title}
         text={obj.text}
         linkText={obj.linkText}
-        linkUrl={obj.linkUrl}
+        link={obj.link}
         key={index}
       />)
     );

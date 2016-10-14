@@ -10,18 +10,20 @@ const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 /**
  * The App component for the project.
  * Overarching parent component that contains all the app components.
+ * Handles page animations and scroll animations.
  */
 class App extends React.Component {
   constructor() {
     super();
     this.delta = 0;
     this.scrollDown = false;
-    this.scrollEnabled = true;
-    this.mobile = false;
     this.state = {
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/learn', '/blog', '/connect'],
+      mobile: false,
+      scrollEnabled: true,
       scrollThreshold: 60,
     };
+
     this.render = this.render.bind(this);
     this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
@@ -33,7 +35,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    if (window.innerWidth > 650) {
+    if (window.innerWidth > 750) {
       this.initiateScrollNav();
     } else {
       this.disableScrollNav();
@@ -47,11 +49,11 @@ class App extends React.Component {
     const locations = this.state.locations;
 
     locations.forEach((location, index) => {
-      if (direction === 'next' && location === '/connect') {
+      if (direction === 'next' && currentPage === '/connect') {
         return;
       } else if (direction === 'next' && location === currentPage) {
         browserHistory.push(locations[index + 1]);
-      } else if (direction !== 'next' && location === '/') {
+      } else if (direction !== 'next' && currentPage === '/') {
         return;
       } else if (direction !== 'next' && location === currentPage) {
         browserHistory.push(locations[index - 1]);
@@ -67,11 +69,11 @@ class App extends React.Component {
     $(window).resize(() => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (window.innerWidth > 650 && !this.scrollEnabled) {
+        if (window.innerWidth > 750 && !this.state.scrollEnabled) {
           this.initiateScrollNav();
-        } else if (window.innerWidth > 650 && this.scrollEnabled) {
+        } else if (window.innerWidth > 750 && this.state.scrollEnabled) {
           return;
-        } else if (window.innerWidth < 650) {
+        } else if (window.innerWidth < 750) {
           this.disableScrollNav();
         }
       }, 250);
@@ -79,8 +81,10 @@ class App extends React.Component {
   }
 
   initiateScrollNav() {
-    this.mobile = false;
-    this.scrollEnabled = true;
+    this.setState({
+      mobile: false,
+      scrollEnabled: true,
+    });
 
     $(window).on({
       'DOMMouseScroll mousewheel': this.elementScroll,
@@ -88,8 +92,10 @@ class App extends React.Component {
   }
 
   disableScrollNav() {
-    this.mobile = true;
-    this.scrollEnabled = false;
+    this.setState({
+      mobile: true,
+      scrollEnabled: false,
+    });
 
     $(window).off('DOMMouseScroll mousewheel');
   }
@@ -139,7 +145,7 @@ class App extends React.Component {
 
     let app = '';
 
-    if (this.mobile) {
+    if (this.state.mobile) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
@@ -149,7 +155,7 @@ class App extends React.Component {
         <HeaderComponent clickEvent={this.navBarClick} />
           {this.props.children}
       </div>);
-    } else if (!this.mobile && this.scrollDown) {
+    } else if (!this.state.mobile && this.scrollDown) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
@@ -192,7 +198,7 @@ App.propTypes = {
   /**
    * The child elements of the app.
    */
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
   /**
    * The url of the current page.
    */
