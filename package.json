@@ -34,7 +34,8 @@
     "react-router": "^2.8.1",
     "react-slick": "^0.14.4",
     "react-toastr": "^2.8.1",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "toastr": "^2.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

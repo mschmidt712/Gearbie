@@ -28,7 +28,7 @@
 
 .explore-arrow-container {
   position: absolute;
-  top: calc(50% - 24px);
+  top: calc(50% - 49px);
 }
 
 .explore-right-arrow-container {
@@ -41,7 +41,7 @@
 
 @media(min-width: $phone-breakpoint) {
   .explore-arrow-container {
-    top: calc(50% - 32px);
+    top: calc(50% - 57px);
   }
 
   .explore-right-arrow-container {
@@ -55,8 +55,8 @@
 }
 
 @media(min-width: $tablet-breakpoint) {
-  .explore-right-arrow-container {
-    top: calc(50% - 42px);
+  .explore-arrow-container {
+    top: calc(50% - 67px);
   }
 
   .explore-right-arrow-container {
@@ -66,6 +66,11 @@
   .explore-left-arrow-container {
     left: -100px;
   }
+}
+
+.slick-slide {
+  @extend .text-box;
+  padding: 0 !important;
 }
 
 //Explore Page Images
