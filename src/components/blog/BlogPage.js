@@ -12,7 +12,7 @@ class BlogPage extends React.Component {
 
   constructor() {
     super();
-    this.pageQuery = 'page?slug=blog';
+    this.pageQuery = 'pages?slug=blog';
     this.state = {
       loadingHeading: true,
       header: '',
