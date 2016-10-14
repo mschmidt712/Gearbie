@@ -8,7 +8,7 @@ import { shallow, mount } from 'enzyme';
 import App from './App';
 
 let AppComponent;
-let props = {
+const props = {
   location: {
     pathname: 'string',
   },
@@ -79,53 +79,29 @@ test('disableScrollNav: should update mobile and scrollEnabled in state', (t) =>
 
 // setLocation Function
 test('setLocation: should navigate to next page when passed next from home page', (t) => {
-  props = {
-    location: {
-      pathname: '/',
-    },
-  };
-
-  const CustomAppComponent = shallow(<App {...props} />);
-  CustomAppComponent.instance().setLocation('next');
+  AppComponent.instance().props.location.pathname = '/';
+  AppComponent.instance().setLocation('next');
 
   t.true(browserHistoryStub.called);
 });
 
 test('setLocation: should not navigate to next page when passed next from connect page', (t) => {
-  props = {
-    location: {
-      pathname: '/connect',
-    },
-  };
-
-  const CustomAppComponent = shallow(<App {...props} />);
-  CustomAppComponent.instance().setLocation('next');
+  AppComponent.instance().props.location.pathname = '/connect';
+  AppComponent.instance().setLocation('next');
 
   t.false(browserHistoryStub.called);
 });
 
 test('setLocation: should navigate to last page when passed next from connect page', (t) => {
-  props = {
-    location: {
-      pathname: '/connect',
-    },
-  };
-
-  const CustomAppComponent = shallow(<App {...props} />);
-  CustomAppComponent.instance().setLocation('last');
+  AppComponent.instance().props.location.pathname = '/connect';
+  AppComponent.instance().setLocation('last');
 
   t.true(browserHistoryStub.called);
 });
 
 test('setLocation: should not navigate to last page when passed next from home page', (t) => {
-  props = {
-    location: {
-      pathname: '/',
-    },
-  };
-
-  const CustomAppComponent = shallow(<App {...props} />);
-  CustomAppComponent.instance().setLocation('last');
+  AppComponent.instance().props.location.pathname = '/';
+  AppComponent.instance().setLocation('last');
 
   t.false(browserHistoryStub.called);
 });
