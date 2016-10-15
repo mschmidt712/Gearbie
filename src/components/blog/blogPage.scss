@@ -8,6 +8,23 @@
 
 .blog-page-container {
   padding: 5%;
+  .blog-page-link {
+    margin: 0;
+  }
+}
+
+.blog-page-link {
+  a {
+    text-decoration: none;
+    font-size: 1rem;
+  }
+}
+
+.blog-page-image {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ), url('./assets/Blog_Page_Image.jpg') no-repeat bottom 35% right fixed;
 }
 
 @media(min-width: $tablet-breakpoint) {

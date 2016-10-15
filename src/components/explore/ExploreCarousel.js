@@ -48,9 +48,13 @@ class ExploreCarousel extends React.Component {
     this.watchWindowResize();
   }
 
+  componentWillUnmount() {
+    return $(window).off('resize');
+  }
+
   setSlideHeights() {
     this.maxHeight = 0;
-    const slideContent = $('.text-box');
+    const slideContent = $('.slick-track').find('.text-box');
 
     slideContent.each((index, slide) => {
       const slideHeight = $(slide).height();
@@ -71,8 +75,9 @@ class ExploreCarousel extends React.Component {
     $(window).resize(() => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
+        console.log('window resized');
         this.setSlideHeights();
-      }, 100);
+      }, 200);
     });
   }
 

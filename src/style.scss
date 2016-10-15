@@ -434,18 +434,27 @@ a {
   text-align: center;
   margin: 0px auto 15px;
   max-width: 1200px;
-  padding:0px 50px 30px;
+  padding:0px 30px 30px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page-container {
+    text-align: center;
+    margin: 0px auto 15px;
+    max-width: 1200px;
+    padding:0px 50px 30px;
+  }
 }
 
 .col-2 {
-  padding: 50px;
+  padding: 30px;
   width: 100%;
   display: block;
 }
 
 @media(min-width: $phone-breakpoint) {
   .col-2 {
-    padding: 20px 50px;
+    padding: 20px 100px;
   }
 }
 
@@ -474,13 +483,18 @@ a {
     flex: 1;
     position: relative;
     float: left;
-
     border-right: 1px solid $arrow-gray;
 
     &:last-child {
       border-right: none;
       padding-bottom: initial;
     }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .col-3 {
+    font-size: 80%;
   }
 }
 
@@ -516,7 +530,6 @@ a {
 
 .text-box {
   background-color: $font-white;
-  padding: 20px;
   position: relative;
 
   .text-box-header {
@@ -529,6 +542,22 @@ a {
 @media(min-width: $phone-breakpoint) {
   .text-box {
     padding: 20px;
+  }
+}
+
+.text-box-content {
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box-header {
+    padding: 0px 15px;
+  }
+
+  .text-box-content {
+    padding: 0px 15px;
+    line-height: 1.6;
   }
 }
 
@@ -590,7 +619,9 @@ a {
 
 //Headers
 .page-header {
+  font-weight: 400;
   color: $font-white;
+  margin: 5px 0px 0px 0px;
 }
 
 .uppercase {
@@ -606,21 +637,16 @@ a {
 }
 
 .page-description {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 200;
   color: $font-white;
-  line-height: 1.5rem;
+  line-height: 1.5;
+  margin-top: 0px;
 }
 
 @media(min-width: $phone-breakpoint) {
   .page-description {
-    font-size: 1.3rem;
-  }
-}
-
-@media(min-width: $tablet-breakpoint) {
-  .page-description {
-    line-height: 2.25rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -651,8 +677,8 @@ a {
 .page-description-link-text {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  font-weight: 600;
   font-size: 1rem;
-  font-weight: 400;
   letter-spacing: 0.05rem;
   text-decoration: none;
   white-space: nowrap;
@@ -676,6 +702,10 @@ a {
   right: 0;
   transition: all 200ms;
   transition-timing-function: $custom-ease;
+
+  a {
+    text-decoration: none;
+  }
 
   .arrow-link {
     background-color: white;

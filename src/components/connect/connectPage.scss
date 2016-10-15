@@ -9,13 +9,13 @@
 
 @media(min-width: $phone-breakpoint) {
   .connect-page-container {
-    font-size: 60%
+    font-size: 70%
   }
 }
 
 @media(min-width: $phone-breakpoint) {
   .connect-page-container {
-    font-size: 55%
+    font-size: 60%
   }
 }
 
@@ -117,12 +117,18 @@
 .connect-page {
   .text-box {
     padding: 20px;
-    box-shadow: 0 1px 1px 0 #888888;
-
   }
 
   .page-description-link-text {
     font-size: 0.75rem;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .connect-page {
+    .text-box {
+      box-shadow: 0 1px 1px 0 #888888;
+    }
   }
 }
 
