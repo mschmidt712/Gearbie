@@ -40,11 +40,15 @@ class ExploreCarousel extends React.Component {
     );
 
     this.setSlideHeights = this.setSlideHeights.bind(this);
+    this.setArrowHeights = this.setArrowHeights.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
   }
 
   componentDidMount() {
-    this.setSlideHeights();
+    const windowWidth = $(window).innerWidth();
+    this.setSlideHeights(windowWidth);
+    this.setArrowHeights(windowWidth);
+
     this.watchWindowResize();
   }
 
@@ -52,7 +56,7 @@ class ExploreCarousel extends React.Component {
     return $(window).off('resize');
   }
 
-  setSlideHeights() {
+  setSlideHeights(windowWidth) {
     this.maxHeight = 0;
     const slideContent = $('.slick-track').find('.text-box');
 
@@ -63,20 +67,44 @@ class ExploreCarousel extends React.Component {
       }
     });
 
+    let extraPadding = 0;
+    if (windowWidth < 750) {
+      extraPadding = 0;
+    } else {
+      extraPadding = 40;
+    }
+
     const slideContainer = $('.slick-slide');
     slideContainer.each((index, slide) => {
-      $(slide).height(this.maxHeight + 40);
+      $(slide).height(this.maxHeight + extraPadding);
+    });
+  }
+
+  setArrowHeights(windowWidth) {
+    let arrowHeight = 0;
+
+    if (windowWidth < 1200) {
+      arrowHeight = this.maxHeight + 35;
+    } else if (windowWidth >= 1200) {
+      arrowHeight = 84;
+    }
+
+    const arrowContainer = $('.arrow-container');
+    arrowContainer.each((index, arrow) => {
+      $(arrow).height(arrowHeight);
     });
   }
 
   watchWindowResize() {
     let resizeTimer;
+    let windowWidth = 0;
 
     $(window).resize(() => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        console.log('window resized');
-        this.setSlideHeights();
+        windowWidth = $(window).innerWidth();
+        this.setSlideHeights(windowWidth);
+        this.setArrowHeights(windowWidth);
       }, 200);
     });
   }
