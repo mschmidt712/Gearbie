@@ -23,6 +23,32 @@ const constants = {
   setInnerHtml: content => ({
     __html: DOMPurify.sanitize(content),
   }),
+  statusCodes: (status) => {
+    let statusText;
+
+    switch (status) {
+      default:
+        statusText = 'Page Load Error';
+        break;
+      case 400:
+        statusText = 'Bad Request';
+        break;
+      case 401:
+        statusText = 'Authorization Denied';
+        break;
+      case 404:
+        statusText = 'Page Not Found';
+        break;
+      case 500:
+        statusText = 'Internal Server Error';
+        break;
+      case 0:
+        statusText = 'No Access-Control-Allow-Origin Header Present';
+        break;
+    }
+
+    return statusText;
+  },
 };
 
 export default constants;

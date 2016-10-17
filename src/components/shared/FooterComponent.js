@@ -10,7 +10,7 @@ import constants from '../../constants';
 const Footer = ({ display, text, link }) => {
   let footer = '';
 
-  if (display === 'true') {
+  if (display) {
     footer = (<div className="page-footer animation shadow">
       <Link to={link} >
         <div className="arrow-link shadow">
@@ -33,11 +33,11 @@ Footer.propTypes = {
     /**
    * A boolean that determines whether or not a footer should be displayed.
    */
-  display: PropTypes.string.isRequired,
+  display: PropTypes.bool.isRequired,
     /**
    * A string that contains the text to display in the footer.
    */
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
     /**
    * A string that contains the route for the footer link.
    */

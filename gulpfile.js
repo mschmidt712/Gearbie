@@ -23,7 +23,7 @@ gulp.task('clean:dist', (done) => {
 });
 
 gulp.task('compile:js', () => {
-  return gulp.src(src + 'entry.js')
+  return gulp.src(src + 'index.js')
     .pipe(plumber())
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest(dist));
@@ -63,7 +63,7 @@ gulp.task('watch:sass', () => {
 });
 
 gulp.task('watch:js', () => {
-  gulp.watch(src + '**/*.js', ['compile:js']);
+  gulp.watch([src + '**/*.js', '!' + src + '**/*.test.js'], ['compile:js']);
 });
 
 gulp.task('build:dev', (done) => {
