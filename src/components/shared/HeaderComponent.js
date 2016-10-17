@@ -22,6 +22,9 @@ class HeaderComponent extends React.Component {
     this.render = this.render.bind(this);
   }
 
+  /**
+   * Toggles mobile menu dropdown on and off.
+   */
   showMenu() {
     this.setState({
       showMenu: !this.state.showMenu,
@@ -29,6 +32,9 @@ class HeaderComponent extends React.Component {
     this.render();
   }
 
+  /**
+   * Toggles mobile social menu dropdown on and off.
+   */
   showSocial() {
     this.setState({
       showSocial: !this.state.showSocial,
@@ -36,6 +42,9 @@ class HeaderComponent extends React.Component {
     this.render();
   }
 
+  /**
+   * Hides mobile menu and mobile social menu dropdowns.
+   */
   clearBoth() {
     this.setState({
       showSocial: false,

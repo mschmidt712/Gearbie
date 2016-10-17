@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import Slider from 'react-slick';
 import $ from 'jquery';
 import constants from '../../constants';
-import { LeftArrow, RightArrow } from './CarouselArrows';
+import RightArrow from './RightArrow';
+import LeftArrow from './LeftArrow';
 
 const settings = {
   accessibility: true,
@@ -20,6 +21,7 @@ const settings = {
 
 /**
  * The stateless carousel component for use in the explore section of the site.
+ * This component handles dynamically sizing the carousel box and the navigation arrows.
  */
 class ExploreCarousel extends React.Component {
 
@@ -65,6 +67,9 @@ class ExploreCarousel extends React.Component {
     });
   }
 
+  /**
+   * Watches for window resize events to resize carousel and arrow heights.
+   */
   watchWindowResize() {
     let resizeTimer;
 
