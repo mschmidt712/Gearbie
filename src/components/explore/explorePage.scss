@@ -26,29 +26,19 @@
   }
 }
 
-.explore-arrow-container {
-  position: absolute;
-  top: calc(50% - 49px);
-}
-
-.explore-right-arrow-container {
-  right: -45px;
-}
-
-.explore-left-arrow-container {
-  left: -45px;
-}
-
 @media(min-width: $phone-breakpoint) {
   .explore-arrow-container {
-    top: calc(50% - 57px);
+    position: absolute;
+    top: 0;
   }
 
   .explore-right-arrow-container {
+    position: absolute;
     right: -90px;
   }
 
   .explore-left-arrow-container {
+    position: absolute;
     left: -90px;
   }
 
@@ -56,9 +46,8 @@
 
 @media(min-width: $tablet-breakpoint) {
   .explore-arrow-container {
-    top: calc(50% - 67px);
+    top: calc(50% - 42px);
   }
-
   .explore-right-arrow-container {
     right: -100px;
   }

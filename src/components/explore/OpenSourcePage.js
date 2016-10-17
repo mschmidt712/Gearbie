@@ -100,7 +100,7 @@ class OpenSourcePage extends React.Component {
               className="page-header"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
             />
-            <p
+            <h2
               className="page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />

@@ -62,7 +62,7 @@ class BlogPage extends React.Component {
         <div className={loadingClass}>
           <img src="./assets/loader.gif" alt="Loading" />
         </div>
-        <div className="open-source-image image-container" />
+        <div className="blog-page-image image-container" />
         <div className="blog-page-container">
           <div>
             <h1
@@ -73,7 +73,7 @@ class BlogPage extends React.Component {
               className="page-description blog-page-description"
               dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
             />
-            <p className="page-description blog-page-link">
+            <p className="page-description blog-page-link btn btn-primary">
               <a href="http://techblog.kenzan.com/" target="new">
                 Check out the blog now.
               </a>

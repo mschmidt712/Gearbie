@@ -395,6 +395,10 @@ body {
   }
 }
 
+button:focus {
+  outline: 0;
+}
+
 @media(min-width: $phone-breakpoint) {
   .btn {
     margin: 30px;
@@ -434,18 +438,27 @@ a {
   text-align: center;
   margin: 0px auto 15px;
   max-width: 1200px;
-  padding:0px 50px 30px;
+  padding:0px 30px 30px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .page-container {
+    text-align: center;
+    margin: 0px auto 15px;
+    max-width: 1200px;
+    padding:0px 50px 30px;
+  }
 }
 
 .col-2 {
-  padding: 50px;
+  padding: 20px 35px;
   width: 100%;
   display: block;
 }
 
 @media(min-width: $phone-breakpoint) {
   .col-2 {
-    padding: 20px 50px;
+    padding: 20px 100px;
   }
 }
 
@@ -474,13 +487,18 @@ a {
     flex: 1;
     position: relative;
     float: left;
-
     border-right: 1px solid $arrow-gray;
 
     &:last-child {
       border-right: none;
       padding-bottom: initial;
     }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .col-3 {
+    font-size: 80%;
   }
 }
 
@@ -516,7 +534,6 @@ a {
 
 .text-box {
   background-color: $font-white;
-  padding: 20px;
   position: relative;
 
   .text-box-header {
@@ -532,54 +549,60 @@ a {
   }
 }
 
+.text-box-content {
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .text-box-header {
+    padding: 0px 15px;
+  }
+
+  .text-box-content {
+    padding: 0px 15px;
+    line-height: 1.6;
+  }
+}
+
 .arrow-container {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  z-index: 10;
-
-  i {
-    border-radius: 100%;
-    transition: all 0.3s $custom-ease;
-    color: $font-white;
-
-    &:hover {
-      background-color: rgba(0,0,0,0.3);
-    }
-
-    &:active {
-      background-color: rgba(0,0,0,0.5);
-    }
-  }
-
-  .material-icons.lg {
-    font-size: 48;
-  }
+  display: none;
 }
 
 @media(min-width: $phone-breakpoint) {
   .arrow-container {
-      .material-icons.lg {
-        font-size: 64;
-      }
-      i {
-        &:hover {
-          background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.3);
-        }
+    display: block;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    background-color: transparent;
+    color: $font-white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s $custom-ease;
 
-        &:active {
-          background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.5);
-        }
-      }
+    &:hover {
+      background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.3);
+    }
+
+    &:active {
+      background-color: rgba(red($arrow-gray), green($arrow-gray), blue($arrow-gray),0.5);
+    }
+
+    .material-icons.lg {
+      font-size: 64;
+    }
   }
 }
 
 @media(min-width: $tablet-breakpoint) {
   .arrow-container {
-      .material-icons.lg {
-        font-size: 84;
-      }
+    padding: 0;
+    border-radius: 100%;
+
+    .material-icons.lg {
+      font-size: 84;
+    }
   }
 }
 
@@ -590,7 +613,9 @@ a {
 
 //Headers
 .page-header {
+  font-weight: 400;
   color: $font-white;
+  margin: 5px 0px 0px 0px;
 }
 
 .uppercase {
@@ -606,21 +631,16 @@ a {
 }
 
 .page-description {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 200;
   color: $font-white;
-  line-height: 1.5rem;
+  line-height: 1.5;
+  margin-top: 0px;
 }
 
 @media(min-width: $phone-breakpoint) {
   .page-description {
-    font-size: 1.3rem;
-  }
-}
-
-@media(min-width: $tablet-breakpoint) {
-  .page-description {
-    line-height: 2.25rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -651,8 +671,8 @@ a {
 .page-description-link-text {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  font-weight: 600;
   font-size: 1rem;
-  font-weight: 400;
   letter-spacing: 0.05rem;
   text-decoration: none;
   white-space: nowrap;
@@ -676,6 +696,10 @@ a {
   right: 0;
   transition: all 200ms;
   transition-timing-function: $custom-ease;
+
+  a {
+    text-decoration: none;
+  }
 
   .arrow-link {
     background-color: white;
@@ -735,13 +759,14 @@ a {
   opacity: 0;
 }
 
-.animation:hover {
-  transform: translatey(-15px);
-  .arrow-link {
-    animation: bounce 600ms $custom-ease;
+@media(min-width: $phone-breakpoint) {
+  .animation:hover {
+    transform: translatey(-15px);
+    .arrow-link {
+      animation: bounce 600ms $custom-ease;
+    }
   }
 }
-
 
 .footer-appear {
   transform: translateY(-15px);
@@ -781,7 +806,7 @@ a {
 }
 
 .material-icons.icon-shadow {
-  text-shadow: 1px 1px 4px black;
+  text-shadow: 1px 1px 2px rgba( 0, 0, 0, 0.5);
 }
 
 // Page Animations
