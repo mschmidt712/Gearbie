@@ -1,19 +1,137 @@
 {
   "./src/components/about/KenzanAboutPage.js": {
-    "description": "The stateful component for the Kenzan About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.\nData is currently hardcoded.",
+    "description": "The stateful component for the Kenzan About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.",
     "methods": []
   },
   "./src/components/about/LearnAboutPage.js": {
-    "description": "The stateful component for the Learn About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.\nCurrently contains same data at Kenzan About page.\nData is currently hardcoded.",
+    "description": "The stateful component for the Learn About page.\nDetails what we do at Kenzan, the purpose of the .IO page, and our company culture.\nCurrently contains same data at Kenzan About page.",
+    "methods": []
+  },
+  "./src/components/about/TextBoxContainer.js": {
+    "description": "A stateless component to hold the posts on the about page.",
+    "methods": [],
+    "props": {
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The post tile as a string."
+      },
+      "text": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The post content as a string."
+      },
+      "linkText": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The post link text as a string."
+      },
+      "link": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The post link address as a string."
+      }
+    }
+  },
+  "./src/components/blog/BlogPage.js": {
+    "description": "The stateful component for the Open Source page.\nPage details Kenzan's open source projects.",
     "methods": []
   },
   "./src/components/connect/ConnectPage.js": {
     "description": "The stateless component for the Connect page.\nDetails office locations, contact information, and upcoming Kenzan events.",
     "methods": []
   },
-  "./src/components/explore/ExploreCarousel.js": {
-    "description": "The stateless carousel component for use in the explore section of the site.",
+  "./src/components/connect/ContactInfo.js": {
+    "description": "The stateless component that generates the contact info list on the connect page.",
     "methods": [],
+    "props": {
+      "category": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The contact info category such as email or telephone as a string."
+      },
+      "text": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The contact info text like email address or phone number as a string."
+      }
+    }
+  },
+  "./src/components/connect/EventContainer.js": {
+    "description": "The stateless component for the events displayed on the Connect Page",
+    "methods": [],
+    "props": {
+      "description": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The event description as a string."
+      },
+      "linkText": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The text to be displayed with the event's link as a string."
+      },
+      "linkUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The link address to get more information on the event as a string."
+      }
+    }
+  },
+  "./src/components/explore/ExploreCarousel.js": {
+    "description": "The stateless carousel component for use in the explore section of the site.\nThis component handles dynamically sizing the carousel box and the navigation arrows.",
+    "methods": [
+      {
+        "name": "setSlideHeights",
+        "docblock": "Finds the max carousel slide height and unifies all slides heights to max height.",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "windowWidth"
+          }
+        ],
+        "returns": null,
+        "description": "Finds the max carousel slide height and unifies all slides heights to max height."
+      },
+      {
+        "name": "setArrowHeights",
+        "docblock": "Finds the max carousel slide height and sets the arrow heights.\nSets arrow height equal to slide height for tablet.\nSets arrow height equal to icon height for large screens.",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "windowWidth"
+          }
+        ],
+        "returns": null,
+        "description": "Finds the max carousel slide height and sets the arrow heights.\nSets arrow height equal to slide height for tablet.\nSets arrow height equal to icon height for large screens."
+      },
+      {
+        "name": "watchWindowResize",
+        "docblock": "Watches for window resize events to resize carousel and arrow heights.",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Watches for window resize events to resize carousel and arrow heights."
+      }
+    ],
     "props": {
       "data": {
         "type": {
@@ -27,12 +145,20 @@
       }
     }
   },
+  "./src/components/explore/LeftArrow.js": {
+    "description": "The stateless component for the left arrow of the carousel.\nIncoming props include class names and click events",
+    "methods": []
+  },
   "./src/components/explore/OpenSourcePage.js": {
-    "description": "The stateful component for the Open Source page.\nPage details Kenzan's open source projects.\nData is currently mocked out.",
+    "description": "The stateful component for the Open Source page.\nPage details Kenzan's open source projects.",
+    "methods": []
+  },
+  "./src/components/explore/RightArrow.js": {
+    "description": "The stateless component for the right arrow of the carousel.\nIncoming props include class names and click events",
     "methods": []
   },
   "./src/components/explore/TechRadarPage.js": {
-    "description": "The stateful component for the Tech Radar page.\nPage details new technologies on Kenzan's radar.\nData is currently mocked out.",
+    "description": "The stateful component for the Tech Radar page.\nPage details new technologies on Kenzan's radar.",
     "methods": []
   },
   "./src/components/home/HomePage.js": {
@@ -41,11 +167,139 @@
   },
   "./src/components/shared/HeaderComponent.js": {
     "description": "The App Header including navigation and social media links.",
-    "methods": []
+    "methods": [
+      {
+        "name": "showMenu",
+        "docblock": "Toggles mobile menu dropdown on and off.",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Toggles mobile menu dropdown on and off."
+      },
+      {
+        "name": "showSocial",
+        "docblock": "Toggles mobile social menu dropdown on and off.",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Toggles mobile social menu dropdown on and off."
+      },
+      {
+        "name": "clearBoth",
+        "docblock": "Hides mobile menu and mobile social menu dropdowns.",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Hides mobile menu and mobile social menu dropdowns."
+      }
+    ],
+    "props": {
+      "clickEvent": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "A functions that sends click events to the app component for conditional animations."
+      },
+      "currentPath": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Current page used to highlight active class for sub pages"
+      }
+    }
+  },
+  "./src/components/shared/HeaderMenuDropdown.js": {
+    "description": "Mobile dropdown that holds links to navigate through the site.",
+    "methods": [],
+    "props": {
+      "clearBoth": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "Function that tells parent component to close dropdowns\nwhen links are clicked."
+      }
+    }
+  },
+  "./src/components/shared/SocialMenuDropdown.js": {
+    "description": "Social media menu dropdown on mobile.",
+    "methods": [],
+    "props": {
+      "clearBoth": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "Function that tells parent component to close dropdowns\nwhen links are clicked."
+      }
+    }
   },
   "./src/components/App.js": {
     "description": "The App component for the project.\nOverarching parent component that contains all the app components.",
-    "methods": [],
+    "methods": [
+      {
+        "name": "setLocation",
+        "docblock": "Handles the routing for scrolling navigation.\nUses and array of page routes, the current route, and the routing direction to change pages.\nApp component animates an up scroll for direction: next and a downscroll for direction: last",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "direction"
+          }
+        ],
+        "returns": null,
+        "description": "Handles the routing for scrolling navigation.\nUses and array of page routes, the current route, and the routing direction to change pages.\nApp component animates an up scroll for direction: next and a downscroll for direction: last"
+      },
+      {
+        "name": "watchWindowResize",
+        "docblock": "Watches for window resizing to disable scrolling navigation on mobile sized devices.",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Watches for window resizing to disable scrolling navigation on mobile sized devices."
+      },
+      {
+        "name": "initiateScrollNav",
+        "docblock": "Enables scrolling navtigation by changing state properties\nmobile: false\nscrollEnabled: true",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Enables scrolling navtigation by changing state properties\nmobile: false\nscrollEnabled: true"
+      },
+      {
+        "name": "disableScrollNav",
+        "docblock": "Disables scrolling navtigation by changing state properties\nmobile: true\nscrollEnabled: false",
+        "modifiers": [],
+        "params": [],
+        "returns": null,
+        "description": "Disables scrolling navtigation by changing state properties\nmobile: true\nscrollEnabled: false"
+      },
+      {
+        "name": "navBarClick",
+        "docblock": "A helper function that communicates nav bar clicks from child routes to the app component.\nApp component animations a down scroll for navbar clicks.",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "ev"
+          }
+        ],
+        "returns": null,
+        "description": "A helper function that communicates nav bar clicks from child routes to the app component.\nApp component animations a down scroll for navbar clicks."
+      },
+      {
+        "name": "elementScroll",
+        "docblock": "Watching scroll events and determines if scroll event meets scroll threshold\nIf threshold is met, setLocation function is called.",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e"
+          }
+        ],
+        "returns": null,
+        "description": "Watching scroll events and determines if scroll event meets scroll threshold\nIf threshold is met, setLocation function is called."
+      }
+    ],
     "props": {
       "children": {
         "type": {
@@ -53,6 +307,14 @@
         },
         "required": true,
         "description": "The child elements of the app."
+      },
+      "location": {
+        "type": {
+          "name": "custom",
+          "raw": "PropTypes.objectOf(PropTypes.any)"
+        },
+        "required": false,
+        "description": "The url of the current page."
       }
     }
   }

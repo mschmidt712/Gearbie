@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import constants from '../../constants';
 
+/**
+ * The stateless component for the events displayed on the Connect Page
+ */
 function EventContainer(props) {
   return (
     <div>
@@ -21,8 +24,17 @@ function EventContainer(props) {
 }
 
 EventContainer.propTypes = {
+/**
+ * The event description as a string.
+ */
   description: PropTypes.string.isRequired,
+/**
+ * The text to be displayed with the event's link as a string.
+ */
   linkText: PropTypes.string.isRequired,
+/**
+ * The link address to get more information on the event as a string.
+ */
   linkUrl: PropTypes.string.isRequired,
 };
 

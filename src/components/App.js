@@ -45,6 +45,11 @@ class App extends React.Component {
     this.watchWindowResize();
   }
 
+  /**
+   * Handles the routing for scrolling navigation.
+   * Uses and array of page routes, the current route, and the routing direction to change pages.
+   * App component animates an up scroll for direction: next and a downscroll for direction: last
+   */
   setLocation(direction) {
     const currentPage = this.props.location.pathname;
     const locations = this.state.locations;
@@ -64,6 +69,9 @@ class App extends React.Component {
     this.delta = 0;
   }
 
+  /**
+   * Watches for window resizing to disable scrolling navigation on mobile sized devices.
+   */
   watchWindowResize() {
     let resizeTimer;
 
@@ -81,6 +89,11 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * Enables scrolling navtigation by changing state properties
+   * mobile: false
+   * scrollEnabled: true
+   */
   initiateScrollNav() {
     this.setState({
       mobile: false,
@@ -92,6 +105,11 @@ class App extends React.Component {
     });
   }
 
+  /**
+   * Disables scrolling navtigation by changing state properties
+   * mobile: true
+   * scrollEnabled: false
+   */
   disableScrollNav() {
     this.setState({
       mobile: true,
@@ -101,12 +119,20 @@ class App extends React.Component {
     $(window).off('DOMMouseScroll mousewheel');
   }
 
+  /**
+   * A helper function that communicates nav bar clicks from child routes to the app component.
+   * App component animations a down scroll for navbar clicks.
+   */
   navBarClick(ev) {
     if (ev.type === 'click') {
       this.scrollDown = true;
     }
   }
 
+  /**
+   * Watching scroll events and determines if scroll event meets scroll threshold
+   * If threshold is met, setLocation function is called.
+   */
   elementScroll(e) {
     if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) {
       this.delta -= 1;

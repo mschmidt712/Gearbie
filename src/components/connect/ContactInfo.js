@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
 
+/**
+ * The stateless component that generates the contact info list on the connect page.
+ */
 function ContactInfo(props) {
   const category = props.category;
   const text = props.text;
@@ -23,7 +26,13 @@ function ContactInfo(props) {
 }
 
 ContactInfo.propTypes = {
+/**
+ * The contact info category such as email or telephone as a string.
+ */
   category: PropTypes.string.isRequired,
+/**
+ * The contact info text like email address or phone number as a string.
+ */
   text: PropTypes.string.isRequired,
 };
 
