@@ -91,7 +91,7 @@ class OpenSourcePage extends React.Component {
     return (
       <div className="page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="open-source-image image-container" />
         <div className="explore-page-container">

@@ -61,7 +61,7 @@ class HomePage extends React.Component {
     return (
       <div className="page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="home-page-image" />
         <div className="page-container">
