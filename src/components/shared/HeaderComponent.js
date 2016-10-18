@@ -66,11 +66,11 @@ class HeaderComponent extends React.Component {
     let exploreActiveClass = '';
     let aboutActiveClass = '';
 
-    if (this.props.currentPath === '/open-source' || '/tech-radar') {
+    if (this.props.currentPath === '/open-source' || this.props.currentPath === '/tech-radar') {
       exploreActiveClass = classNames({
         'active-nav': true,
       });
-    } else if (this.props.currentPath === '/kenzan' || '/learn') {
+    } else if (this.props.currentPath === '/kenzan' || this.props.currentPath === '/learn') {
       aboutActiveClass = classNames({
         'active-nav': true,
       });
@@ -109,7 +109,6 @@ class HeaderComponent extends React.Component {
               </Link>
               <li className="hoverable-dropdown explore">
                 <button
-                  activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                   className={exploreActiveClass}
                 >

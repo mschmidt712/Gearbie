@@ -257,8 +257,8 @@ body {
           box-shadow: 0 1px 1px 0 #888888;
 
           a {
-            font-size: 1.2rem;
-            padding: 10px 5px 10px 10px;
+            font-size: .9rem;
+            padding: 20px 20px 20px 20px;
             border-bottom: 1px solid lightgray;
             transition: background .4s ease;
 
@@ -272,7 +272,7 @@ body {
         }
 
       .hoverable-dropdown:hover .navbar-sub-menu.about-sub {
-        width: 150px;
+        width: 140px;
       }
 
       @media only screen and (max-width: $tablet-nav-medium) {
@@ -280,8 +280,12 @@ body {
           top: 72px;
           width: 115px;
           a {
-            font-size: 1rem !important;
+            font-size: .8rem !important;
           }
+        }
+
+        .hoverable-dropdown:hover .navbar-sub-menu.about-sub {
+        width: 130px;
         }
       }
 
