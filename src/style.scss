@@ -12,8 +12,8 @@ $custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
-$tablet-header: 674px;
-$tablet-nav-medium: 852px;
+$tablet-header: 768px;
+$tablet-nav-medium: 1024px;
 
 $phone-breakpoint: 750px;
 $tablet-breakpoint: 1200px;
@@ -254,7 +254,7 @@ body {
           box-shadow: 0 1px 1px 0 #888888;
           a {
             font-size: 1.2rem;
-            padding: 5px 0 5px 5px;
+            padding: 10px 5px 10px 10px;
             border-bottom: 1px solid lightgray;
 
             &:last-child {
@@ -262,6 +262,10 @@ body {
             }
           }
         }
+
+      .hoverable-dropdown:hover .navbar-sub-menu .about-sub {
+        padding-right: 20px;
+      }
 
       @media only screen and (max-width: $tablet-nav-medium) {
         .hoverable-dropdown:hover .navbar-sub-menu {
@@ -296,15 +300,15 @@ body {
           bottom: -2px;
           left: 10%;
           width: 80%;
-          height: 5px;
+          height: 2px;
           background: $primary-orange;
           padding-bottom: 2px;
           content: '';
           opacity: 0;
         }
 
-        &:hover::after {
-          opacity: 1;
+        &:hover {
+          color:black;
         }
 
         .active-nav {
@@ -313,20 +317,8 @@ body {
           bottom: -2px;
           left: 10%;
           width: 80%;
-          height: 5px;
+          height: 2px;
           padding-bottom: 2px;
-          background: $primary-orange;
-          content: '';
-          }
-        }
-
-          .active-nav-short {
-          &::after {
-          position: absolute;
-          bottom: -2px;
-          left: 10%;
-          width: 80%;
-          height: 5px;
           background: $primary-orange;
           content: '';
           }
@@ -920,43 +912,23 @@ a {
   }
 
 .kenzan-logo {
-  width: 40px;
+  width: 38px;
   }
 
 .cls-1 {
-  transition: .4s cubic-bezier(.77,-0.06,1,1);
   fill:#455560;
-}
-
-.cls-1:hover {
-  transform: TranslateY(-400px);
 }
 
 .cls-2 {
   fill: #c9cacc;
-  transition: .4s cubic-bezier(.77,-0.06,1,1);
-}
-
-.cls-2:hover {
-  transform: TranslateY(-400px);
 }
 
 .cls-3 {
   fill:#c9cacc;
-  transition: .4s cubic-bezier(.77,-0.06,1,1);
-}
-
-.cls-3:hover {
-  transform: TranslateY(-400px);
 }
 
 .cls-4 {
   fill: #c9cacc;
-  transition: .4s cubic-bezier(.77,-0.06,1,1);
-}
-
-.cls-4:hover {
-  transform: TranslateY(-400px);
 }
 
 //Toast Container

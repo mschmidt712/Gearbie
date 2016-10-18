@@ -24,13 +24,11 @@ class HeaderComponent extends React.Component {
   }
 
   /**
-   * Toggles mobile menu dropdown on and off.
+   * Used to call two different classes on onClick of home page.
    */
-  showMenu() {
-    this.setState({
-      showMenu: !this.state.showMenu,
-    });
-    this.render();
+  onClick(ev) {
+    this.props.clickEvent(ev);
+    this.clearBoth();
   }
 
   /**
@@ -39,8 +37,8 @@ class HeaderComponent extends React.Component {
   showSocial() {
     this.setState({
       showSocial: !this.state.showSocial,
+      showMenu: false,
     });
-    this.render();
   }
 
   /**
@@ -53,38 +51,28 @@ class HeaderComponent extends React.Component {
     });
   }
 
-  onClick(ev) {
-    this.props.clickEvent(ev);
-    this.clearBoth();
+  /**
+   * Toggles mobile menu dropdown on and off.
+   */
+  showMenu() {
+    this.setState({
+      showMenu: !this.state.showMenu,
+      showSocial: false,
+    });
   }
 
   render() {
     let exploreActiveClass = '';
     let aboutActiveClass = '';
 
-    switch (this.props.currentPath) {
-      case '/open-source':
-        exploreActiveClass = classNames({
-          'active-nav-short': true,
-        });
-        break;
-      case '/tech-radar':
-        exploreActiveClass = classNames({
-          'active-nav-short': true,
-        });
-        break;
-      case '/kenzan':
-        aboutActiveClass = classNames({
-          'active-nav-short': true,
-        });
-        break;
-      case '/learn':
-        aboutActiveClass = classNames({
-          'active-nav-short': true,
-        });
-        break;
-      default:
-        break;
+    if (this.props.currentPath === '/open-source' || '/tech-radar') {
+      exploreActiveClass = classNames({
+        'active-nav': true,
+      });
+    } else if (this.props.currentPath === '/kenzan' || '/learn') {
+      aboutActiveClass = classNames({
+        'active-nav': true,
+      });
     }
 
     return (
@@ -138,7 +126,7 @@ class HeaderComponent extends React.Component {
                 >
                   About
                 </button>
-                <div className="navbar-sub-menu">
+                <div className="navbar-sub-menu about-sub">
                   <Link to="/kenzan" onClick={this.props.clickEvent}>
                     Kenzan
                   </Link>
@@ -181,9 +169,11 @@ class HeaderComponent extends React.Component {
               </a>
             </div>
             <div className="mobile-nav-container">
-              <button className="nav-menu mobile-nav no-button" onClick={this.showMenu}>
-                Menu
-              </button>
+              <FontAwesome
+                name="navicon"
+                className="nav-menu mobile-nav no-button"
+                onClick={this.showMenu}
+              />
               <FontAwesome
                 name="share-alt"
                 className="nav-menu mobile-nav mobile-social-media no-button"
