@@ -115,10 +115,10 @@ class HeaderComponent extends React.Component {
                   Explore
                 </button>
                 <div className="navbar-sub-menu">
-                  <Link to="/open-source" onClick={this.props.clickEvent}>
+                  <Link to="/open-source/" onClick={this.props.clickEvent}>
                     Open Source
                   </Link>
-                  <Link to="/tech-radar" onClick={this.props.clickEvent}>
+                  <Link to="/tech-radar/" onClick={this.props.clickEvent}>
                     Tech Radar
                   </Link>
                 </div>
@@ -134,14 +134,14 @@ class HeaderComponent extends React.Component {
                   <Link to="/kenzan" onClick={this.props.clickEvent}>
                     Kenzan
                   </Link>
-                  <Link to="/learn" onClick={this.props.clickEvent}>
+                  <Link to="/learn/" onClick={this.props.clickEvent}>
                     Learn With Us
                   </Link>
                 </div>
               </li>
               <li>
                 <Link
-                  to="/blog"
+                  to="/blog/"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                 >
@@ -150,7 +150,7 @@ class HeaderComponent extends React.Component {
               </li>
               <li>
                 <Link
-                  to="/connect"
+                  to="/connect/"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                 >
@@ -168,7 +168,7 @@ class HeaderComponent extends React.Component {
               <a href="http://www.github.com" target="new">
                 <img src="/assets/Github.png" alt="Github" />
               </a>
-              <a href="www.facebook.com" target="new">
+              <a href="http://www.facebook.com" target="new">
                 <img src="/assets/Facebook.png" alt="Facebook" />
               </a>
             </div>
