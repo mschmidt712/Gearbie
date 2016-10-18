@@ -3,7 +3,8 @@
 import test from 'ava';
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RightArrow, LeftArrow } from './CarouselArrows';
+import RightArrow from './RightArrow';
+import LeftArrow from './LeftArrow';
 
 let mockProps = {
   className: '',

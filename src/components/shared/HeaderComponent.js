@@ -200,7 +200,7 @@ HeaderComponent.propTypes = {
   /**
    * Current page used to highlight active class for sub pages
    */
-  currentPath: PropTypes.string.isRequired,
+  currentPath: PropTypes.string,
 };
 
 export default HeaderComponent;

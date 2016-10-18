@@ -17,7 +17,6 @@ class HomePage extends React.Component {
     this.pageQuery = 'pages?slug=home';
     this.state = {
       loadingHeading: true,
-      header: '',
       subHeader: '',
       description: '',
       footerText: '',
@@ -25,18 +24,16 @@ class HomePage extends React.Component {
   }
 
   componentWillMount() {
-    this.pageRequest = $.ajax(constants.baseUrl + this.pageQuery)
+    this.pageRequest = $.get(constants.baseUrl + this.pageQuery)
     .done((results) => {
       const result = results[0];
 
-      const pageHeader = result.acf.header.split(' ');
       const pageSubHeader = result.acf.home_subheader;
       const pageDescription = result.acf.description;
       const pageFooter = result.acf.footer_text;
 
       this.setState({
         loadingHeading: false,
-        header: pageHeader,
         subHeader: pageSubHeader,
         description: pageDescription,
         footerText: pageFooter,
