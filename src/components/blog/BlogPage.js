@@ -60,7 +60,7 @@ class BlogPage extends React.Component {
     return (
       <div className="page blog-page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="blog-page-image image-container" />
         <div className="blog-page-container">
@@ -83,7 +83,7 @@ class BlogPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/connect"
+          link="/connect/"
         />
       </div>);
   }

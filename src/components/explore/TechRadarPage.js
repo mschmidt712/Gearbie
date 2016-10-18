@@ -88,7 +88,7 @@ class TechRadarPage extends React.Component {
     return (
       <div className="page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="image-container tech-radar-image" />
         <div className="explore-page-container">
@@ -109,7 +109,7 @@ class TechRadarPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/kenzan"
+          link="/kenzan/"
         />
       </div>
     );

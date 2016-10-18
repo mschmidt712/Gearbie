@@ -15,11 +15,11 @@ import ConnectPage from './components/connect/ConnectPage';
 export default (
   <Route path="/" component={App} >
     <IndexRoute component={HomePage} />
-    <Route path="open-source" component={OpenSourcePage} />
-    <Route path="tech-radar" component={TechRadarPage} />
-    <Route path="kenzan" component={KenzanAboutPage} />
-    <Route path="learn" component={LearnAboutPage} />
-    <Route path="blog" component={BlogPage} />
-    <Route path="connect" component={ConnectPage} />
+    <Route path="open-source/" component={OpenSourcePage} />
+    <Route path="tech-radar/" component={TechRadarPage} />
+    <Route path="kenzan/" component={KenzanAboutPage} />
+    <Route path="learn/" component={LearnAboutPage} />
+    <Route path="blog/" component={BlogPage} />
+    <Route path="connect/" component={ConnectPage} />
   </Route>
 );

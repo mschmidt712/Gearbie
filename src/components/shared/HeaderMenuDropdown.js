@@ -11,25 +11,25 @@ const HeaderMenuDropdown = ({ clearBoth }) => (
       <div className="mobile-menu-dropdown">
         <div>
           <ul>
-            <Link to="/open-source" activeClassName="active" onClick={clearBoth}>
+            <Link to="/open-source/" activeClassName="active" onClick={clearBoth}>
               <li>
                 <FontAwesome name="rocket" className="dropdown-icon" />
                 Explore
               </li>
             </Link>
-            <Link to="/kenzan" activeClassName="active" onClick={clearBoth}>
+            <Link to="/kenzan/" activeClassName="active" onClick={clearBoth}>
               <li>
                 <FontAwesome name="suitcase" className="dropdown-icon" />
                 About
               </li>
             </Link>
-            <Link to="/blog" activeClassName="active" onClick={clearBoth}>
+            <Link to="/blog/" activeClassName="active" onClick={clearBoth}>
               <li>
                 <FontAwesome name="pencil" className="dropdown-icon" />
                 Blog
               </li>
             </Link>
-            <Link to="/connect" activeClassName="active" onClick={clearBoth}>
+            <Link to="/connect/" activeClassName="active" onClick={clearBoth}>
               <li className="last">
                 <FontAwesome name="globe" className="dropdown-icon" />
                 Connect
