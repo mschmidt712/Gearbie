@@ -122,7 +122,7 @@ class LearnAboutPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/connect"
+          link="/blog"
         />
       </div>
     );

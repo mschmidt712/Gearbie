@@ -35,7 +35,7 @@ class App extends React.Component {
     this.elementScroll = this.elementScroll.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (window.innerWidth > 750) {
       this.initiateScrollNav();
     } else {
@@ -183,7 +183,7 @@ class App extends React.Component {
           className="toast-top-right"
         />
         <HeaderComponent clickEvent={this.navBarClick} />
-          {this.props.children}
+        {newChildren}
       </div>);
     } else if (!this.state.mobile && this.scrollDown) {
       app = (<div>

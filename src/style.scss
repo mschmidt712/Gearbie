@@ -215,7 +215,7 @@ body {
       }
 
       li {
-        a {
+        a, button{
           font-size: 1.3rem !important;
         }
 
@@ -276,7 +276,7 @@ body {
       li {
         display: flex;
         position: relative;
-        a {
+        a, button {
           display: flex;
           text-decoration: none;
           color: $font-gray;
@@ -285,6 +285,12 @@ body {
           padding: 0 15px 0 15px;
 
         }
+
+        button {
+          background-color: white;
+          border: none;
+        }
+
         &::after {
           position: absolute;
           bottom: -2px;
@@ -953,7 +959,7 @@ a {
   transform: TranslateY(-400px);
 }
 
-//Toast Container 
+//Toast Container
 #toast-container {
   font-size: 50%;
 }

@@ -16,6 +16,7 @@ class HeaderComponent extends React.Component {
       showMenu: false,
       showSocial: false,
     };
+    this.onClick = this.onClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.showSocial = this.showSocial.bind(this);
     this.clearBoth = this.clearBoth.bind(this);
@@ -52,25 +53,46 @@ class HeaderComponent extends React.Component {
     });
   }
 
+  onClick(ev) {
+    this.props.clickEvent(ev);
+    this.clearBoth();
+  }
+
   render() {
     let exploreActiveClass = '';
     let aboutActiveClass = '';
 
-    if (this.props.currentPath === '/tech-radar') {
-      exploreActiveClass = classNames({
-        'active-nav-short': true,
-      });
-    } else if (this.props.currentPath === '/learn') {
-      aboutActiveClass = classNames({
-        'active-nav-short': true,
-      });
+    switch (this.props.currentPath) {
+      case '/open-source':
+        exploreActiveClass = classNames({
+          'active-nav-short': true,
+        });
+        break;
+      case '/tech-radar':
+        exploreActiveClass = classNames({
+          'active-nav-short': true,
+        });
+        break;
+      case '/kenzan':
+        aboutActiveClass = classNames({
+          'active-nav-short': true,
+        });
+        break;
+      case '/learn':
+        aboutActiveClass = classNames({
+          'active-nav-short': true,
+        });
+        break;
+      default:
+        break;
     }
+
     return (
       <div>
         <div className="navbar">
           <ul>
             <div className="navbar-links menu-items full-nav">
-              <Link to="/" onClick={() => { this.props.clickEvent(); this.clearBoth(); }}>
+              <Link to="/" onClick={this.onClick}>
                 <div className="kenzan-logo">
                   <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.6 221.7">
                     <path
@@ -93,14 +115,13 @@ class HeaderComponent extends React.Component {
                 </div>
               </Link>
               <li className="hoverable-dropdown explore">
-                <Link
-                  to="/open-source"
+                <button
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                   className={exploreActiveClass}
                 >
                   Explore
-                </Link>
+                </button>
                 <div className="navbar-sub-menu">
                   <Link to="/open-source" onClick={this.props.clickEvent}>
                     Open Source
@@ -111,14 +132,12 @@ class HeaderComponent extends React.Component {
                 </div>
               </li>
               <li className="hoverable-dropdown about">
-                <Link
-                  to="/kenzan"
-                  activeClassName="active-nav"
+                <button
                   onClick={this.props.clickEvent}
                   className={aboutActiveClass}
                 >
                   About
-                </Link>
+                </button>
                 <div className="navbar-sub-menu">
                   <Link to="/kenzan" onClick={this.props.clickEvent}>
                     Kenzan
@@ -200,7 +219,7 @@ HeaderComponent.propTypes = {
   /**
    * Current page used to highlight active class for sub pages
    */
-  currentPath: PropTypes.string.isRequired,
+  currentPath: PropTypes.string,
 };
 
 export default HeaderComponent;

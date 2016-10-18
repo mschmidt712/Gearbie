@@ -30,24 +30,19 @@ test('Should: hide spinner when loading false', (t) => {
 });
 
 const mockState = {
-  header: ['Home', 'Page', 'Header'],
   subHeader: 'SubHeader',
   description: 'Page description',
 };
 
 test('Should: Populate the header, subheader, and description from the state', (t) => {
   HomePage.setState({
-    header: mockState.header,
     subHeader: mockState.subHeader,
     description: mockState.description,
   });
 
-  const header = HomePage.find('.home-page-header');
-  const mockHeader = mockState.header[0].concat(' ', mockState.header[1], ' ', mockState.header[2]);
   const subHeader = HomePage.find('.page-sub-header');
   const description = HomePage.find('.home-page-description');
 
-  t.is(header.text(), mockHeader);
   t.is(subHeader.render().text(), mockState.subHeader);
   t.is(description.render().text(), mockState.description);
 });
