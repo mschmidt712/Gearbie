@@ -19,7 +19,7 @@ class App extends React.Component {
     this.delta = 0;
     this.scrollDown = false;
     this.state = {
-      locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/learn', '/blog', '/connect'],
+      locations: ['/', '/open-source/', '/tech-radar/', '/kenzan/', '/learn/', '/blog/', '/connect/'],
       mobile: false,
       scrollEnabled: true,
       scrollThreshold: 60,
@@ -55,7 +55,7 @@ class App extends React.Component {
     const locations = this.state.locations;
 
     locations.forEach((location, index) => {
-      if (direction === 'next' && currentPage === '/connect') {
+      if (direction === 'next' && currentPage === '/connect/') {
         return;
       } else if (direction === 'next' && location === currentPage) {
         browserHistory.push(locations[index + 1]);

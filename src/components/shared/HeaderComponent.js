@@ -63,22 +63,22 @@ class HeaderComponent extends React.Component {
     let aboutActiveClass = '';
 
     switch (this.props.currentPath) {
-      case '/open-source':
+      case '/open-source/':
         exploreActiveClass = classNames({
           'active-nav-short': true,
         });
         break;
-      case '/tech-radar':
+      case '/tech-radar/':
         exploreActiveClass = classNames({
           'active-nav-short': true,
         });
         break;
-      case '/kenzan':
+      case '/kenzan/':
         aboutActiveClass = classNames({
           'active-nav-short': true,
         });
         break;
-      case '/learn':
+      case '/learn/':
         aboutActiveClass = classNames({
           'active-nav-short': true,
         });
