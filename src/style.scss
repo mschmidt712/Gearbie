@@ -849,7 +849,7 @@ a {
 .pageSlider-down-enter.pageSlider-down-enter-active {
   transform: translate3d(0, 0, 0);
   transition-timing-function: $custom-ease;
-  transition-duration: 800ms;
+  transition-duration: 600ms;
   z-index: 1;
 
 }
@@ -861,7 +861,7 @@ a {
 .pageSlider-down-leave.pageSlider-down-leave-active {
   transform: translate3d(0, 100%, 0);
   transition-timing-function: $custom-ease;
-  transition-duration: 800ms;
+  transition-duration: 600ms;
   z-index: 1;
 }
 
