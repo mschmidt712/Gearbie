@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import classNames from 'classnames';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
@@ -75,6 +76,10 @@ class HeaderComponent extends React.Component {
       });
     }
 
+    $('.navbar-sub-menu').unbind().click(() => {
+      $('.navbar-sub-menu').addClass('clear');
+      setTimeout(() => { $('.navbar-sub-menu').removeClass('clear'); }, 1000);
+    });
     return (
       <div>
         <div className="navbar">
