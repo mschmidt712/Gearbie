@@ -78,10 +78,10 @@ class HomePage extends React.Component {
             dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
           />
           <div className="button-container">
-            <Link to="/open-source" className="btn btn-primary shadow">
+            <Link to="/open-source/" className="btn btn-primary shadow">
               Open Source
             </Link>
-            <Link to="/tech-radar" className="btn btn-primary shadow">
+            <Link to="/tech-radar/" className="btn btn-primary shadow">
               Tech Radar
             </Link>
           </div>
@@ -96,7 +96,7 @@ class HomePage extends React.Component {
           <Footer
             display
             text={this.state.footerText}
-            link="/open-source"
+            link="/open-source/"
           />
         </ReactCSSTransitionGroup>
       </div>

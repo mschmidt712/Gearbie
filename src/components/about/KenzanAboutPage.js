@@ -121,7 +121,7 @@ class KenzanAboutPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/learn"
+          link="/learn/"
         />
       </div>
     );

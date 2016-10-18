@@ -109,7 +109,7 @@ class TechRadarPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/kenzan"
+          link="/kenzan/"
         />
       </div>
     );
