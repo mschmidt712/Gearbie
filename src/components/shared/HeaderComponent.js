@@ -74,7 +74,6 @@ class HeaderComponent extends React.Component {
       aboutActiveClass = classNames({
         'active-nav': true,
       });
-    }
 
     $('.navbar-sub-menu').unbind().click(() => {
       $('.navbar-sub-menu').addClass('clear');
@@ -132,7 +131,6 @@ class HeaderComponent extends React.Component {
                 </button>
                 <div className="navbar-sub-menu about-sub">
                   <Link to="/kenzan" onClick={this.props.clickEvent}>
-
                     Kenzan
                   </Link>
                   <Link to="/learn/" onClick={this.props.clickEvent}>

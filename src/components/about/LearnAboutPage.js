@@ -104,7 +104,7 @@ class LearnAboutPage extends React.Component {
     return (
       <div className="about-page page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="about-image-container learn-about-image">
           <h1
@@ -122,7 +122,7 @@ class LearnAboutPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/blog"
+          link="/blog/"
         />
       </div>
     );
