@@ -74,11 +74,13 @@ class HeaderComponent extends React.Component {
       aboutActiveClass = classNames({
         'active-nav': true,
       });
+    }
 
     $('.navbar-sub-menu').unbind().click(() => {
       $('.navbar-sub-menu').addClass('clear');
       setTimeout(() => { $('.navbar-sub-menu').removeClass('clear'); }, 1000);
     });
+
     return (
       <div>
         <div className="navbar">
