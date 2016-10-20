@@ -66,11 +66,11 @@ class HeaderComponent extends React.Component {
     let exploreActiveClass = '';
     let aboutActiveClass = '';
 
-    if (this.props.currentPath === '/open-source' || this.props.currentPath === '/tech-radar') {
+    if (this.props.currentPath === '/open-source/' || this.props.currentPath === '/tech-radar/') {
       exploreActiveClass = classNames({
         'active-nav': true,
       });
-    } else if (this.props.currentPath === '/kenzan' || this.props.currentPath === '/learn') {
+    } else if (this.props.currentPath === '/kenzan/' || this.props.currentPath === '/learn/') {
       aboutActiveClass = classNames({
         'active-nav': true,
       });
@@ -132,7 +132,7 @@ class HeaderComponent extends React.Component {
                   About
                 </button>
                 <div className="navbar-sub-menu about-sub">
-                  <Link to="/kenzan" onClick={this.props.clickEvent}>
+                  <Link to="/kenzan/" onClick={this.props.clickEvent}>
                     Kenzan
                   </Link>
                   <Link to="/learn/" onClick={this.props.clickEvent}>
