@@ -63,8 +63,6 @@ class HeaderComponent extends React.Component {
   }
 
   render() {
-    $('.navbar-sub-menu').removeClass('clear');
-
     let exploreActiveClass = '';
 
     if (this.props.currentPath === '/open-source/' || this.props.currentPath === '/tech-radar/') {
@@ -72,10 +70,6 @@ class HeaderComponent extends React.Component {
         'active-nav': true,
       });
     }
-
-    $('.navbar-sub-menu').unbind().click(() => {
-      $('.navbar-sub-menu').addClass('clear');
-    });
 
     return (
       <div>
