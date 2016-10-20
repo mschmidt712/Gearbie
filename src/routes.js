@@ -8,6 +8,7 @@ import KenzanAboutPage from './components/about/KenzanAboutPage';
 import LearnAboutPage from './components/about/LearnAboutPage';
 import BlogPage from './components/blog/BlogPage';
 import ConnectPage from './components/connect/ConnectPage';
+import PageNotFound from './components/pageNotFound/PageNotFoundComponent';
 
 /**
  * Defines project routes.
@@ -21,5 +22,6 @@ export default (
     <Route path="learn/" component={LearnAboutPage} />
     <Route path="blog/" component={BlogPage} />
     <Route path="connect/" component={ConnectPage} />
+    <Route path="*" component={PageNotFound} />
   </Route>
 );
