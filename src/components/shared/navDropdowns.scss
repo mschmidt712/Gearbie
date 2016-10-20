@@ -76,7 +76,7 @@
 // Animations for mobile menu dropdown
 .mobile-menu-animation-enter {
   .mobile-menu-dropdown {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 
   .dimmer {
@@ -111,7 +111,7 @@
 
 .mobile-menu-animation-leave.mobile-menu-animation-leave-active {
   .mobile-menu-dropdown {
-    transform: translateX(-100%);
+    transform: translateX(100%);
     transition: 200ms ease;
   }
   .dimmer {
@@ -179,6 +179,4 @@
     left: 0;
     bottom: -15;
     z-index: 30;
-    // width: 100%;
-    // height: 100%;
   }
