@@ -103,7 +103,7 @@ class KenzanAboutPage extends React.Component {
     return (
       <div className="about-page page">
         <div className={loadingClass}>
-          <img src="./assets/loader.gif" alt="Loading" />
+          <img src="/assets/loader.gif" alt="Loading" />
         </div>
         <div className="about-image-container kenzan-about-image">
           <h1
