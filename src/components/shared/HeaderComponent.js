@@ -63,22 +63,18 @@ class HeaderComponent extends React.Component {
   }
 
   render() {
+    $('.navbar-sub-menu').removeClass('clear');
+
     let exploreActiveClass = '';
-    let aboutActiveClass = '';
 
     if (this.props.currentPath === '/open-source/' || this.props.currentPath === '/tech-radar/') {
       exploreActiveClass = classNames({
-        'active-nav': true,
-      });
-    } else if (this.props.currentPath === '/kenzan/' || this.props.currentPath === '/learn/') {
-      aboutActiveClass = classNames({
         'active-nav': true,
       });
     }
 
     $('.navbar-sub-menu').unbind().click(() => {
       $('.navbar-sub-menu').addClass('clear');
-      setTimeout(() => { $('.navbar-sub-menu').removeClass('clear'); }, 1000);
     });
 
     return (
@@ -124,21 +120,14 @@ class HeaderComponent extends React.Component {
                   </Link>
                 </div>
               </li>
-              <li className="hoverable-dropdown about">
-                <button
+              <li>
+                <Link
+                  to="/kenzan/"
                   onClick={this.props.clickEvent}
-                  className={aboutActiveClass}
+                  activeClassName="active-nav"
                 >
                   About
-                </button>
-                <div className="navbar-sub-menu about-sub">
-                  <Link to="/kenzan/" onClick={this.props.clickEvent}>
-                    Kenzan
-                  </Link>
-                  <Link to="/learn/" onClick={this.props.clickEvent}>
-                    Learn With Us
-                  </Link>
-                </div>
+                </Link>
               </li>
               <li>
                 <Link
