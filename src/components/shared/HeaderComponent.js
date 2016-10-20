@@ -132,7 +132,7 @@ class HeaderComponent extends React.Component {
                   About
                 </button>
                 <div className="navbar-sub-menu about-sub">
-                  <Link to="/kenzan" onClick={this.props.clickEvent}>
+                  <Link to="/kenzan/" onClick={this.props.clickEvent}>
                     Kenzan
                   </Link>
                   <Link to="/learn/" onClick={this.props.clickEvent}>
