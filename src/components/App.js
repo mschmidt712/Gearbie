@@ -174,10 +174,8 @@ class App extends React.Component {
     const newChildren = React.Children.map(this.props.children, child => (
       React.cloneElement(child, { key: segment, errorHandler: this.addAlert })
     ));
-
     let app = '';
 
-    console.log(this.state.mobile);
     if (this.state.mobile) {
       app = (<div>
         <ToastContainer
