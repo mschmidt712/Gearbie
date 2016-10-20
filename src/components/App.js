@@ -103,6 +103,7 @@ class App extends React.Component {
     $(window).on({
       'DOMMouseScroll mousewheel': this.elementScroll,
     });
+    this.watchWindowResize();
   }
 
   /**
@@ -117,6 +118,7 @@ class App extends React.Component {
     });
 
     $(window).off('DOMMouseScroll mousewheel');
+    this.watchWindowResize();
   }
 
   /**
@@ -172,7 +174,6 @@ class App extends React.Component {
     const newChildren = React.Children.map(this.props.children, child => (
       React.cloneElement(child, { key: segment, errorHandler: this.addAlert })
     ));
-
     let app = '';
 
     if (this.state.mobile) {
