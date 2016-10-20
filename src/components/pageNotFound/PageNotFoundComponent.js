@@ -1,7 +1,6 @@
 import React from 'react';
 
-function PageNotFound(props) {
-  console.log(props);
+function PageNotFound() {
   return (
     <div className="page-container">
       <h1> Page Not Found </h1>
