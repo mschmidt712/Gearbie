@@ -103,6 +103,7 @@ class App extends React.Component {
     $(window).on({
       'DOMMouseScroll mousewheel': this.elementScroll,
     });
+    this.watchWindowResize();
   }
 
   /**
@@ -117,6 +118,7 @@ class App extends React.Component {
     });
 
     $(window).off('DOMMouseScroll mousewheel');
+    this.watchWindowResize();
   }
 
   /**
@@ -175,6 +177,7 @@ class App extends React.Component {
 
     let app = '';
 
+    console.log(this.state.mobile);
     if (this.state.mobile) {
       app = (<div>
         <ToastContainer
