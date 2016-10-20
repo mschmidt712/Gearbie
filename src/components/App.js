@@ -19,7 +19,7 @@ class App extends React.Component {
     this.delta = 0;
     this.scrollDown = false;
     this.state = {
-      locations: ['/', '/open-source/', '/tech-radar/', '/kenzan/', '/learn/', '/blog/', '/connect/'],
+      locations: ['/', '/open-source/', '/tech-radar/', '/kenzan/', '/blog/', '/connect/'],
       mobile: false,
       scrollEnabled: true,
       scrollThreshold: 60,
