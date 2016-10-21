@@ -81,6 +81,7 @@ $tablet-breakpoint: 1200px;
 @import './components/connect/connectPage.scss';
 @import './components/explore/carousel.scss';
 @import './components/shared/navDropdowns.scss';
+@import './components/pageNotFound/pageNotFound.scss';
 
 * {
   box-sizing: border-box;
