@@ -143,16 +143,16 @@ class HeaderComponent extends React.Component {
               </li>
             </div>
             <div className="navbar-social-media">
-              <a href="http://www.twitter.com" target="new">
+              <a href="https://twitter.com/kenzanmedia" target="new">
                 <img src="/assets/Twitter.png" alt="Twitter" />
               </a>
-              <a href="http://www.linkedin.com" target="new">
+              <a href="https://www.linkedin.com/company/kenzan-media" target="new">
                 <img src="/assets/Linkedin.png" alt="Linkedin" />
               </a>
-              <a href="http://www.github.com" target="new">
+              <a href="https://www.github.com/kenzanlabs" target="new">
                 <img src="/assets/Github.png" alt="Github" />
               </a>
-              <a href="http://www.facebook.com" target="new">
+              <a href="https://www.facebook.com/kenzanmedia/" target="new">
                 <img src="/assets/Facebook.png" alt="Facebook" />
               </a>
             </div>
