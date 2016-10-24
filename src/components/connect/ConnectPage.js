@@ -43,6 +43,7 @@ class ConnectPage extends React.Component {
 
     events.forEach((event) => {
       const obj = {};
+      obj.title = constants.getPostHeader(event);
       obj.description = constants.getPostText(event);
       obj.linkText = event.acf.link_text;
       obj.linkUrl = event.acf.link_url;
@@ -51,6 +52,7 @@ class ConnectPage extends React.Component {
 
     const eventItems = eventsData.map((obj, index) => (
       <EventContainer
+        title={obj.title}
         description={obj.description}
         linkText={obj.linkText}
         linkUrl={obj.linkUrl}
@@ -102,7 +104,6 @@ class ConnectPage extends React.Component {
           </div>
           <div className="connect-content col-2 text-box-container">
             <div className="text-box">
-              <h3 className="text-box-header">EVENTS</h3>
               {this.state.events}
             </div>
           </div>

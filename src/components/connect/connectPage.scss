@@ -13,9 +13,9 @@
   }
 }
 
-@media(min-width: $phone-breakpoint) {
+@media(min-width: $tablet-breakpoint) {
   .connect-page-container {
-    font-size: 60%
+    font-size: 50%
   }
 }
 
@@ -119,6 +119,10 @@
     padding: 20px;
   }
 
+  .text-box-content {
+    margin: 5px 0px;
+  }
+
   .page-description-link-text {
     font-size: 0.75rem;
   }
@@ -152,4 +156,8 @@
   .page-footer {
     background-color: transparent;
   }
+}
+
+.connect-page-event {
+  padding: 10px 0px;
 }
