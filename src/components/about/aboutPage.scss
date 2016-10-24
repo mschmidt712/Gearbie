@@ -73,7 +73,19 @@
 @media(min-width: $phone-breakpoint) {
   .about-page {
     .col-3 {
+      position: relative;
       padding: 3% 5%;
+    }
+
+    .col-3::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: -5px;
+      width: 10px;
+      height: 20px;
+      background-color:white;
     }
   }
 }
