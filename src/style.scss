@@ -13,8 +13,8 @@ $custom-ease: cubic-bezier(0.5, 0.0, 0.3, 1);
 
 // Media query breakpoints
 $phone-header: 320px;
-$tablet-header: 768px;
-$tablet-nav-medium: 1024px;
+$tablet-header: 770px;
+$tablet-nav-medium: 1025px;
 
 $phone-breakpoint: 750px;
 $tablet-breakpoint: 1200px;
@@ -272,10 +272,6 @@ body {
           }
         }
 
-      .hoverable-dropdown:hover .navbar-sub-menu.about-sub {
-        width: 140px;
-      }
-
       @media only screen and (max-width: $tablet-nav-medium) {
         .hoverable-dropdown:hover .navbar-sub-menu {
           top: 72px;
@@ -283,10 +279,6 @@ body {
           a {
             font-size: .8rem !important;
           }
-        }
-
-        .hoverable-dropdown:hover .navbar-sub-menu.about-sub {
-        width: 130px;
         }
       }
 
