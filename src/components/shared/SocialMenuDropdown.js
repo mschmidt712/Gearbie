@@ -10,22 +10,22 @@ const SocialMenuDropdown = ({ clearBoth }) => (
       <div className="mobile-social-dropdown mobile-menu-dropdown">
         <div>
           <ul>
-            <a href="htttp://www.twitter.com" target="new" onClick={clearBoth}>
+            <a href="https://twitter.com/kenzanmedia" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="twitter" className="dropdown-icon" />
               </li>
             </a>
-            <a href="htttp://www.linkedin.com" target="new" onClick={clearBoth}>
+            <a href="https://www.linkedin.com/company/kenzan-media" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="linkedin" className="dropdown-icon" />
               </li>
             </a>
-            <a href="htttp://www.github.com" target="new" onClick={clearBoth}>
+            <a href="https://www.github.com/kenzanlabs" target="new" onClick={clearBoth}>
               <li>
                 <FontAwesome name="github" className="dropdown-icon" />
               </li>
             </a>
-            <a href="htttp://www.facebook.com" target="new" onClick={clearBoth}>
+            <a href="https://www.facebook.com/kenzanmedia/" target="new" onClick={clearBoth}>
               <li className="last">
                 <FontAwesome name="facebook" className="dropdown-icon" />
               </li>
