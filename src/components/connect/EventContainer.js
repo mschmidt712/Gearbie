@@ -6,7 +6,11 @@ import constants from '../../constants';
  */
 function EventContainer(props) {
   return (
-    <div>
+    <div className="connect-page-event">
+      <h2
+        className="text-box-header"
+        dangerouslySetInnerHTML={constants.setInnerHtml(props.title)}
+      />
       <p
         className="text-box-content"
         dangerouslySetInnerHTML={constants.setInnerHtml(props.description)}
@@ -24,6 +28,10 @@ function EventContainer(props) {
 }
 
 EventContainer.propTypes = {
+/**
+ * The event title as a string.
+ */
+  title: PropTypes.string.isRequired,
 /**
  * The event description as a string.
  */
