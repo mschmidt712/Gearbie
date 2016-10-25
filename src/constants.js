@@ -10,19 +10,6 @@ function removeHtmlTags(text) {
 const constants = {
   // API Constants
   baseUrl: 'http://kenzanio.kenzan-dev.com/wp-json/wp/v2/',
-  carouselSettings: {
-    accessibility: true,
-    dots: true,
-    dotsClass: 'carousel-dots',
-    infinite: true,
-    speed: 500,
-    draggable: true,
-    nextArrow: <RightArrow />,
-    prevArrow: <LeftArrow />,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    swipe: true,
-  },
   postCategories: {
     openSource: 2,
     techRadar: 4,
