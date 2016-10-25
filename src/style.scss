@@ -736,7 +736,7 @@ a {
 @media(min-width: $phone-breakpoint) {
   .page-footer {
     height: 90px;
-    bottom: 0px;
+    bottom: -15px;
 
     .footer-text {
       margin-top: 40px;
