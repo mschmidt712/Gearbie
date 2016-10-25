@@ -65,10 +65,7 @@ class HomePage extends React.Component {
         </div>
         <div className="home-page-image" />
         <div className="page-container">
-          <h2
-            className="page-sub-header uppercase"
-            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.subHeader)}
-          />
+          <img className="wordmark" src="/assets/kenzan-logo-wm-only.png" alt="kenzan" />
           <h1 className="home-page-header uppercase">
             Make Next
             <span className="emphasis"> Possible </span>
