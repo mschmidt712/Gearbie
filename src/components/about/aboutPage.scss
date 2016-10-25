@@ -2,7 +2,7 @@
   position: relative;
   background-size: cover;
   padding: 10%;
-  height: 250px;
+  height: 200px;
 }
 
 @media(min-width: $phone-breakpoint) {
@@ -18,8 +18,8 @@
 }
 
 .about-page {
-  .page-description {
-    padding-right: 15%;
+  .slick-arrow {
+    display: none !important;
   }
 }
 

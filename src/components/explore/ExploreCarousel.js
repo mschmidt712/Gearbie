@@ -7,6 +7,8 @@ import constants from '../../constants';
 
 const settings = {
   accessibility: true,
+  adaptiveHeight: false,
+  arrows: false,
   dots: true,
   dotsClass: 'carousel-dots',
   infinite: true,

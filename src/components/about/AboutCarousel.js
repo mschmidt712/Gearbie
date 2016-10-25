@@ -1,9 +1,13 @@
 import React, { PropTypes } from 'react';
+import $ from 'jquery';
 import Slider from 'react-slick';
 import constants from '../../constants';
 
 function AboutCarousel(props) {
   let items = [];
+
+  const windowWidth = $(window).innerWidth();
+  const centerPadding = (windowWidth * 0.1).toString().concat('px');
 
   const settings = {
     accessibility: true,
@@ -16,7 +20,7 @@ function AboutCarousel(props) {
     slidesToScroll: 1,
     initialSlide: 2,
     centerMode: true,
-    centerPadding: '50px',
+    centerPadding: centerPadding,
     swipe: true,
   };
 
