@@ -52,3 +52,22 @@
     font-size: 4rem;
   }
 }
+
+.wordmark {
+  height: 15px;
+  display: block;
+  margin: 40px auto 20px;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .wordmark {
+    height: 25px;
+    margin: 60px auto 30px;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .wordmark {
+    height: 35px;
+  }
+}
