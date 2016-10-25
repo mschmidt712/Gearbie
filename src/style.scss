@@ -100,7 +100,7 @@ body {
   padding-top: 77px;
   padding-bottom: 65px;
   height: 100%;
-  background-color: $footer-gray;
+  // background-color: $footer-gray;
 }
 
 @media(min-width: $phone-breakpoint) {
@@ -735,8 +735,8 @@ a {
 
 @media(min-width: $phone-breakpoint) {
   .page-footer {
-    position: fixed;
     height: 90px;
+    bottom: 0px;
 
     .footer-text {
       margin-top: 40px;

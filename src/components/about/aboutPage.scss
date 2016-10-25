@@ -1,23 +1,8 @@
-
-//Explore Page Images
-.kenzan-about-image {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ), url('./assets/Kenzan_About_Image.jpg') no-repeat center center;
-}
-
-.learn-about-image {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ), url('./assets/Learn_About_Image.jpg') no-repeat center center;
-}
-
 .about-image-container {
   position: relative;
   background-size: cover;
   padding: 10%;
+  height: 250px;
 }
 
 @media(min-width: $phone-breakpoint) {
@@ -26,14 +11,13 @@
   }
 }
 
-@media(min-height: 900px) {
+@media(min-width: 1000px) {
   .about-image-container {
-    padding: 5%;
+    height: 200px;
   }
 }
 
 .about-page {
-  background-color: white;
   .page-description {
     padding-right: 15%;
   }
@@ -126,5 +110,16 @@
       white-space: nowrap;
       width: 100%;
     }
+  }
+}
+
+.about-carousel-container {
+  padding: 15px !important;
+  background-color: white;
+}
+
+.about-carousel-dots {
+  button {
+    background-color: $primary-gray !important;
   }
 }

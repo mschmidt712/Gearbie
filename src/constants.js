@@ -1,4 +1,7 @@
+import React from 'react';
 import DOMPurify from 'dompurify';
+import RightArrow from './components/explore/RightArrow';
+import LeftArrow from './components/explore/LeftArrow';
 
 function removeHtmlTags(text) {
   return text.replace(/(<\/?)\w+(>)/g, '');
@@ -7,12 +10,26 @@ function removeHtmlTags(text) {
 const constants = {
   // API Constants
   baseUrl: 'http://kenzanio.kenzan-dev.com/wp-json/wp/v2/',
+  carouselSettings: {
+    accessibility: true,
+    dots: true,
+    dotsClass: 'carousel-dots',
+    infinite: true,
+    speed: 500,
+    draggable: true,
+    nextArrow: <RightArrow />,
+    prevArrow: <LeftArrow />,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipe: true,
+  },
   postCategories: {
     openSource: 2,
     techRadar: 4,
     kenzanAbout: 5,
     learnAbout: 6,
     connect: 7,
+    aboutCarousel: 8,
   },
   getPostHeader: obj => (
     obj.title.rendered
