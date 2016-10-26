@@ -83,7 +83,7 @@ class BlogPage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/connect/"
+          link="/connect"
         />
       </div>);
   }
