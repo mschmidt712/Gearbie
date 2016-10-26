@@ -18,6 +18,12 @@
   }
 }
 
+@media(min-height: 800px) {
+  .about-image-container {
+    height: 300px;
+  }
+}
+
 .about-page {
   .slick-arrow {
     display: none !important;
