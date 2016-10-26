@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import $ from 'jquery';
+import Slider from 'react-slick';
 import classNames from 'classnames';
 import constants from '../../constants';
+import AboutCarousel from './AboutCarousel';
 import TextBoxContainer from './TextBoxContainer';
 import Footer from '../shared/FooterComponent';
 
@@ -14,30 +16,28 @@ class KenzanAboutPage extends React.Component {
   constructor() {
     super();
     this.pageQuery = 'pages?slug=kenzan-about';
-    this.postQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
+    this.carouselQuery = 'posts?categories='.concat(constants.postCategories.aboutCarousel);
+    this.textBoxQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
     this.state = {
       loadingHeading: true,
       loadingPosts: true,
-      header: '',
-      description: '',
       footerText: '',
+      images: [],
+      carouselItems: [],
       textBoxItems: [],
     };
+    this.buildCarouselContainer = this.buildCarouselContainer.bind(this);
+    this.setCarouselImages = this.setCarouselImages.bind(this);
     this.buildTextBoxContainer = this.buildTextBoxContainer.bind(this);
   }
 
   componentWillMount() {
     this.pageRequest = $.get(constants.baseUrl + this.pageQuery, (pages) => {
       const page = pages[0];
-
-      const pageHeader = page.acf.header;
-      const pageDescription = page.acf.description;
       const pageFooterText = page.acf.footer_text;
 
       this.setState({
         loadingHeading: false,
-        header: pageHeader,
-        description: pageDescription,
         footerText: pageFooterText,
       });
     })
@@ -48,7 +48,18 @@ class KenzanAboutPage extends React.Component {
       });
     });
 
-    this.postRequest = $.get(constants.baseUrl + this.postQuery, (results) => {
+    this.carouselRequest = $.get(constants.baseUrl + this.carouselQuery, (results) => {
+      this.buildCarouselContainer(results);
+      this.setCarouselImages();
+    })
+    .fail((err) => {
+      this.props.errorHandler(err);
+      this.setState({
+        loadingPosts: false,
+      });
+    });
+
+    this.textBoxRequest = $.get(constants.baseUrl + this.textBoxQuery, (results) => {
       this.buildTextBoxContainer(results);
     })
     .fail((err) => {
@@ -61,7 +72,42 @@ class KenzanAboutPage extends React.Component {
 
   componentWillUnmount() {
     this.pageRequest.abort();
-    this.postRequest.abort();
+    this.carouselRequest.abort();
+    this.textBoxRequest.abort();
+  }
+
+  setCarouselImages() {
+    this.state.images.forEach((image, index) => {
+      $('.about-carousel-'.concat(index))
+        .css('background',
+          'linear-gradient(rgba(100, 100, 100, 0.8),\
+           rgba(100, 100, 100, 0.8)), \
+           url(' + image.sizes.large + ') \
+           no-repeat center center')
+        .css('background-size', 'cover');
+    });
+  }
+
+  buildCarouselContainer(results) {
+    const resultsData = [];
+    const resultsImages = [];
+
+    results.forEach((result) => {
+      const obj = {};
+      obj.header = result.acf.header;
+      obj.description = result.acf.description;
+
+      resultsData.push(obj);
+      resultsImages.push(result.acf.background_image);
+    });
+
+    const resultsCarouselItems = <AboutCarousel data={resultsData} />;
+
+    this.setState({
+      loadingPosts: false,
+      carouselItems: resultsCarouselItems,
+      images: resultsImages,
+    });
   }
 
   buildTextBoxContainer(results) {
@@ -105,16 +151,7 @@ class KenzanAboutPage extends React.Component {
         <div className={loadingClass}>
           <img src="/assets/loader.gif" alt="Loading" />
         </div>
-        <div className="about-image-container kenzan-about-image">
-          <h1
-            className="page-header"
-            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
-          />
-          <p
-            className="page-description"
-            dangerouslySetInnerHTML={constants.setInnerHtml(this.state.description)}
-          />
-        </div>
+        {this.state.carouselItems}
         <div className="about-content-container">
           {this.state.textBoxItems}
         </div>

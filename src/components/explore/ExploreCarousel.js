@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import Slider from 'react-slick';
 import $ from 'jquery';
-import constants from '../../constants';
 import RightArrow from './RightArrow';
 import LeftArrow from './LeftArrow';
+import constants from '../../constants';
 
 const settings = {
   accessibility: true,
+  adaptiveHeight: false,
+  arrows: false,
   dots: true,
   dotsClass: 'carousel-dots',
   infinite: true,

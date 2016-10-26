@@ -99,13 +99,13 @@ body {
   margin: 0;
   padding-top: 77px;
   padding-bottom: 65px;
-  height: 100%;
-  background-color: $footer-gray;
+  min-height: 100%;
 }
 
 @media(min-width: $phone-breakpoint) {
   body {
     font-size: 150%;
+    height: 100%;
   }
 }
 
@@ -239,7 +239,7 @@ body {
       .kenzan-logo {
         align-self: center;
         height: 80px;
-        margin: 5px 25px 5px 20px;
+        margin: 5px 40px 5px 20px;
       }
 
       .hoverable-dropdown {
@@ -295,7 +295,7 @@ body {
           display: flex;
           text-decoration: none;
           color: $font-gray;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           align-items: center;
           padding: 0 15px 0 15px;
 
@@ -356,8 +356,8 @@ body {
 
         img {
           margin: 0 10px 0 10px;
-          height: 45px;
-          width: 45px;
+          height: 40px;
+          width: 40px;
           filter: opacity(50%);
           transition: filter .3s $custom-ease;
 
@@ -741,8 +741,8 @@ a {
 
 @media(min-width: $phone-breakpoint) {
   .page-footer {
-    position: fixed;
     height: 90px;
+    bottom: -15px;
 
     .footer-text {
       margin-top: 40px;

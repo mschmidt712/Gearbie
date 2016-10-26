@@ -1,4 +1,7 @@
+import React from 'react';
 import DOMPurify from 'dompurify';
+import RightArrow from './components/explore/RightArrow';
+import LeftArrow from './components/explore/LeftArrow';
 
 function removeHtmlTags(text) {
   return text.replace(/(<\/?)\w+(>)/g, '');
@@ -13,6 +16,7 @@ const constants = {
     kenzanAbout: 5,
     learnAbout: 6,
     connect: 7,
+    aboutCarousel: 8,
   },
   getPostHeader: obj => (
     obj.title.rendered
