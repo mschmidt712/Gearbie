@@ -65,7 +65,7 @@ class HeaderComponent extends React.Component {
   render() {
     let exploreActiveClass = '';
 
-    if (this.props.currentPath === '/open-source/' || this.props.currentPath === '/tech-radar/') {
+    if (this.props.currentPath === '/open-source' || this.props.currentPath === '/tech-radar') {
       exploreActiveClass = classNames({
         'active-nav': true,
       });
@@ -106,17 +106,17 @@ class HeaderComponent extends React.Component {
                   Explore
                 </button>
                 <div className="navbar-sub-menu">
-                  <Link to="/open-source/" onClick={this.props.clickEvent}>
+                  <Link to="/open-source" onClick={this.props.clickEvent}>
                     Open Source
                   </Link>
-                  <Link to="/tech-radar/" onClick={this.props.clickEvent}>
+                  <Link to="/tech-radar" onClick={this.props.clickEvent}>
                     Tech Radar
                   </Link>
                 </div>
               </li>
               <li>
                 <Link
-                  to="/kenzan/"
+                  to="/kenzan"
                   onClick={this.props.clickEvent}
                   activeClassName="active-nav"
                 >
@@ -125,7 +125,7 @@ class HeaderComponent extends React.Component {
               </li>
               <li>
                 <Link
-                  to="/blog/"
+                  to="/blog"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                 >
@@ -134,7 +134,7 @@ class HeaderComponent extends React.Component {
               </li>
               <li>
                 <Link
-                  to="/connect/"
+                  to="/connect"
                   activeClassName="active-nav"
                   onClick={this.props.clickEvent}
                 >

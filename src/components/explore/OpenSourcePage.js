@@ -114,7 +114,7 @@ class OpenSourcePage extends React.Component {
         <Footer
           display
           text={this.state.footerText}
-          link="/tech-radar/"
+          link="/tech-radar"
         />
       </div>);
   }
