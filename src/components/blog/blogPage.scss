@@ -2,8 +2,10 @@
   margin: auto;
 }
 
-.blog-page.page {
-  display: initial;
+@media(min-height: 800px) {
+  .blog-page.page {
+    display: block;
+  }
 }
 
 .blog-page-container {
@@ -31,6 +33,6 @@
   .blog-page-container {
     max-width: 1200px;
     margin: auto;
-    padding: 0px;
+    padding: 50px;
   }
 }
