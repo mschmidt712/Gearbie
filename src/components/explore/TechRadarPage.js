@@ -33,7 +33,7 @@ class TechRadarPage extends React.Component {
       results.forEach((result) => {
         const obj = {};
         obj.header = constants.getPostHeader(result);
-        obj.text = constants.getPostText(result);
+        obj.text = result.content.rendered;
         resultData.push(obj);
       });
 
