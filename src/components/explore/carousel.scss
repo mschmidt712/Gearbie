@@ -1,8 +1,11 @@
 .slick-slide {
   height: auto;
 
-  a {
-    color: $primary-blue;
+  .text-box {
+    a {
+      color: $primary-blue;
+      cursor: pointer;
+    }
   }
 }
 
