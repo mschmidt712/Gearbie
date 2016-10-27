@@ -78,17 +78,17 @@ test('spinner: should not show spinner when heading and posts loading false', (t
   t.true(spinner.is('.loading-disabled'));
 });
 
-test('Should: populate header and description from state', (t) => {
-  KenzanAboutComponent.setState({
-    header: mockState.header,
-    description: mockState.description,
-  });
+// test('Should: populate header and description from state', (t) => {
+//   KenzanAboutComponent.setState({
+//     header: mockState.header,
+//     description: mockState.description,
+//   });
 
-  const header = KenzanAboutComponent.find('.page-header');
-  const description = KenzanAboutComponent.find('.page-description');
-  t.is(header.render().text(), mockState.header);
-  t.is(description.render().text(), mockState.description);
-});
+//   const header = KenzanAboutComponent.find('.page-header');
+//   const description = KenzanAboutComponent.find('.page-description');
+//   t.is(header.render().text(), mockState.header);
+//   t.is(description.render().text(), mockState.description);
+// });
 
 test('buildTextBoxContainer: should create text box item in the state for each result', (t) => {
   KenzanAboutComponent.instance().buildTextBoxContainer(mockResults);

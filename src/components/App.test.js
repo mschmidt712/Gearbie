@@ -86,14 +86,14 @@ test('setLocation: should navigate to next page when passed next from home page'
 });
 
 test('setLocation: should not navigate to next page when passed next from connect page', (t) => {
-  AppComponent.instance().props.location.pathname = '/connect/';
+  AppComponent.instance().props.location.pathname = '/connect';
   AppComponent.instance().setLocation('next');
 
   t.false(browserHistoryStub.called);
 });
 
 test('setLocation: should navigate to last page when passed next from connect page', (t) => {
-  AppComponent.instance().props.location.pathname = '/connect/';
+  AppComponent.instance().props.location.pathname = '/connect';
   AppComponent.instance().setLocation('last');
 
   t.true(browserHistoryStub.called);
