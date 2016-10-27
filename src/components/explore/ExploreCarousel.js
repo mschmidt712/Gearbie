@@ -34,7 +34,10 @@ class ExploreCarousel extends React.Component {
     this.items = props.data.map((obj, index) => (
       <div key={index}>
         <div className="text-box">
-          <h3 className="text-box-header uppercase">{obj.header}</h3>
+          <h3
+            className="text-box-header uppercase"
+            dangerouslySetInnerHTML={constants.setInnerHtml(obj.header)}
+          />
           <p
             className="text-box-content"
             dangerouslySetInnerHTML={constants.setInnerHtml(obj.text)}

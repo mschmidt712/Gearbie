@@ -46,7 +46,7 @@ class PageNotFound extends React.Component {
     return (
       <div className="page-container page-not-found-container">
         <img
-          src="/assets/Skull_and_Crossbones.svg"
+          src="/assets/Skull_and_Crossbones.png"
           role="presentation"
           onClick={this.toggleJokeVisibility}
           className="skull-and-crossbones image-rotate"
