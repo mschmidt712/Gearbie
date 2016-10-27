@@ -17,7 +17,6 @@ class HomePage extends React.Component {
     this.pageQuery = 'pages?slug=home';
     this.state = {
       loadingHeading: true,
-      subHeader: '',
       description: '',
       footerText: '',
     };
@@ -28,13 +27,11 @@ class HomePage extends React.Component {
     .done((results) => {
       const result = results[0];
 
-      const pageSubHeader = result.acf.home_subheader;
       const pageDescription = result.acf.description;
       const pageFooter = result.acf.footer_text;
 
       this.setState({
         loadingHeading: false,
-        subHeader: pageSubHeader,
         description: pageDescription,
         footerText: pageFooter,
       });

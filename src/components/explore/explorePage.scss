@@ -24,11 +24,13 @@
       }
     }
 
-    .header-container {
-      position: absolute;
-      width: 50%;
-      top: calc(50% - 100px);
-      padding-right: 150px;
+    .flex-container {
+      display: flex;
+      height: 80%;
+      min-height: 80%;
+      flex-direction: column;
+      justify-content: center;
+      -ms-flex-pack: center;
     }
   }
 }

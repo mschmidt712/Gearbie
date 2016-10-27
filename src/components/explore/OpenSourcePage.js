@@ -96,7 +96,7 @@ class OpenSourcePage extends React.Component {
         <div className="open-source-image image-container" />
         <div className="explore-page-container">
           <div className="col-2">
-            <div className="header-container">
+            <div className="flex-container">
               <h1
                 className="page-header"
                 dangerouslySetInnerHTML={constants.setInnerHtml(this.state.header)}
@@ -108,7 +108,9 @@ class OpenSourcePage extends React.Component {
             </div>
           </div>
           <div className="col-2 text-box-container carosel-container">
-            {this.state.posts}
+            <div className="flex-container">
+              {this.state.posts}
+            </div>
           </div>
         </div>
         <Footer
