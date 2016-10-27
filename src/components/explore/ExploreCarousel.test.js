@@ -28,6 +28,6 @@ test('Should: set the text box header and content from the data passed in', (t) 
   const textBox1Header = textBoxes.children('.text-box-header').first();
   const textBox1Content = textBoxes.children('p').first();
 
-  t.is(textBox1Header.text(), mockData[0].header);
+  t.is(textBox1Header.render().text(), mockData[0].header);
   t.is(textBox1Content.render().text(), mockData[0].text);
 });
