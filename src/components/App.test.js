@@ -58,7 +58,14 @@ test('render: should enable transitions when scrolling is enabled', (t) => {
 test('navBarClick: should set animation direction down on navbar click', (t) => {
   AppComponent.instance().navBarClick({ type: 'click' });
 
-  t.true(AppComponent.instance().scrollDown);
+  t.false(AppComponent.state().scrollDown);
+});
+
+// navBarClick Function
+test('footerClick: should set animation direction up on navbar click', (t) => {
+  AppComponent.instance().footerClick({ type: 'click' });
+
+  t.true(AppComponent.state().scrollDown);
 });
 
 // setLocation Function

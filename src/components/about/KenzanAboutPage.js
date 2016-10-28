@@ -159,6 +159,7 @@ class KenzanAboutPage extends React.Component {
           display
           text={this.state.footerText}
           link="/blog"
+          footerClick={this.props.footerClickEvent}
         />
       </div>
     );
@@ -170,6 +171,10 @@ KenzanAboutPage.propTypes = {
    * The error handler for ajax calls
    */
   errorHandler: PropTypes.func,
+  /**
+   * A footer click event to set scroll direction
+   */
+  footerClickEvent: PropTypes.func,
 };
 
 export default KenzanAboutPage;

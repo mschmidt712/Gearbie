@@ -7,12 +7,12 @@ import constants from '../../constants';
  * Documentation not working because of bug with React-DocGen and conditionals.
  * https://github.com/reactjs/react-docgen/issues/107
  */
-const Footer = ({ display, text, link }) => {
+const Footer = ({ display, text, link, footerClick }) => {
   let footer = '';
 
   if (display) {
     footer = (<div className="page-footer animation shadow">
-      <Link to={link} >
+      <Link to={link} onClick={footerClick}>>
         <div className="arrow-link shadow">
           <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
         </div>

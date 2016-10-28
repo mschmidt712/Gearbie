@@ -22,6 +22,7 @@ class App extends React.Component {
     this.scrollDown = false;
     this.scrollThreshold = 1500; // ms
     this.state = {
+      scrollDown: true,
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/blog', '/connect'],
       scrollEnabled: true,
     };
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.render = this.render.bind(this);
     this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
+    this.footerClick = this.footerClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
   }
@@ -62,12 +64,16 @@ class App extends React.Component {
       if (direction === 'next' && currentPage === '/connect') {
         return;
       } else if (direction === 'next' && location === currentPage) {
-        this.scrollDown = false;
+        this.setState({
+          scrollDown: false,
+        });
         browserHistory.push(locations[index + 1]);
       } else if (direction !== 'next' && currentPage === '/') {
         return;
       } else if (direction !== 'next' && location === currentPage) {
-        this.scrollDown = true;
+        this.setState({
+          scrollDown: true,
+        });
         browserHistory.push(locations[index - 1]);
       }
     });
@@ -107,10 +113,27 @@ class App extends React.Component {
    */
   navBarClick(ev) {
     if (ev.type === 'click') {
-      this.scrollDown = true;
+      this.setState({
+        scrollDown: false,
+      });
     }
   }
 
+  /**
+   * A helper function that communicates footer clicks from child routes to the app component.
+   * App component animations a down up for footer clicks.
+   */
+  footerClick(ev) {
+    if (ev.type === 'click') {
+      this.setState({
+        scrollDown: true,
+      });
+    }
+  }
+
+  /**
+   * A function that generates toastr boxes on ajax errors.
+   */
   addAlert(err) {
     const errCode = err.status;
     const errText = constants.statusCodes(errCode);
@@ -129,7 +152,7 @@ class App extends React.Component {
     const path = this.props.location.pathname;
     const segment = path.split('/')[1] || '';
     const newChildren = React.Children.map(this.props.children, child => (
-      React.cloneElement(child, { key: segment, errorHandler: this.addAlert })
+      React.cloneElement(child, { key: segment, errorHandler: this.addAlert, footerClickEvent: this.footerClick })
     ));
     let app = '';
 
@@ -143,7 +166,7 @@ class App extends React.Component {
         <HeaderComponent clickEvent={this.navBarClick} />
         {newChildren}
       </div>);
-    } else if (this.scrollDown) {
+    } else if (this.state.scrollDown) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
