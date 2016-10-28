@@ -93,7 +93,7 @@ class ExploreCarousel extends React.Component {
     if (windowWidth < 1200) {
       arrowHeight = this.maxHeight + 35;
     } else if (windowWidth >= 1200) {
-      arrowHeight = 84;
+      arrowHeight = 74;
     }
 
     const arrowContainer = $('.arrow-container');

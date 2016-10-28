@@ -41,7 +41,9 @@
 
 @media(min-width: $phone-breakpoint) {
   .home-page-description {
-    padding: 20px 0px 20px;
+    max-width: 800px;
+    margin: 0px auto;
+    padding: 0px 0px 20px;
     line-height: 2.25rem;
     letter-spacing: 0.05rem;
     font-size: 1.375rem;

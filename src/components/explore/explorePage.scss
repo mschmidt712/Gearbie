@@ -66,9 +66,11 @@
   }
 }
 
-.slick-slide {
-  @extend .text-box;
-  padding: 0 !important;
+.explore-page-container {
+  .slick-slide {
+    @extend .text-box;
+    padding: 0 !important;
+  }
 }
 
 //Explore Page Images
