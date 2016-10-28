@@ -5,6 +5,24 @@
   height: 200px;
 }
 
+.about-carousel-container {
+  position: relative;
+
+  .about-carousel-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .page-header {
+      margin: 0 0 5px 0;
+    }
+    .page-description {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
 @media(min-width: $phone-breakpoint) {
   .about-image-container {
     padding: 1% 5%;

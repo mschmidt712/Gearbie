@@ -20,8 +20,8 @@ function AboutCarousel(props) {
     slidesToScroll: 1,
     initialSlide: 2,
     centerMode: true,
-    centerPadding: centerPadding,
     swipe: true,
+    centerPadding,
   };
 
   items = props.data.map((obj, index) => {
@@ -31,14 +31,16 @@ function AboutCarousel(props) {
     return (
       <div key={index} className="about-carousel-container">
         <div className={classNames}>
-          <h1
-            className="page-header"
-            dangerouslySetInnerHTML={constants.setInnerHtml(obj.header)}
-          />
-          <p
-            className="page-description"
-            dangerouslySetInnerHTML={constants.setInnerHtml(obj.description)}
-          />
+          <div className="about-carousel-text">
+            <h1
+              className="page-header"
+              dangerouslySetInnerHTML={constants.setInnerHtml(obj.header)}
+            />
+            <p
+              className="page-description"
+              dangerouslySetInnerHTML={constants.setInnerHtml(obj.description)}
+            />
+          </div>
         </div>
       </div>);
   });
