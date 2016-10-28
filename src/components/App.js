@@ -22,7 +22,6 @@ class App extends React.Component {
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/blog', '/connect'],
       mobile: false,
       scrollEnabled: true,
-      scrollThreshold: 60,
     };
 
     this.render = this.render.bind(this);
@@ -45,6 +44,9 @@ class App extends React.Component {
     this.watchWindowResize();
   }
 
+  componentDidUpdate() {
+    this.scrollDown = false;
+  }
   /**
    * Handles the routing for scrolling navigation.
    * Uses and array of page routes, the current route, and the routing direction to change pages.
@@ -65,8 +67,6 @@ class App extends React.Component {
         browserHistory.push(locations[index - 1]);
       }
     });
-
-    this.delta = 0;
   }
 
   /**
@@ -95,13 +95,32 @@ class App extends React.Component {
    * scrollEnabled: true
    */
   initiateScrollNav() {
+    let timeStamp;
+    let counter = 0;
     this.setState({
       mobile: false,
       scrollEnabled: true,
     });
 
     $(window).on({
-      'DOMMouseScroll mousewheel': this.elementScroll,
+      'DOMMouseScroll mousewheel': (ev) => {
+        ev.preventDefault();
+
+        const timeNow = new Date().getTime();
+
+        if (timeNow - timeStamp < 500) {
+          timeStamp = timeNow;
+        } else if (counter === 0) {
+          counter += 1;
+          return;
+        } else if (counter >= 100) {
+          counter = 0;
+        } else {
+          timeStamp = timeNow;
+          this.elementScroll(ev);
+          counter = 0;
+        }
+      },
     });
     this.watchWindowResize();
   }
@@ -136,22 +155,30 @@ class App extends React.Component {
    * If threshold is met, setLocation function is called.
    */
   elementScroll(e) {
-    if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) {
-      this.delta -= 1;
+    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+      this.scrollTriggered = true;
+      this.scrollDown = true;
+      this.setLocation('last');
+    } else if (e.originalEvent.wheelDelta < 0 || e.originalEvent.detail > 0) {
+      this.scrollTriggered = true;
+      this.setLocation('next');
+    }
+  }
 
-      if (Math.abs(this.delta) >= this.state.scrollThreshold) {
+  evaluateScroll(e) {
+    if (e.originalEvent.wheelDelta > 0 && !this.scrollTriggered) {
+      if (e.originalEvent.wheelDelta >= this.state.scrollThreshold) {
+        console.log('in scroll success function');
+        this.scrollTriggered = true;
         this.scrollDown = true;
         this.setLocation('last');
       }
-    } else {
-      this.delta += 1;
-
-      if (this.delta >= this.state.scrollThreshold) {
+    } else if (e.originalEvent.wheelDelta < 0 && !this.scrollTriggered) {
+      if (Math.abs(e.originalEvent.wheelDelta) >= this.state.scrollThreshold) {
+        this.scrollTriggered = true;
         this.setLocation('next');
       }
     }
-
-    return false;
   }
 
   addAlert(err) {
@@ -220,7 +247,6 @@ class App extends React.Component {
       </div>);
     }
 
-    this.scrollDown = false;
     return (app);
   }
 }
