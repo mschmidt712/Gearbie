@@ -37,18 +37,18 @@ test('render: should render the app component in a div with default state', (t) 
 });
 
 // render Function
-test('render: should disable transitions when mobile state true', (t) => {
+test('render: should disable transitions when scrolling not enabled', (t) => {
   AppComponent.setState({
-    mobile: true,
+    scrollEnabled: false,
   });
 
   t.notRegex(AppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
 });
 
 // render Function
-test('render: should enable transitions when mobile state false', (t) => {
+test('render: should enable transitions when scrolling is enabled', (t) => {
   AppComponent.setState({
-    mobile: false,
+    scrollEnabled: true,
   });
 
   t.regex(AppComponent.text(), new RegExp('ReactCSSTransitionGroup'));

@@ -20,10 +20,9 @@ class App extends React.Component {
     super();
     this.delta = 0;
     this.scrollDown = false;
-    this.scrollThreshold = 1000; // ms
+    this.scrollThreshold = 1500; // ms
     this.state = {
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/blog', '/connect'],
-      mobile: false,
       scrollEnabled: true,
     };
 
@@ -31,22 +30,17 @@ class App extends React.Component {
     this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
-    this.checkSafari = this.checkSafari.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
   }
 
   componentWillMount() {
-    this.checkSafari();
-
     if (window.innerWidth > 750) {
       this.setState({
-        mobile: false,
         scrollEnabled: true,
       });
       AppScrollObj.initiateScrollNav(this.setLocation, this.scrollThreshold);
     } else {
       this.setState({
-        mobile: true,
         scrollEnabled: false,
       });
       AppScrollObj.disableScrollNav();
@@ -79,13 +73,6 @@ class App extends React.Component {
     });
   }
 
-  checkSafari() {
-    const isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-    if (isSafari) {
-      this.scrollThreshold = 1500;
-    }
-  }
-
   /**
    * Watches for window resizing to disable scrolling navigation on mobile sized devices.
    */
@@ -99,7 +86,6 @@ class App extends React.Component {
           AppScrollObj.initiateScrollNav(this.setLocation);
 
           this.setState({
-            mobile: false,
             scrollEnabled: true,
           });
         } else if (window.innerWidth > 750 && this.state.scrollEnabled) {
@@ -108,7 +94,6 @@ class App extends React.Component {
           AppScrollObj.disableScrollNav();
 
           this.setState({
-            mobile: true,
             scrollEnabled: false,
           });
         }
@@ -148,7 +133,7 @@ class App extends React.Component {
     ));
     let app = '';
 
-    if (this.state.mobile) {
+    if (!this.state.scrollEnabled) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
@@ -158,7 +143,7 @@ class App extends React.Component {
         <HeaderComponent clickEvent={this.navBarClick} />
         {newChildren}
       </div>);
-    } else if (!this.state.mobile && this.scrollDown) {
+    } else if (this.scrollDown) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
