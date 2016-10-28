@@ -61,22 +61,6 @@ test('navBarClick: should set animation direction down on navbar click', (t) => 
   t.true(AppComponent.instance().scrollDown);
 });
 
-// initiateScrollNav Function
-test('initiateScrollNav: should update mobile and scrollEnabled in state', (t) => {
-  AppComponent.instance().initiateScrollNav();
-
-  t.true(AppComponent.instance().state.scrollEnabled);
-  t.false(AppComponent.instance().state.mobile);
-});
-
-// disableScrollNav Function
-test('disableScrollNav: should update mobile and scrollEnabled in state', (t) => {
-  AppComponent.instance().disableScrollNav();
-
-  t.false(AppComponent.instance().state.scrollEnabled);
-  t.true(AppComponent.instance().state.mobile);
-});
-
 // setLocation Function
 test('setLocation: should navigate to next page when passed next from home page', (t) => {
   AppComponent.instance().props.location.pathname = '/';

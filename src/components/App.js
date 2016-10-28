@@ -20,6 +20,7 @@ class App extends React.Component {
     super();
     this.delta = 0;
     this.scrollDown = false;
+    this.scrollThreshold = 1000; // ms
     this.state = {
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/blog', '/connect'],
       mobile: false,
@@ -30,16 +31,19 @@ class App extends React.Component {
     this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
+    this.checkSafari = this.checkSafari.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
   }
 
   componentWillMount() {
+    this.checkSafari();
+
     if (window.innerWidth > 750) {
       this.setState({
         mobile: false,
         scrollEnabled: true,
       });
-      AppScrollObj.initiateScrollNav(this.setLocation);
+      AppScrollObj.initiateScrollNav(this.setLocation, this.scrollThreshold);
     } else {
       this.setState({
         mobile: true,
@@ -73,6 +77,13 @@ class App extends React.Component {
         browserHistory.push(locations[index - 1]);
       }
     });
+  }
+
+  checkSafari() {
+    const isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    if (isSafari) {
+      this.scrollThreshold = 1500;
+    }
   }
 
   /**

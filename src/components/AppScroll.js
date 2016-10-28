@@ -6,28 +6,44 @@
      * mobile: false
      * scrollEnabled: true
      */
-    initiateScrollNav(changeLocation) {
+    initiateScrollNav(changeLocation, scrollThreshold) {
       let timeStamp;
       let counter = 0;
 
       $(window).on({
         'DOMMouseScroll mousewheel': (ev) => {
           ev.preventDefault();
-          const timeNow = new Date().getTime();
-
-          if (timeNow - timeStamp < 500) {
-            timeStamp = timeNow;
-          } else if (counter === 0) {
-            counter += 1;
-          } else if (counter >= 100) {
-            counter = 0;
-          } else {
-            timeStamp = timeNow;
-            counter = 0;
-            this.elementScroll(ev, changeLocation);
-          }
+          [counter, timeStamp] = this.handleScrollEvent(
+              timeStamp,
+              counter,
+              ev,
+              changeLocation,
+              scrollThreshold);
         },
       });
+    }
+
+    handleScrollEvent(
+      timeStamp,
+      counter,
+      ev,
+      changeLocation,
+      scrollThreshold) {
+      const timeNow = new Date().getTime();
+      let calcTimestamp = timeStamp;
+      let calcCounter = counter;
+
+      if (timeNow - timeStamp < scrollThreshold) {
+        calcCounter += 1;
+      } else if (counter === 0) {
+        calcCounter += 1;
+      } else {
+        calcTimestamp = timeNow;
+        calcCounter = 0;
+        this.elementScroll(ev, changeLocation);
+      }
+
+      return [calcCounter, calcTimestamp];
     }
 
     /**
@@ -41,9 +57,11 @@
 
     /**
      * Watching scroll events and determines if scroll event meets scroll threshold
-     * If threshold is met, setLocation function is called.
+     * If threshold is met, changeLocation function is called.
      */
     elementScroll(e, changeLocation) {
+      this.foobar = 0;
+
       if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
         changeLocation('last');
       } else if (e.originalEvent.wheelDelta < 0 || e.originalEvent.detail > 0) {
