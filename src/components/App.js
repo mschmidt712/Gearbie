@@ -5,7 +5,9 @@ import { ToastContainer, ToastMessage } from 'react-toastr';
 import $ from 'jquery';
 import HeaderComponent from './shared/HeaderComponent';
 import constants from '../constants';
+import AppScroll from './AppScroll';
 
+const AppScrollObj = new AppScroll();
 const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 /**
@@ -29,24 +31,26 @@ class App extends React.Component {
     this.navBarClick = this.navBarClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
-    this.initiateScrollNav = this.initiateScrollNav.bind(this);
-    this.disableScrollNav = this.disableScrollNav.bind(this);
-    this.elementScroll = this.elementScroll.bind(this);
   }
 
   componentWillMount() {
     if (window.innerWidth > 750) {
-      this.initiateScrollNav();
+      this.setState({
+        mobile: false,
+        scrollEnabled: true,
+      });
+      AppScrollObj.initiateScrollNav(this.setLocation);
     } else {
-      this.disableScrollNav();
+      this.setState({
+        mobile: true,
+        scrollEnabled: false,
+      });
+      AppScrollObj.disableScrollNav();
     }
 
     this.watchWindowResize();
   }
 
-  componentDidUpdate() {
-    this.scrollDown = false;
-  }
   /**
    * Handles the routing for scrolling navigation.
    * Uses and array of page routes, the current route, and the routing direction to change pages.
@@ -60,10 +64,12 @@ class App extends React.Component {
       if (direction === 'next' && currentPage === '/connect') {
         return;
       } else if (direction === 'next' && location === currentPage) {
+        this.scrollDown = false;
         browserHistory.push(locations[index + 1]);
       } else if (direction !== 'next' && currentPage === '/') {
         return;
       } else if (direction !== 'next' && location === currentPage) {
+        this.scrollDown = true;
         browserHistory.push(locations[index - 1]);
       }
     });
@@ -79,65 +85,24 @@ class App extends React.Component {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (window.innerWidth > 750 && !this.state.scrollEnabled) {
-          this.initiateScrollNav();
+          AppScrollObj.initiateScrollNav(this.setLocation);
+
+          this.setState({
+            mobile: false,
+            scrollEnabled: true,
+          });
         } else if (window.innerWidth > 750 && this.state.scrollEnabled) {
           return;
         } else if (window.innerWidth < 750) {
-          this.disableScrollNav();
+          AppScrollObj.disableScrollNav();
+
+          this.setState({
+            mobile: true,
+            scrollEnabled: false,
+          });
         }
       }, 250);
     });
-  }
-
-  /**
-   * Enables scrolling navtigation by changing state properties
-   * mobile: false
-   * scrollEnabled: true
-   */
-  initiateScrollNav() {
-    let timeStamp;
-    let counter = 0;
-    this.setState({
-      mobile: false,
-      scrollEnabled: true,
-    });
-
-    $(window).on({
-      'DOMMouseScroll mousewheel': (ev) => {
-        ev.preventDefault();
-
-        const timeNow = new Date().getTime();
-
-        if (timeNow - timeStamp < 500) {
-          timeStamp = timeNow;
-        } else if (counter === 0) {
-          counter += 1;
-          return;
-        } else if (counter >= 100) {
-          counter = 0;
-        } else {
-          timeStamp = timeNow;
-          this.elementScroll(ev);
-          counter = 0;
-        }
-      },
-    });
-    this.watchWindowResize();
-  }
-
-  /**
-   * Disables scrolling navtigation by changing state properties
-   * mobile: true
-   * scrollEnabled: false
-   */
-  disableScrollNav() {
-    this.setState({
-      mobile: true,
-      scrollEnabled: false,
-    });
-
-    $(window).off('DOMMouseScroll mousewheel');
-    this.watchWindowResize();
   }
 
   /**
@@ -147,37 +112,6 @@ class App extends React.Component {
   navBarClick(ev) {
     if (ev.type === 'click') {
       this.scrollDown = true;
-    }
-  }
-
-  /**
-   * Watching scroll events and determines if scroll event meets scroll threshold
-   * If threshold is met, setLocation function is called.
-   */
-  elementScroll(e) {
-    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-      this.scrollTriggered = true;
-      this.scrollDown = true;
-      this.setLocation('last');
-    } else if (e.originalEvent.wheelDelta < 0 || e.originalEvent.detail > 0) {
-      this.scrollTriggered = true;
-      this.setLocation('next');
-    }
-  }
-
-  evaluateScroll(e) {
-    if (e.originalEvent.wheelDelta > 0 && !this.scrollTriggered) {
-      if (e.originalEvent.wheelDelta >= this.state.scrollThreshold) {
-        console.log('in scroll success function');
-        this.scrollTriggered = true;
-        this.scrollDown = true;
-        this.setLocation('last');
-      }
-    } else if (e.originalEvent.wheelDelta < 0 && !this.scrollTriggered) {
-      if (Math.abs(e.originalEvent.wheelDelta) >= this.state.scrollThreshold) {
-        this.scrollTriggered = true;
-        this.setLocation('next');
-      }
     }
   }
 
