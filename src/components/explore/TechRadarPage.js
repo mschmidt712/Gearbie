@@ -114,6 +114,7 @@ class TechRadarPage extends React.Component {
           display
           text={this.state.footerText}
           link="/kenzan"
+          footerClick={this.props.footerClickEvent}
         />
       </div>
     );
@@ -125,6 +126,10 @@ TechRadarPage.propTypes = {
    * The error handler for ajax calls
    */
   errorHandler: PropTypes.func,
+  /**
+   * A footer click event to set scroll direction
+   */
+  footerClickEvent: PropTypes.func,
 };
 
 

@@ -20,33 +20,29 @@ class App extends React.Component {
     super();
     this.delta = 0;
     this.scrollDown = false;
-    this.scrollThreshold = 1000; // ms
+    this.scrollThreshold = 1500; // ms
     this.state = {
+      scrollDown: true,
       locations: ['/', '/open-source', '/tech-radar', '/kenzan', '/blog', '/connect'],
-      mobile: false,
       scrollEnabled: true,
     };
 
     this.render = this.render.bind(this);
     this.addAlert = this.addAlert.bind(this);
     this.navBarClick = this.navBarClick.bind(this);
+    this.footerClick = this.footerClick.bind(this);
     this.setLocation = this.setLocation.bind(this);
-    this.checkSafari = this.checkSafari.bind(this);
     this.watchWindowResize = this.watchWindowResize.bind(this);
   }
 
   componentWillMount() {
-    this.checkSafari();
-
     if (window.innerWidth > 750) {
       this.setState({
-        mobile: false,
         scrollEnabled: true,
       });
       AppScrollObj.initiateScrollNav(this.setLocation, this.scrollThreshold);
     } else {
       this.setState({
-        mobile: true,
         scrollEnabled: false,
       });
       AppScrollObj.disableScrollNav();
@@ -68,22 +64,19 @@ class App extends React.Component {
       if (direction === 'next' && currentPage === '/connect') {
         return;
       } else if (direction === 'next' && location === currentPage) {
-        this.scrollDown = false;
+        this.setState({
+          scrollDown: false,
+        });
         browserHistory.push(locations[index + 1]);
       } else if (direction !== 'next' && currentPage === '/') {
         return;
       } else if (direction !== 'next' && location === currentPage) {
-        this.scrollDown = true;
+        this.setState({
+          scrollDown: true,
+        });
         browserHistory.push(locations[index - 1]);
       }
     });
-  }
-
-  checkSafari() {
-    const isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-    if (isSafari) {
-      this.scrollThreshold = 1500;
-    }
   }
 
   /**
@@ -99,7 +92,6 @@ class App extends React.Component {
           AppScrollObj.initiateScrollNav(this.setLocation);
 
           this.setState({
-            mobile: false,
             scrollEnabled: true,
           });
         } else if (window.innerWidth > 750 && this.state.scrollEnabled) {
@@ -108,7 +100,6 @@ class App extends React.Component {
           AppScrollObj.disableScrollNav();
 
           this.setState({
-            mobile: true,
             scrollEnabled: false,
           });
         }
@@ -122,10 +113,27 @@ class App extends React.Component {
    */
   navBarClick(ev) {
     if (ev.type === 'click') {
-      this.scrollDown = true;
+      this.setState({
+        scrollDown: false,
+      });
     }
   }
 
+  /**
+   * A helper function that communicates footer clicks from child routes to the app component.
+   * App component animations a down up for footer clicks.
+   */
+  footerClick(ev) {
+    if (ev.type === 'click') {
+      this.setState({
+        scrollDown: true,
+      });
+    }
+  }
+
+  /**
+   * A function that generates toastr boxes on ajax errors.
+   */
   addAlert(err) {
     const errCode = err.status;
     const errText = constants.statusCodes(errCode);
@@ -144,11 +152,11 @@ class App extends React.Component {
     const path = this.props.location.pathname;
     const segment = path.split('/')[1] || '';
     const newChildren = React.Children.map(this.props.children, child => (
-      React.cloneElement(child, { key: segment, errorHandler: this.addAlert })
+      React.cloneElement(child, { key: segment, errorHandler: this.addAlert, footerClickEvent: this.footerClick })
     ));
     let app = '';
 
-    if (this.state.mobile) {
+    if (!this.state.scrollEnabled) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}
@@ -158,7 +166,7 @@ class App extends React.Component {
         <HeaderComponent clickEvent={this.navBarClick} />
         {newChildren}
       </div>);
-    } else if (!this.state.mobile && this.scrollDown) {
+    } else if (this.state.scrollDown) {
       app = (<div>
         <ToastContainer
           ref={(ref) => { this.toastr = ref; }}

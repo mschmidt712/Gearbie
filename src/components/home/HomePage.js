@@ -20,6 +20,8 @@ class HomePage extends React.Component {
       description: '',
       footerText: '',
     };
+
+    this.render = this.render.bind(this);
   }
 
   componentWillMount() {
@@ -91,6 +93,7 @@ class HomePage extends React.Component {
             display
             text={this.state.footerText}
             link="/open-source"
+            footerClick={this.props.footerClickEvent}
           />
         </ReactCSSTransitionGroup>
       </div>
@@ -103,6 +106,10 @@ HomePage.propTypes = {
    * The error handler for ajax calls
    */
   errorHandler: PropTypes.func,
+  /**
+   * A footer click event to set scroll direction
+   */
+  footerClickEvent: PropTypes.func,
 };
 
 export default HomePage;
