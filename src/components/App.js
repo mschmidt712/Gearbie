@@ -114,7 +114,7 @@ class App extends React.Component {
   navBarClick(ev) {
     if (ev.type === 'click') {
       this.setState({
-        scrollDown: false,
+        scrollDown: true,
       });
     }
   }
@@ -126,7 +126,7 @@ class App extends React.Component {
   footerClick(ev) {
     if (ev.type === 'click') {
       this.setState({
-        scrollDown: true,
+        scrollDown: false,
       });
     }
   }
