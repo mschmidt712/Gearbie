@@ -22,6 +22,7 @@ function AboutCarousel(props) {
     centerMode: true,
     swipe: true,
     centerPadding,
+    focusOnSelect: true,
   };
 
   items = props.data.map((obj, index) => {
