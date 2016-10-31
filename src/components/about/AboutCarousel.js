@@ -7,7 +7,9 @@ function AboutCarousel(props) {
   let items = [];
 
   const windowWidth = $(window).innerWidth();
+  console.log(windowWidth);
   const centerPadding = (windowWidth * 0.1).toString().concat('px');
+  console.log(centerPadding);
 
   const settings = {
     accessibility: true,
@@ -21,7 +23,7 @@ function AboutCarousel(props) {
     initialSlide: 2,
     centerMode: true,
     swipe: true,
-    centerPadding,
+    centerPadding: centerPadding,
   };
 
   items = props.data.map((obj, index) => {

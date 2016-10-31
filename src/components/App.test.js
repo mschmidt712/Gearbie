@@ -41,6 +41,7 @@ test('render: should disable transitions when scrolling not enabled', (t) => {
   AppComponent.setState({
     scrollEnabled: false,
   });
+  AppComponent.update();
 
   t.notRegex(AppComponent.text(), new RegExp('ReactCSSTransitionGroup'));
 });
