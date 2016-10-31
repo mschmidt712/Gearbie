@@ -20,7 +20,8 @@ class KenzanAboutPage extends React.Component {
     this.textBoxQuery = 'posts?categories='.concat(constants.postCategories.kenzanAbout);
     this.state = {
       loadingHeading: true,
-      loadingPosts: true,
+      loadingTextBoxPosts: true,
+      loadingCarouselPosts: true,
       footerText: '',
       images: [],
       carouselItems: [],
@@ -55,7 +56,7 @@ class KenzanAboutPage extends React.Component {
     .fail((err) => {
       this.props.errorHandler(err);
       this.setState({
-        loadingPosts: false,
+        loadingCarouselPosts: false,
       });
     });
 
@@ -65,7 +66,7 @@ class KenzanAboutPage extends React.Component {
     .fail((err) => {
       this.props.errorHandler(err);
       this.setState({
-        loadingPosts: false,
+        loadingTextBoxPosts: false,
       });
     });
   }
@@ -104,7 +105,7 @@ class KenzanAboutPage extends React.Component {
     const resultsCarouselItems = <AboutCarousel data={resultsData} />;
 
     this.setState({
-      loadingPosts: false,
+      loadingCarouselPosts: false,
       carouselItems: resultsCarouselItems,
       images: resultsImages,
     });
@@ -134,7 +135,7 @@ class KenzanAboutPage extends React.Component {
     );
 
     this.setState({
-      loadingPosts: false,
+      loadingTextBoxPosts: false,
       textBoxItems: resultsTextBoxItems,
     });
   }
@@ -142,7 +143,7 @@ class KenzanAboutPage extends React.Component {
   render() {
     const loadingClass = classNames({
       loading: true,
-      'loading-active': this.state.loadingPosts || this.state.loadingHeading,
+      'loading-active': this.state.loadingCarouselPosts || this.state.loadingTextBoxPosts || this.state.loadingHeading,
       'loading-disabled': !this.state.loadingPosts && !this.state.loadingHeading,
     });
 

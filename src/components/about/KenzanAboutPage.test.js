@@ -2,7 +2,9 @@
 
 import test from 'ava';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
+import $ from 'jquery';
 import KenzanAboutPage from './KenzanAboutPage';
 
 let KenzanAboutComponent;
@@ -18,6 +20,13 @@ const mockResults = [{
     rendered: '<p>one content</p>',
   },
   acf: {
+    background_image: {
+      sizes: {
+        large: 'http://background_image.com/1',
+      },
+    },
+    description: 'description1',
+    header: 'Header1',
     link_url: 'http://one.com',
     link_text: 'One Link',
   },
@@ -29,6 +38,13 @@ const mockResults = [{
     rendered: '<p>two content</p>',
   },
   acf: {
+    background_image: {
+      sizes: {
+        large: 'http://background_image.com/1',
+      },
+    },
+    description: 'description2',
+    header: 'Header2',
     link_url: 'http://two.com',
     link_text: 'Two Link',
   },
@@ -41,7 +57,8 @@ test.before(() => {
 test('spinner: should show spinner when heading and posts loading true', (t) => {
   KenzanAboutComponent.setState({
     loadingHeading: true,
-    loadingPosts: true,
+    loadingCarouselPosts: true,
+    loadingTextBoxPosts: true,
   });
 
   const spinner = KenzanAboutComponent.find('.loading-active');
@@ -51,17 +68,30 @@ test('spinner: should show spinner when heading and posts loading true', (t) => 
 test('spinner: should show spinner when heading loading true', (t) => {
   KenzanAboutComponent.setState({
     loadingHeading: true,
-    loadingPosts: false,
+    loadingCarouselPosts: false,
+    loadingTextBoxPosts: false,
   });
 
   const spinner = KenzanAboutComponent.find('.loading-active');
   t.true(spinner.is('.loading-active'));
 });
 
-test('spinner: should show spinner when posts loading true', (t) => {
+test('spinner: should show spinner when carousel posts loading true', (t) => {
   KenzanAboutComponent.setState({
     loadingHeading: false,
-    loadingPosts: true,
+    loadingCarouselPosts: true,
+    loadingTextBoxPosts: false,
+  });
+
+  const spinner = KenzanAboutComponent.find('.loading-active');
+  t.true(spinner.is('.loading-active'));
+});
+
+test('spinner: should show spinner when text box posts loading true', (t) => {
+  KenzanAboutComponent.setState({
+    loadingHeading: false,
+    loadingCarouselPosts: false,
+    loadingTextBoxPosts: true,
   });
 
   const spinner = KenzanAboutComponent.find('.loading-active');
@@ -71,11 +101,31 @@ test('spinner: should show spinner when posts loading true', (t) => {
 test('spinner: should not show spinner when heading and posts loading false', (t) => {
   KenzanAboutComponent.setState({
     loadingHeading: false,
-    loadingPosts: false,
+    loadingCarouselPosts: false,
+    loadingTextBoxPosts: false,
   });
 
   const spinner = KenzanAboutComponent.find('.loading-disabled');
   t.true(spinner.is('.loading-disabled'));
+});
+
+test('buildCarouselContainer: should create a React element for the carousel data and an array for the carousel images', (t) => {
+  KenzanAboutComponent.instance().buildCarouselContainer(mockResults);
+  KenzanAboutComponent.update();
+
+  t.is(KenzanAboutComponent.state().images.length, 2);
+  t.is(KenzanAboutComponent.find('AboutCarousel').length, 1);
+});
+
+test('setCarouselImages: should set a background image on the about-image-container', (t) => {
+  KenzanAboutComponent = mount(<KenzanAboutPage />);
+  KenzanAboutComponent.instance().buildCarouselContainer(mockResults);
+  KenzanAboutComponent.update();
+
+  const jquerySpy = sinon.spy($.prototype, 'css');
+  KenzanAboutComponent.instance().setCarouselImages(mockResults);
+
+  t.true(jquerySpy.called);
 });
 
 test('buildTextBoxContainer: should create text box item in the state for each result', (t) => {
