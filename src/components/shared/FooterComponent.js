@@ -12,7 +12,7 @@ const Footer = ({ display, text, link, footerClick }) => {
 
   if (display) {
     footer = (<div className="page-footer animation shadow">
-      <Link to={link} onClick={footerClick}>>
+      <Link to={link} onClick={footerClick}>
         <div className="arrow-link shadow">
           <i className="arrow-icon material-icons orange md">ic_arrow_downward</i>
         </div>
