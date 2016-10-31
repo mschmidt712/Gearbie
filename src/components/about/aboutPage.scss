@@ -2,7 +2,7 @@
   position: relative;
   background-size: cover;
   padding: 10%;
-  height: 200px;
+  height: 190px;
 }
 
 .about-carousel-container {
@@ -26,11 +26,10 @@
 @media(min-width: $phone-breakpoint) {
   .about-image-container {
     padding: 1% 5%;
-    height: 200px;
   }
 }
 
-@media(min-width: 1000px) {
+@media(min-width: 1000px) and (min-height: 725px) {
   .about-image-container {
     height: 250px;
   }
