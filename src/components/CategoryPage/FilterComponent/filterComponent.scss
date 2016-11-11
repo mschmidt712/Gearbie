@@ -1,0 +1,48 @@
+.filter-component-container {
+  .filter-checkbox-container {
+    display: block;
+    margin: auto;
+    border-bottom: 2px solid $font-red;
+  }
+
+  .filter-options-container {
+    display: block;
+    margin: auto;
+  }
+
+  .search-btn {
+    margin: 20px 10px 0;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .filter-option-container {
+    max-width: 500px;
+    padding: 10px;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .filter-option-container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .filter-component-container {
+    position: absolute;
+    z-index: $filter-container;
+    width: 250px;
+    padding: 0;
+    background-color: $light-gray;
+
+    .search-btn {
+      margin: 10px 0;
+      width: 100%;
+    }
+  }
+
+  i.remove {
+    display: none;
+  }
+}

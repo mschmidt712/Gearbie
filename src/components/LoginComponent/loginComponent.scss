@@ -1,0 +1,67 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  z-index: $modal;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 15px;
+  background-color: white;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  color: $font-gray;
+
+  label {
+    width: 40%;
+    display: block;
+    float: left;
+  }
+
+  input {
+    width: 60%;
+    display: block;
+    float: left;
+    line-height: 1.4rem;
+  }
+
+  .login-input-container {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid $border-gray;
+
+    .forgot-password-link {
+      display: block;
+      padding-bottom: 10px;
+      font-size: 0.7rem;
+      color: $dark-blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .new-user-container {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #login-btn, #new-account-btn {
+    display: block;
+    margin: 0 auto 10px;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .login-container {
+    width: initial;
+    padding: 30px 50px;
+  }
+}

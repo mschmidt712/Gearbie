@@ -66,13 +66,17 @@ gulp.task('watch:js', () => {
   gulp.watch([src + '**/*.js', '!' + src + '**/*.test.js'], ['compile:js']);
 });
 
+gulp.task('watch:img', () => {
+  gulp.watch([src + 'assets/*.jpg', src + 'assets/*.jpeg', src + 'assets/*.png', src + 'assets/*.svg'], ['copy:assets']);
+});
+
 gulp.task('build:dev', (done) => {
   runSequence('clean:dist',
     ['compile:js', 'compile:sass', 'copy:html', 'copy:images', 'copy:assets'],
     done);
 });
 
-gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js'], () => {
+gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js', 'watch:img'], () => {
   browerSync.init({
     files: ['dist/**/*.js','dist/**/*.html', 'dist/**/*.css'],
     server: {

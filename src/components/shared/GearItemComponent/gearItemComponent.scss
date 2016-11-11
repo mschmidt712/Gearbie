@@ -1,0 +1,100 @@
+.gear-item-container {
+  width: 50%;
+  margin-bottom: 40px;
+  display: block;
+  float: left;
+  position: relative;
+
+  img {
+    width: 90%;
+    height: 90%;
+    display: block;
+    margin: auto;
+    border: 1px solid $font-gray;
+    border-radius: 3px;
+  }
+
+  h5 {
+    width: 90%;
+    position: absolute;
+    right: 5%;
+    top: 0;
+
+    padding: 5px;
+    background-color: rgba(red($font-gray), green($font-gray), blue($font-gray), 0.8);
+    color: white;
+    text-align: center;
+  }
+
+  p {
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+
+    transform: translateY(50%);
+    padding: 5px;
+    background-color: rgba(red($dark-blue), green($dark-blue), blue($dark-blue), 1);
+    color: white;
+    border-radius: 2px;
+    font-size: 0.7rem;
+  }
+
+  .price-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 8px;
+
+    transform: translateY(-40%);
+    background-color: rgba(255, 255, 255, 0.75);
+    color: $dark-blue;
+    border: 1px solid $dark-blue;
+    border-radius: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  span {
+    padding: 10px;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .gear-item-container {
+    width: 33%;
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .gear-item-container {
+    width: 25%;
+    font-size: 1.2rem;
+
+    a:hover {
+      h5 {
+        background-color: rgba(red($font-gray), green($font-gray), blue($font-gray), 1);
+        transition: all 250ms ease;
+      }
+
+      .price-container {
+        background-color: $font-red;
+        border: none;
+        color: white;
+        transition: all 250ms ease;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      transform: translateY(35%);
+    }
+
+    .price-container {
+      font-size: 1rem;
+    }
+  }
+}

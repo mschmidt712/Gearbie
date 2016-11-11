@@ -1,0 +1,76 @@
+.nearby-container {
+  overflow: hidden;
+  margin-top: 15px;
+
+  .header-text {
+    margin-bottom: 25px;
+    border-bottom: 3px solid $border-gray;
+    overflow: hidden;
+  }
+
+  h3 {
+    width: 60%;
+    display: block;
+    float: left;
+    padding: 10px 15px 10px 5px;
+    margin: 0;
+    color: $font-red;
+
+  }
+
+  .zipcode-input {
+    width: 37%;
+    display: block;
+    float: left;
+  }
+
+  label {
+    position: absolute !important;
+    left: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  input {
+    padding: 10px 0 10px 5px;
+    width: 100%;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .nearby-container {
+    h3 {
+      width: 80%;
+    }
+
+    .zipcode-input {
+      width: 18%;
+      display: block;
+      float: left;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .nearby-container {
+    margin: auto;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 100;
+    }
+
+    .zipcode-input {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+
+      input {
+        width: 200px;
+      }
+    }
+
+    .header-text {
+      margin-top: 20px;
+    }
+  }
+}

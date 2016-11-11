@@ -1,0 +1,61 @@
+.user-container {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 100%;
+  margin-top: 15px;
+
+  button {
+    font-size: 0.83rem;
+    font-weight: 800;
+  }
+
+  .owner-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(238, 85, 84, 0.5);
+    border: none;
+    color: $font-gray;
+
+    &:hover {
+      background: $font-red;
+    }
+  }
+
+  .user-img-container {
+    overflow: hidden;
+    padding: 15px;
+    background-color: rgba(238, 85, 84, 0.1);
+    font-size: 0.8rem;
+
+    p {
+      margin: 0;
+    }
+
+    img {
+      width: 100px;
+      float: left;
+      margin-right: 15px;
+      border-radius: 2px;
+    }
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .user-container {
+    .user-img-container {
+      padding: 15px 50px;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .user-container {
+    .user-img-container {
+      padding: 15px 100px;
+    }
+  }
+}

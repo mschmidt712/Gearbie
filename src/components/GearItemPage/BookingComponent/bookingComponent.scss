@@ -1,0 +1,91 @@
+.booking-date-container {
+  width: 100%;
+  position: relative;
+  padding-left: 10px;
+  overflow: visible;
+  color: $font-gray;
+
+  .booking-input {
+    width: 100%;
+    display: flex;
+    float: left;
+    align-items: center;
+    padding: 10px 0 0;
+  }
+
+  h5 {
+    margin: 10px 0 0;
+  }
+
+  label {
+    width: 20%;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    font-size: 0.7rem;
+  }
+
+  input {
+    width: 70%;
+    display: block;
+    float: left;
+  }
+
+  .rw-popup-container.rw-calendar-popup {
+    width: 16rem;
+  }
+
+}
+
+.book-btn {
+  display: block;
+  margin: 10px auto 0;
+}
+
+@media(min-width: $phone-breakpoint) {
+  .booking-component-container {
+    width: 65%;
+    transform: translateY(25%);
+    display: block;
+    float: left;
+
+    .booking-date-container {
+      width: 80%;
+      margin: auto;
+
+      h5 {
+        margin: 0;
+      }
+    }
+
+    label {
+      width: 10%;
+    }
+
+    input {
+      width: 90%;
+    }
+
+    #booking-to, #booking-from {
+      width: 80%;
+    }
+
+    .rw-popup-container.rw-calendar-popup {
+      width: 18rem;
+      left: initial;
+      right: -11px;
+    }
+  }
+}
+
+@media(min-width: $tablet-breakpoint) {
+  .booking-date-container {
+    h5 {
+      font-size: 1rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+    }
+  }
+}
