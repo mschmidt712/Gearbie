@@ -16,16 +16,18 @@ class DropDownMenu extends React.Component {
 
   componentWillMount() {
     const categoryItems = [];
-    this.props.categories.forEach((category, index) => {
-      categoryItems.push(
-        <li key={index}>
-          <Link to={category.link} className="nav-link">{category.title}</Link>
-        </li>);
-    });
+    if (this.props.categories) {
+      this.props.categories.forEach((category, index) => {
+        categoryItems.push(
+          <li key={index}>
+            <Link to={category.link} className="nav-link">{category.title}</Link>
+          </li>);
+      });
 
-    this.setState({
-      categoryItems,
-    });
+      this.setState({
+        categoryItems,
+      });
+    }
   }
 
   toggleCategories() {

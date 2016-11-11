@@ -9,6 +9,8 @@ import PopularComponent from './popular/PopularComponent';
  */
 class HomePage extends React.Component {
   constructor(props) {
+    console.log(props);
+
     super(props);
     this.state = {
       categories: this.props.categories,
@@ -45,6 +47,8 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log('render');
+
     return (<div className="page-container">
       <SearchComponent />
       <CategoriesComponent mobile={this.state.mobile} categories={this.state.categories} />

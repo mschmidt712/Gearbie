@@ -17,6 +17,18 @@ class CategoriesComponent extends React.Component {
     this.modifyCategoryItemsContainer = this.modifyCategoryItemsContainer.bind(this);
   }
 
+  componentWillMount() {
+    const categoryItems = this.buildCategoryItems(this.state.categories);
+
+    this.setState({
+      categoryItems,
+    });
+  }
+
+  componentDidMount() {
+    this.modifyCategoryItemsContainer();
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.categories !== this.state.categories) {
       const categoryItems = this.buildCategoryItems(newProps.categories);

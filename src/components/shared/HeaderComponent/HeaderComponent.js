@@ -5,11 +5,8 @@ import { bindActionCreators } from 'redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import toastr from 'toastr';
 import * as userActions from '../../../actions/userActions';
-import constants from '../../constants.js';
 import DropDownMenu from './DropDownMenuComponent';
 import LoginComponent from '../../LoginComponent/LoginComponent';
-
-const categories = constants.categories;
 
 /**
  * The App Header
@@ -35,13 +32,26 @@ class HeaderComponent extends React.Component {
   }
 
   componentWillMount() {
-    this.buildCategoryDropdown();
+    const categoryDropdown = this.buildCategoryDropdown(this.state.categories);
+    this.setState({
+      categoryDropdown,
+    });
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({
-      user: newProps.user,
-    });
+    if (newProps.user !== this.state.user) {
+      this.setState({
+        user: newProps.user,
+      });
+    }
+    if (newProps.categories !== this.state.categories) {
+      const categoryDropdown = this.buildCategoryDropdown(newProps.categories);
+
+      this.setState({
+        categories: newProps.categories,
+        categoryDropdown,
+      });
+    }
   }
 
   onLogout() {
@@ -49,21 +59,18 @@ class HeaderComponent extends React.Component {
     toastr.success('You are now logged out.');
   }
 
-  buildCategoryDropdown() {
+  buildCategoryDropdown(categories) {
     const categoryDropdown = [];
-    console.log(this.state.categories);
 
-    if (this.state.categories) {
-      this.state.categories.forEach((category, index) => {
+    if (categories.length) {
+      categories.forEach((category, index) => {
         categoryDropdown.push(<li key={index}>
           <Link to={category.link}>{category.title}</Link>
         </li>);
       });
     }
 
-    this.setState({
-      categoryDropdown,
-    });
+    return categoryDropdown;
   }
 
   toggleDropdownMenu() {
@@ -101,7 +108,7 @@ class HeaderComponent extends React.Component {
             >
               {this.state.dropDownVisible
                 && <DropDownMenu
-                  categories={categories}
+                  categories={this.state.categories}
                   user={this.state.user}
                   loginVisibile={this.state.loginModalDisplayed}
                   loginHandler={this.toggleLoginModal}
@@ -116,7 +123,7 @@ class HeaderComponent extends React.Component {
                 {this.state.categoryDropDownVisible && <i className="material-icons">remove</i>}
                 {this.state.categoryDropDownVisible &&
                   <ul className="category-dropdown">
-                    {this.state.categoryItems}
+                    {this.state.categoryDropdown}
                   </ul>}
               </button></li>
               <li><a href="">Share Your Gear</a></li>
@@ -154,11 +161,13 @@ class HeaderComponent extends React.Component {
 HeaderComponent.propTypes = {
   user: PropTypes.object.isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.object),
 };
 
 function mapStateToProps(state) {
   return {
     user: state.user,
+    categories: state.categories,
   };
 }
 
