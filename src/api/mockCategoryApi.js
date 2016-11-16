@@ -9,7 +9,7 @@ const databaseCategories = [{
   imgSrc: '/assets/skiing.jpg',
   altText: 'skiing',
   title: 'Snow Sports',
-  link: '/category/snow',
+  link: '/category/snow_sports',
 }, {
   imgSrc: '/assets/biking.jpg',
   altText: 'biking',

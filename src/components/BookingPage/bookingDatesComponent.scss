@@ -1,0 +1,13 @@
+.booking-dates-container {
+  h3 {
+    margin: 5px;
+  }
+  .DateRangePickerInput {
+    border: none;
+
+    .DateInput {
+      font-size: 0.8rem;
+      width: 100px;
+    }
+  }
+}

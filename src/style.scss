@@ -1,5 +1,6 @@
 // Variables
 $font-red: #EE5554;
+$light-red: #fb9392;
 $font-gray: #292224;
 $border-gray: #d9deda;
 $light-gray: #eeeeee;
@@ -17,6 +18,7 @@ $header-dimmer-z-value: 8;
 $header-dropdown-z-value: 10;
 $modal-dimmer: 12;
 $modal: 14;
+$loading-indicator: 20;
 
 //Font
 @font-face{
@@ -57,6 +59,10 @@ $modal: 14;
 @import './components/GearItemPage/GearPropertyComponent/gearPropertyComponent.scss';
 @import './components/GearItemPage/GearItemHeaderComponent/gearItemHeaderComponent.scss';
 @import './components/GearItemPage/UserDescriptionComponent/userDescriptionComponent.scss';
+@import './components/BookingPage/bookingPageComponent.scss';
+@import './components/BookingPage/priceSummaryComponent.scss';
+@import './components/BookingPage/bookingPageHeaderComponent.scss';
+@import './components/BookingPage/bookingDatesComponent.scss';
 
 html, body {
   min-height: 100%;
@@ -127,6 +133,14 @@ button {
   background-color: $font-red;
   color: white;
 
+  a {
+    color: white;
+
+    &:visited {
+      color: white;
+    }
+  }
+
   &:hover {
     background-color: rgba(red($font-red), green($font-red), blue($font-red), 0.7);
     color: $font-gray;
@@ -141,6 +155,17 @@ button {
   &:hover {
     background-color: rgba(red($font-gray), green($font-gray), blue($font-gray), 0.2);
     box-shadow: 1px 1px 2px rgba(red($border-gray), green($border-gray), blue($border-gray), 0.7);
+  }
+}
+
+.disabled {
+  background-color: $light-gray;
+  color: $font-gray;
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: $light-gray;
+    box-shadow: none;
   }
 }
 

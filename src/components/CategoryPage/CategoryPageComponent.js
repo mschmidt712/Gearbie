@@ -1,9 +1,16 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import toastr from 'toastr';
+import * as itemActions from '../../actions/itemActions';
 import FilterComponent from './FilterComponent/FilterComponent';
+import FilterButtonComponent from './FilterComponent/FilterButtonComponent';
+import DimmerComponent from '../shared/DimmerComponent/DimmerComponent';
 import GearItemComponent from '../shared/GearItemComponent/GearItemComponent';
-import constants from '../constants';
+import constants from '../../constants';
+import LoadingComponent from '../shared/LoadingComponent/LoadingComponent';
 
 class CategoryComponent extends React.Component {
   constructor(props) {
@@ -11,9 +18,11 @@ class CategoryComponent extends React.Component {
 
     this.state = {
       gearItems: [],
-      category: constants.upperCaseFormat(this.props.params.gearCat),
+      gearItemChildren: [],
+      category: this.props.params.gearCat,
       mobile: true,
       filtersVisibile: false,
+      loading: false,
     };
 
     this.buildGearItems = this.buildGearItems.bind(this);
@@ -21,7 +30,28 @@ class CategoryComponent extends React.Component {
   }
 
   componentWillMount() {
-    this.buildGearItems();
+    this.setState({
+      loading: true,
+    });
+
+    this.props.actions.getItemsByCategory(this.state.category)
+      .then((resp) => {
+        const gearItemChildren = this.buildGearItems(resp.itemsByCategory);
+
+        this.setState({
+          gearItemChildren,
+          loading: false,
+        });
+
+        this.formatGearItemsContainer();
+      })
+      .catch((err) => {
+        this.setState({
+          loading: false,
+        });
+        console.log(err);
+        toastr.error(err);
+      });
 
     const screenWidth = $(window).width();
     let mobile;
@@ -36,38 +66,62 @@ class CategoryComponent extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      loading: true,
+    });
+
+    if (newProps.params.gearCat !== this.state.category) {
+      const category = newProps.params.gearCat;
+      let gearItemChildren;
+
+      this.props.actions.getItemsByCategory(newProps.params.gearCat)
+        .then((resp) => {
+          gearItemChildren = this.buildGearItems(resp.itemsByCategory);
+          this.setState({
+            category,
+            gearItemChildren,
+            loading: false,
+          });
+          this.formatGearItemsContainer();
+        })
+        .catch((err) => {
+          this.setState({
+            category,
+            gearItemChildren: [],
+            loading: false,
+          });
+          toastr.error(err);
+        });
+    }
+  }
+
+  buildGearItems(gearItems) {
+    const children = [];
+
+    if (gearItems.length) {
+      gearItems.forEach((item, index) => {
+        children.push(
+          <GearItemComponent
+            imgSrc={item.imgSrc}
+            altText={item.altText}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            id={item.id}
+            key={index}
+          />);
+      });
+    }
+
+    return children;
+  }
+
+  formatGearItemsContainer() {
     const gearItemContainer = $('.gear-item-container');
     const width = gearItemContainer.width();
     gearItemContainer.each((index, item) => {
       $(item).css('height', width);
-    });
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      category: constants.upperCaseFormat(newProps.params.gearCat),
-    });
-  }
-
-  buildGearItems() {
-    const gearItems = [];
-
-    constants.gearItems.forEach((item, index) => {
-      gearItems.push(
-        <GearItemComponent
-          imgSrc={item.imgSrc}
-          altText={item.altText}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          id={item.id}
-          key={index}
-        />);
-    });
-
-    this.setState({
-      gearItems,
     });
   }
 
@@ -80,39 +134,23 @@ class CategoryComponent extends React.Component {
   render() {
     return (
       <div className="category-page-container page-container">
-        <h2>{this.state.category}</h2>
+        <LoadingComponent loading={this.state.loading} />
+        <h2>{constants.upperCaseFormat(this.state.category)}</h2>
         {!this.state.mobile &&
           <div>
-            <button className="filters-link btn btn-secondary" onClick={this.toggleFilters}>Filters
-              {!this.state.filtersVisibile &&
-                <div>
-                  <i className="material-icons">keyboard_arrow_right</i>
-                  <i className="material-icons arrow-2">keyboard_arrow_right</i>
-                </div>}
-              {this.state.filtersVisibile &&
-                <div>
-                  <i className="material-icons">keyboard_arrow_left</i>
-                  <i className="material-icons arrow-2">keyboard_arrow_left</i>
-                </div>}
-            </button>
-            <ReactCSSTransitionGroup
-              transitionName="slide-right"
-              transitionEnterTimeout={300}
-              transitionLeaveTimeout={300}
-            >
+            <FilterButtonComponent filtersVisibile={this.state.filtersVisibile} clickHandler={this.toggleFilters} />
               {this.state.filtersVisibile &&
                 <div>
                   <FilterComponent category={this.state.category} mobile={this.state.mobile} toggleFilters={this.toggleFilters} />
-                  <div className="filter-dimmer" onClick={this.toggleFilters} />
+                  <DimmerComponent className="filter-dimmer" clickHandler={this.toggleFilters} />
                 </div>
               }
-            </ReactCSSTransitionGroup>
           </div>
         }
         {this.state.mobile &&
           <FilterComponent category={this.state.category} mobile={this.state.mobile} />}
         <div className="gear-item-box">
-          {this.state.gearItems}
+          {this.state.gearItemChildren}
         </div>
       </div>
     );
@@ -121,6 +159,19 @@ class CategoryComponent extends React.Component {
 
 CategoryComponent.propTypes = {
   params: PropTypes.objectOf(PropTypes.string),
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
-export default CategoryComponent;
+function mapStateToProps(state) {
+  return {
+    gearItems: state.itemsByCategory,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(itemActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryComponent);

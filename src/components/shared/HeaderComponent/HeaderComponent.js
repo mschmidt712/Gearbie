@@ -7,6 +7,7 @@ import toastr from 'toastr';
 import * as userActions from '../../../actions/userActions';
 import DropDownMenu from './DropDownMenuComponent';
 import LoginComponent from '../../LoginComponent/LoginComponent';
+import DimmerComponent from '../DimmerComponent/DimmerComponent';
 
 /**
  * The App Header
@@ -146,12 +147,12 @@ class HeaderComponent extends React.Component {
           transitionLeaveTimeout={500}
         >
           {this.state.dropDownVisible &&
-            <div className="dimmer" onClick={this.toggleDropdownMenu} />}
+            <DimmerComponent className="dimmer" clickHandler={this.toggleDropdownMenu} />}
         </ReactCSSTransitionGroup>
           {this.state.loginModalDisplayed &&
             <div>
               <LoginComponent loginVisible={this.toggleLoginModal} />
-              <div className="dimmer" onClick={this.toggleLoginModal} />
+              <DimmerComponent className="dimmer" clickHandler={this.toggleLoginModal} />
             </div>}
       </div>
     );
@@ -161,7 +162,7 @@ class HeaderComponent extends React.Component {
 HeaderComponent.propTypes = {
   user: PropTypes.object.isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
-  categories: PropTypes.arrayOf(PropTypes.object),
+  categories: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 function mapStateToProps(state) {

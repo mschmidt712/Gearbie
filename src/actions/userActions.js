@@ -6,9 +6,23 @@ export function loginSuccess(user) {
 }
 
 export function loginUser(user) {
-  return function login(dispatch) {
+  return function loginUserThunk(dispatch) {
     return UserApi.loginUser(user).then(resp => (
       dispatch(loginSuccess(resp))
+    )).catch((error) => {
+      throw (error);
+    });
+  };
+}
+
+export function getUserSuccess(user) {
+  return { type: types.login.GET_USER_SUCCESS, user };
+}
+
+export function getUser() {
+  return function getUserThunk(dispatch) {
+    return UserApi.checkUser().then(resp => (
+      dispatch(getUserSuccess(resp))
     )).catch((error) => {
       throw (error);
     });

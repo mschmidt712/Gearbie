@@ -1,0 +1,35 @@
+.booking-page-container {
+  h2 {
+    margin: 15px 10px;
+    color: $font-red;
+  }
+
+  .item-container-box {
+    width: 90%;
+    margin: 0 auto 10px;
+    padding: 10px;
+    border: 1px solid $border-gray;
+    border-radius: 2px;
+  }
+
+  .booking-btn {
+    display: block;
+    margin: 15px auto;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .booking-page-container {
+    .item-container-box {
+      width: calc(50% - 10px);
+      margin: 5px;
+      float: left;
+    }
+
+    .booking-btn {
+      float: right;
+      margin: 15px 25% 0 0;
+      transform: translateX(50%);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+kenzan-io@1.0.0 /Users/mschmidt/Projects/gearbie
+├── moment@2.16.0 
+├─┬ react@15.3.2 
+│ └─┬ fbjs@0.8.6 
+│   └─┬ isomorphic-fetch@2.2.1
+│     └── whatwg-fetch@2.0.0 
+├── react-addons-shallow-compare@15.3.2 
+├── react-dates@4.0.0 
+└── react-dom@15.3.2 
+

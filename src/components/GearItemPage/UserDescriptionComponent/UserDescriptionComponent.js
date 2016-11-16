@@ -33,7 +33,7 @@ class UserDescriptionComponent extends React.Component {
         >
         {this.state.ownerVisible &&
           <div className="user-img-container">
-            <p><img src={this.props.user.imgSrc} alt="owner" />
+            <p><img src={this.props.user.accountInfo.imgSrc} alt="owner" />
             {this.props.user.description} </p>
           </div>}
         </ReactCSSTransitionGroup>
@@ -44,8 +44,10 @@ class UserDescriptionComponent extends React.Component {
 
 UserDescriptionComponent.propTypes = {
   user: PropTypes.shape({
-    imgSrc: PropTypes.string.isRequire,
-    description: PropTypes.string.isRequire,
+    accountInfo: PropTypes.shape({
+      imgSrc: PropTypes.string.isRequired,
+    }),
+    description: PropTypes.string.isRequired,
   }),
 };
 

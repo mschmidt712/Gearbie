@@ -2,9 +2,17 @@ const constants = {
   default: {
     zipCode: 80226,
   },
-  upperCaseFormat: string => (
-    string.charAt(0).toUpperCase() + string.slice(1)
-  ),
+  upperCaseFormat: (string) => {
+    const words = string.split('_');
+    let title = '';
+
+    words.forEach((word) => {
+      const formattedWord = word.charAt(0).toUpperCase() + word.slice(1);
+      title += formattedWord.concat(' ');
+    });
+
+    return title;
+  },
   gearItems: [{
     id: 0,
     imgSrc: '/assets/backpacking-gear.jpg',

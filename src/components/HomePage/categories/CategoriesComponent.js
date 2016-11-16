@@ -92,7 +92,7 @@ class CategoriesComponent extends React.Component {
 
 CategoriesComponent.propTypes = {
   mobile: PropTypes.bool.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  categories: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default CategoriesComponent;

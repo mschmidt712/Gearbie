@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-function LoadingComponent() {
-  return (
-    <div className="loading-indicator">
+function LoadingComponent(props) {
+  let component;
+
+  if (props.loading) {
+    component = (<div className="loading-indicator">
       <img src="/assets/icons/hourglass.gif" alt="loading" />
-    </div>
-  );
+    </div>);
+  } else {
+    component = <div />;
+  }
+  return component;
 }
+
+LoadingComponent.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};
 
 export default LoadingComponent;

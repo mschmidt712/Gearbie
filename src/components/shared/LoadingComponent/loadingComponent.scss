@@ -1,8 +1,9 @@
 .loading-indicator {
   position: absolute;
-  top: 50%;
+  top: 50vh;
   right: 50%;
   transform: translate(50%, 50%);
+  z-index: $loading-indicator;
 
   img {
     width: 50px;

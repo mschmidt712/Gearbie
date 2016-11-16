@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 import toastr from 'toastr';
 import * as userActions from '../../actions/userActions';
-import LoadingComponent from '../shared/LoadingComponent/LoadingComponent'
+import LoginInputComponent from './LoginInputComponent';
+import NewUserComponent from './NewUserComponent';
+import LoadingComponent from '../shared/LoadingComponent/LoadingComponent';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -52,23 +54,14 @@ class LoginComponent extends React.Component {
 
   render() {
     return (<div className="login-container">
-      {this.state.loading && <LoadingComponent />}
-      <div className="login-input-container">
-        <div className="input-container">
-          <label htmlFor="username">Username</label>
-          <input id="username" type="text" value={this.state.username} onChange={this.onInputChange} required />
-        </div>
-        <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input id="password" type="password" value={this.state.password} onChange={this.onInputChange} required />
-        </div>
-        <a href="" className="forgot-password-link">Forgot your password?</a>
-        <button className="btn-primary btn" id="login-btn" onClick={this.onLogin}>Login</button>
-      </div>
-      <div className="new-user-container">
-        <p> Not a User? Create an Account Below. </p>
-        <button className="btn-secondary btn" id="new-account-btn">Create an Account</button>
-      </div>
+      <LoadingComponent loading={this.state.loading} />
+      <LoginInputComponent
+        username={this.state.username}
+        password={this.state.password}
+        onChangeHandler={this.onInputChange}
+        onLoginHandler={this.onLogin}
+      />
+      <NewUserComponent />
     </div>);
   }
 }
@@ -78,6 +71,7 @@ LoginComponent.propTypes = {
   password: PropTypes.string,
   loginVisible: PropTypes.func.isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
+  redirect: PropTypes.func,
 };
 
 function mapStateToProps(state) {

@@ -14,25 +14,27 @@
   }
 
   h5 {
-    margin: 10px 0 0;
+    margin: 10px 0 10px;
   }
 
-  label {
-    width: 20%;
-    display: block;
-    float: left;
-    margin-right: 10px;
-    font-size: 0.7rem;
-  }
+  .DateRangePicker {
+    font-family: 'Montserrat';
 
-  input {
-    width: 70%;
-    display: block;
-    float: left;
-  }
+    .DateInput__display-text--focused {
+      background: $light-red;
+      border-color: $light-red;
+      color: $font-gray;
+    }
 
-  .rw-popup-container.rw-calendar-popup {
-    width: 16rem;
+    .DateRangePicker__picker--valid-date-hovered .CalendarMonth__day--selected-start, .DateRangePicker__picker--valid-date-hovered .CalendarMonth__day--selected-end, .CalendarMonth__day--selected-start, .CalendarMonth__day--selected-end, .CalendarMonth__day--selected {
+      background: $font-red;
+      border-color: $font-red;
+    }
+
+    .CalendarMonth__day--selected-span {
+      background: $light-red;
+      border-color: $light-red;
+    }
   }
 
 }
@@ -41,6 +43,7 @@
   display: block;
   margin: 10px auto 0;
 }
+
 
 @media(min-width: $phone-breakpoint) {
   .booking-component-container {
@@ -51,29 +54,21 @@
 
     .booking-date-container {
       width: 80%;
+      display: flex;
+      align-items: center;
       margin: auto;
 
       h5 {
         margin: 0;
       }
-    }
 
-    label {
-      width: 10%;
-    }
-
-    input {
-      width: 90%;
-    }
-
-    #booking-to, #booking-from {
-      width: 80%;
-    }
-
-    .rw-popup-container.rw-calendar-popup {
-      width: 18rem;
-      left: initial;
-      right: -11px;
+      .DateRangePicker {
+        margin-left: 15px;
+        .DateInput {
+          font-size: 0.9rem;
+          text-align: center;
+        }
+      }
     }
   }
 }
@@ -82,10 +77,6 @@
   .booking-date-container {
     h5 {
       font-size: 1rem;
-    }
-
-    label {
-      font-size: 0.9rem;
     }
   }
 }

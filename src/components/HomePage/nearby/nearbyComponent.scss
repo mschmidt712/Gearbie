@@ -9,7 +9,7 @@
   }
 
   h3 {
-    width: 60%;
+    width: 50%;
     display: block;
     float: left;
     padding: 10px 15px 10px 5px;
@@ -18,34 +18,26 @@
 
   }
 
-  .zipcode-input {
-    width: 37%;
+  .search-container {
+    width: 50%;
+    padding: 0 15px;
     display: block;
-    float: left;
-  }
+    float: right;
 
-  label {
-    position: absolute !important;
-    left: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-  }
-
-  input {
-    padding: 10px 0 10px 5px;
-    width: 100%;
+    label {
+      width: 0;
+    }
   }
 }
 
 @media(min-width: $phone-breakpoint) {
   .nearby-container {
     h3 {
-      width: 80%;
+      width: 70%;
     }
 
-    .zipcode-input {
-      width: 18%;
-      display: block;
-      float: left;
+    .search-container {
+      width: 30%;
     }
   }
 }
@@ -57,16 +49,11 @@
     h3 {
       font-size: 1.8rem;
       font-weight: 100;
+      width: 80%;
     }
 
-    .zipcode-input {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
-
-      input {
-        width: 200px;
-      }
+    .search-container {
+      width: 20%;
     }
 
     .header-text {

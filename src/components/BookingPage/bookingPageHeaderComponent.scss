@@ -1,0 +1,78 @@
+.gear-item-overview {
+  display: flex;
+  align-items: center;
+
+  .overview-text {
+    width: 50%;
+    float: left;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    h5 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-size: 0.7rem;
+    }
+  }
+
+  .overview-image {
+    width: 50%;
+    float: left;
+
+    img {
+      width: 80%;
+      display: block;
+      margin: auto;
+    }
+  }
+
+  .overview-description {
+    display: none;
+  }
+}
+
+@media(min-width: $phone-breakpoint) {
+  .gear-item-overview {
+    flex-direction: column;
+    font-size: 1rem;
+
+    .overview-text {
+      width: 90%;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .overview-image {
+      width: 90%;
+      margin: auto;
+
+      img {
+        width: 150px;
+      }
+    }
+
+    .overview-description {
+      display: block;
+      width: 100%;
+
+      .divider-line {
+        margin-top: 15px;
+        height: 1px;
+        width: 100%;
+        background: $border-gray;
+      }
+
+      h5 {
+        margin: 15px 0 0;
+      }
+
+      p {
+        font-size: 0.83rem;
+      }
+    }
+  }
+}

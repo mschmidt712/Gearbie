@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import GearItemComponent from '../../shared/GearItemComponent/GearItemComponent';
-import constants from '../../constants.js';
+import constants from '../../../constants.js';
 
 /**
  * The state holding container for Popular Gear Items

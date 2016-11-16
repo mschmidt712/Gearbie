@@ -1,0 +1,68 @@
+.price-container {
+
+  .align-right {
+    float: right;
+  }
+
+  h3 {
+    margin: 5px;
+  }
+
+  p {
+    display: block;
+    float: left;
+    margin: 10px 5px;
+    font-size: 0.7rem;
+  }
+
+  h5, h4 {
+    display: block;
+    float: left;
+    margin: 10px 5px;
+  }
+
+  h5 {
+    position: relative;
+  }
+
+  .more-info {
+    cursor: default;
+    position: absolute;
+    top: 0;
+    right: -20px;
+
+    &:hover{
+      .security-deposit-info {
+        display: block;
+      }
+    }
+  }
+
+  i.material-icons {
+    padding-left: 5px;
+    font-size: 1rem;
+    float: right;
+  }
+
+  .security-deposit-info {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    z-index: $modal;
+    width: 157px;
+    margin: 0;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid $border-gray;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+
+  .total-line {
+    height: 1px;
+    width: 95%;
+    margin: 10px auto;
+    background-color: $font-gray;
+  }
+}

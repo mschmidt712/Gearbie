@@ -1,15 +1,13 @@
 import React, { PropTypes } from 'react';
-import BookingComponent from '../BookingComponent/BookingComponent';
 
 function GearItemHeaderComponent(props) {
   return (
-    <div className="gear-item-header clearfix">
+    <div>
       <h2>{props.gearItem.title}</h2>
       <div className="img-price-container">
         <img src={props.gearItem.imgSrc} alt={props.gearItem.altText} />
         <p className="price">{props.gearItem.price}</p>
       </div>
-      <BookingComponent price={props.gearItem.price} />
     </div>
   );
 }

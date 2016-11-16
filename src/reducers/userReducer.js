@@ -11,6 +11,9 @@ export default function userReducer(state = {}, action) {
         password: '',
       };
     }
+    case types.login.GET_USER_SUCCESS: {
+      return action.user;
+    }
     default: {
       return state;
     }
