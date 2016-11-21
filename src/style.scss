@@ -63,6 +63,8 @@ $loading-indicator: 20;
 @import './components/BookingPage/priceSummaryComponent.scss';
 @import './components/BookingPage/bookingPageHeaderComponent.scss';
 @import './components/BookingPage/bookingDatesComponent.scss';
+@import './components/BookingConfirmationPage/bookingConfirmationPageComponent.scss';
+@import './components/UserComponent/userComponent.scss';
 
 html, body {
   min-height: 100%;

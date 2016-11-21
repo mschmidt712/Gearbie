@@ -40,11 +40,14 @@ class DropDownMenu extends React.Component {
     return (
       <div className="dropdown-menu-container">
         <ul className="main-nav-dropdown">
-          {this.props.user.username && <li className="main-nav-item" onClick={this.props.clickEvent}>
-            <img src={this.props.user.imgSrc} alt="user" className="user-image" />
-            {this.props.user.username}
-            <button className="logout-button" onClick={this.props.logoutHandler}> Logout </button>
-          </li>}
+          {this.props.user.username &&
+            <li className="main-nav-item" onClick={this.props.clickEvent}>
+              <Link to="/userProfile">
+                <img src={this.props.user.imgSrc} alt="user" className="user-image" />
+                {this.props.user.username}
+                <button className="logout-button" onClick={this.props.logoutHandler}> Logout </button>
+              </Link>
+            </li>}
           {!this.props.user.username &&
             <button
               className="main-nav-item"

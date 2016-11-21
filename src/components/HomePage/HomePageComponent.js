@@ -13,7 +13,6 @@ import PopularComponent from './popular/PopularComponent';
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       categories: this.props.categories,
       nearbyGearItems: this.props.nearbyGearItems,
@@ -46,8 +45,6 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
-
     if (newProps.user.zipCode !== this.state.zipCode && newProps.user.zipCode > 0) {
       this.props.itemActions.getNearbyItems(newProps.user.zipCode)
         .then((resp) => {

@@ -51,7 +51,7 @@ class GearItemsApi {
   }
 
   static getNearbyItems(zipCode) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         const returnItem = [];
         gearItems.forEach((item) => {
@@ -71,7 +71,7 @@ class GearItemsApi {
         if (returnItem.length) {
           resolve(returnItem);
         } else {
-          reject('No item found.');
+          resolve([]);
         }
       }, delay);
     });

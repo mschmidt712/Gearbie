@@ -84,6 +84,7 @@ gulp.task('serve:dev', ['build:dev', 'watch:html', 'watch:sass', 'watch:js', 'wa
       middleware: [ historyApiFallback()]
     },
     logLevel: "info",
+    ghostMode: true,
     port: 3000
   });
 });

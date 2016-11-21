@@ -32,3 +32,15 @@ export function getUser() {
 export function logoutUser(user) {
   return { type: types.login.LOGOUT_USER, user };
 }
+
+export function updateUserSuccess(user) {
+  return { type: types.login.UPDATE_USER_SUCCESS, user };
+}
+
+export function updateUser(user) {
+  return function updateUserThunk(dispatch) {
+    return UserApi.updateUser(user).then(resp => (
+      dispatch(updateUserSuccess(resp))
+    ));
+  };
+}

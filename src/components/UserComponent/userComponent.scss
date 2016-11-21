@@ -1,0 +1,94 @@
+.user-component-container {
+  h2 {
+    margin: 5px;
+    color: $font-red;
+  }
+
+  .personal-info-container, .rental-container, .booking-container {
+    float: left;
+    width: calc(100% - 10px);
+  }
+
+  .info-container {
+    position: relative;
+    margin: 5px;
+    border: 1px solid $border-gray;
+    border-radius: 2px;
+  }
+
+  .edit-btn.btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3px;
+    padding: 5px;
+    background: transparent;
+
+    i {
+      font-size: calc(0.83rem + 4px);
+    }
+  }
+
+  .account-info-content {
+    img {
+      display: block;
+      width: 25%;
+      float: left;
+      border-radius: 2px;
+      margin: 5px;
+    }
+
+    .account-properties {
+      float: left;
+      width: calc(75% - 10px);
+
+      .info-item {
+        flex-direction: column;
+        align-items: initial;
+
+        p {
+          padding: 0 5px;
+        }
+      }
+
+      button {
+        display: block;
+        margin: 10px 5px;
+        padding: 10px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  h4 {
+    margin: 5px;
+    padding: 5px 0;
+    font-size: 0.83rem;
+    color: $font-red;
+    border-bottom: 1px solid $border-gray
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+
+    label {
+      display: block;
+      width: 40%;
+      float: left;
+      font-weight: 600;
+      clear: both;
+    }
+
+    .value-container {
+      display: block;
+      width: 50%;
+      float: left;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

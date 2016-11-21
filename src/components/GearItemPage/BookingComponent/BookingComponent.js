@@ -16,21 +16,13 @@ class BookingComponent extends React.Component {
       focusedInput: null,
       bookingStart: props.bookingStart,
       bookingEnd: props.bookingEnd,
+      blockedDates: props.blockedDates,
       disabled: false,
     };
 
     this.onFocusChange = this.onFocusChange.bind(this);
     this.onDatesChange = this.onDatesChange.bind(this);
-  }
-
-  getBlockedDates(date) {
-    this.props.blockedDates.forEach((timestamp) => {
-      if (moment(date) === moment(timestamp)) {
-        return true;
-      }
-
-      return false;
-    });
+    this.isDayBlocked = this.isDayBlocked.bind(this);
   }
 
   onDatesChange({ startDate, endDate }) {
@@ -51,6 +43,12 @@ class BookingComponent extends React.Component {
     this.setState({
       focusedInput,
     });
+  }
+
+  isDayBlocked(date) {
+    return this.props.blockedDates.some(blockedDate => (
+      date.isSame(blockedDate, 'day')
+    ));
   }
 
   render() {
@@ -79,6 +77,7 @@ class BookingComponent extends React.Component {
             numberOfMonths={1}
             enableOutsideDays
             minimumNights={1}
+            isDayBlocked={this.isDayBlocked}
           />
         </div>
         <button className={buttonClass} onClick={() => this.props.submitHandler(gearItemId, startDate, endDate)}>
@@ -93,7 +92,7 @@ BookingComponent.propTypes = {
   gearItemId: PropTypes.string.isRequired,
   bookingStart: PropTypes.instanceOf(moment).isRequired,
   bookingEnd: PropTypes.instanceOf(moment).isRequired,
-  blockedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+  blockedDates: PropTypes.arrayOf(PropTypes.instanceOf(moment)).isRequired,
   submitHandler: PropTypes.func.isRequired,
 };
 

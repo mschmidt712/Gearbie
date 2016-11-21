@@ -6,16 +6,15 @@ class UserApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         let user;
-
         personsData.forEach((person) => {
           if (person.accountInfo.username === loginUser.username &&
             person.accountInfo.password === loginUser.password) {
-            user = person.accountInfo;
+            user = person;
 
             if (document.cookie.indexOf('username') === -1) {
               const today = new Date();
               const tomorrow = today.setDate(today.getDate() + 1);
-              document.cookie = `username=${user.username}; expires=${tomorrow}`;
+              document.cookie = `username=${user.accountInfo.username}; expires=${tomorrow}`;
             }
           }
         });
@@ -32,7 +31,7 @@ class UserApi {
   static logoutUser(user) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        document.cookie = `username=${user.username}; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+        document.cookie = `username=${user.accountInfo.username}; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
         resolve(Object.assign({}, user));
       }, delay);
     });
@@ -50,11 +49,11 @@ class UserApi {
 
           personsData.forEach((person) => {
             if (person.accountInfo.username === username) {
-              user = person.accountInfo;
+              user = person;
             }
           });
 
-          this.loginUser(user);
+          this.loginUser(user.accountInfo);
         }
 
         if (user) {
@@ -62,6 +61,22 @@ class UserApi {
         } else {
           reject('No user logged in.');
         }
+      }, delay);
+    });
+  }
+
+  static updateUser(user) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let updatedPerson;
+
+        personsData.forEach((person) => {
+          if (person.id == user.id) {
+            updatedPerson = Object.assign({}, user);
+          }
+
+          resolve(updatedPerson);
+        });
       }, delay);
     });
   }

@@ -14,6 +14,9 @@ export default function userReducer(state = {}, action) {
     case types.login.GET_USER_SUCCESS: {
       return action.user;
     }
+    case types.login.UPDATE_USER_SUCCESS: {
+      return action.user;
+    }
     default: {
       return state;
     }

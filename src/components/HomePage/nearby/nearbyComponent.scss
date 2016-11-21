@@ -28,6 +28,15 @@
       width: 0;
     }
   }
+
+  .no-results-container {
+    padding-left: 5px;
+
+    h4, p {
+      margin: 5px 0;
+      font-size: 0.83rem;
+    }
+  }
 }
 
 @media(min-width: $phone-breakpoint) {
@@ -38,6 +47,10 @@
 
     .search-container {
       width: 30%;
+    }
+
+    .no-results-container {
+      padding-left: 10px;
     }
   }
 }
@@ -58,6 +71,15 @@
 
     .header-text {
       margin-top: 20px;
+    }
+
+    .no-results-container {
+      h4 {
+        font-size: 1rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
     }
   }
 }

@@ -88,8 +88,12 @@ class NearbyComponent extends React.Component {
             clickHandler={this.props.searchHandler}
           />
         </div>
-        {this.props.nearbyGearItems && <div>{this.state.items}</div>}
-        {!this.props.nearbyGearItems && <div><p>No Results Nearby!</p></div>}
+        {this.state.items && <div>{this.state.items}</div>}
+        {!this.state.items.length &&
+          <div className="no-results-container">
+            <h4> We're sorry. </h4>
+            <p>No results were found near {this.props.zipCode}.</p>
+          </div>}
       </div>
     );
   }

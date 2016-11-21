@@ -69,9 +69,8 @@ class LoginComponent extends React.Component {
 LoginComponent.propTypes = {
   username: PropTypes.string,
   password: PropTypes.string,
-  loginVisible: PropTypes.func.isRequired,
+  loginVisible: PropTypes.func,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
-  redirect: PropTypes.func,
 };
 
 function mapStateToProps(state) {

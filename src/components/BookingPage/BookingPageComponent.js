@@ -22,9 +22,6 @@ function calcBookingDays(startDate, endDate) {
 class BookingPageComponent extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log(props);
-
     this.state = {
       gearItemId: props.params.gearItemId,
       gearItem: {
@@ -46,6 +43,8 @@ class BookingPageComponent extends React.Component {
       bookingDays: 0,
       loading: true,
     };
+
+    this.onBooking = this.onBooking.bind(this);
   }
 
   componentWillMount() {
@@ -62,6 +61,20 @@ class BookingPageComponent extends React.Component {
           loading: false,
         });
       });
+  }
+
+  onBooking() {
+    this.props.bookingActions.bookItem(
+      this.state.gearItemId,
+      this.props.user.id,
+      this.state.bookingStart,
+      this.state.bookingEnd,
+    ).then(() => {
+      this.context.router.push(`/bookingConfirmation/${this.state.gearItemId}`);
+    })
+    .catch((err) => {
+      toastr.error(err);
+    });
   }
 
   render() {
@@ -87,14 +100,22 @@ class BookingPageComponent extends React.Component {
 
 BookingPageComponent.propTypes = {
   itemActions: PropTypes.objectOf(PropTypes.func),
+  bookingActions: PropTypes.objectOf(PropTypes.func),
   params: PropTypes.objectOf(PropTypes.string),
   location: PropTypes.shape({
     query: PropTypes.objectOf(PropTypes.string),
   }),
 };
 
+BookingPageComponent.contextTypes = {
+  router: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
 function mapStateToProps(state) {
   return {
+    user: state.user,
     gearItem: state.itemById,
   };
 }

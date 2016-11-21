@@ -1,3 +1,4 @@
+import moment from 'moment';
 import delay from './delay';
 import persons from './personsData';
 import gearItems from './itemsData';
@@ -10,28 +11,36 @@ class BookingApi {
         let activePerson;
 
         gearItems.forEach((item) => {
-          if (item.id === itemId) {
-            for (let i = startDate; i <= endDate; i.setDate(i.getDate() + 1)) {
-              item.disabledDates.push(new Date(i));
-            }
+          if (item.id == itemId) {
             gearItem = Object.assign({}, item);
+            const currDay = startDate.clone().startOf('day');
+            const lastDay = endDate.clone().startOf('day');
+
+            while (currDay.diff(lastDay) <= 0) {
+              gearItem.disabledDates.push(currDay.clone());
+              currDay.add(1, 'days');
+            }
           }
         });
 
         persons.forEach((person) => {
           if (person.id === personsId) {
-            person.bookingItems.push({
+            activePerson = Object.assign({}, person);
+
+            activePerson.bookingItems.push({
               gearId: itemId,
               dates: [startDate, endDate],
             });
           }
-          activePerson = Object.assign({}, person);
         });
 
         if (gearItem) {
-          resolve([gearItem, activePerson]);
+          resolve({
+            item: gearItem,
+            user: activePerson,
+          });
         } else {
-          reject('No item found.');
+          reject('Booking failed. Please try again.');
         }
       }, delay);
     });

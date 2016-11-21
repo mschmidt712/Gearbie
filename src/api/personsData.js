@@ -3,9 +3,11 @@ export default [{
   accountInfo: {
     username: 'JackS',
     password: 'Gonzo',
+    email: 'jstew459@gmail.com',
     name: 'Jack',
     fullName: 'Jack Stewart',
     imgSrc: '/assets/users/Jack.jpg',
+    street: '3038 Race Street',
     city: 'Denver',
     state: 'CO',
     zipCode: 80205,
@@ -24,9 +26,11 @@ export default [{
   accountInfo: {
     username: 'MarieS',
     password: 'helloWorld',
+    email: 'marie.schmidt.712@gmail.com',
     name: 'Marie',
     fullName: 'Marie Schmidt',
     imgSrc: '/assets/users/Marie.jpg',
+    street: '485 S Quail St',
     city: 'Lakewood',
     state: 'CO',
     zipCode: 80226,

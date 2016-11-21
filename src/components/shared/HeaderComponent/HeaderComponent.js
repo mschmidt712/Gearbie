@@ -17,7 +17,9 @@ class HeaderComponent extends React.Component {
     super(props);
 
     this.state = {
-      user: this.props.user,
+      user: {
+        username: '',
+      },
       dropDownVisible: false,
       categoryDropDownVisible: false,
       loginModalDisplayed: false,
@@ -40,9 +42,10 @@ class HeaderComponent extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.user !== this.state.user) {
+    if (newProps.user.accountInfo &&
+      newProps.user.accountInfo !== this.state.user) {
       this.setState({
-        user: newProps.user,
+        user: newProps.user.accountInfo,
       });
     }
     if (newProps.categories !== this.state.categories) {
@@ -130,10 +133,10 @@ class HeaderComponent extends React.Component {
               <li><a href="">Share Your Gear</a></li>
               <li><a href="">Need Help?</a></li>
               {this.state.user.username &&
-                <li><a href="">
+                <li><Link to="/userProfile">
                   <img src={this.state.user.imgSrc} alt="user" className="user-image" />
                     {this.state.user.username}
-                </a></li>}
+                </Link></li>}
               {!this.state.user.username &&
                 <li><button className="dropdown-nav-item" onClick={this.toggleLoginModal}>
                   Login
@@ -160,7 +163,10 @@ class HeaderComponent extends React.Component {
 }
 
 HeaderComponent.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    password: PropTypes.string,
+  }).isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
   categories: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };

@@ -84,7 +84,7 @@ class GearItemPageComponent extends React.Component {
   }
 
   bookingSubmitHandler(gearItemId, startDate, endDate) {
-    if (this.props.user.username) {
+    if (this.props.user.accountInfo.username) {
       this.bookingRedirect(gearItemId, startDate, endDate);
     } else {
       this.setState({
@@ -117,6 +117,7 @@ class GearItemPageComponent extends React.Component {
                 gearItemId={this.state.gearItemId}
                 bookingStart={this.state.bookingStart}
                 bookingEnd={this.state.bookingEnd}
+                blockedDates={this.state.gearItem.disabledDates}
                 submitHandler={this.bookingSubmitHandler}
               />
             </div>
