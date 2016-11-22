@@ -74,9 +74,13 @@ class UserApi {
           if (person.id == user.id) {
             updatedPerson = Object.assign({}, user);
           }
-
-          resolve(updatedPerson);
         });
+
+        if (updatedPerson) {
+          resolve(updatedPerson);
+        } else {
+          reject('User not found');
+        }
       }, delay);
     });
   }

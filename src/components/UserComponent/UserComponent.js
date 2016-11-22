@@ -44,15 +44,19 @@ class UserComponent extends React.Component {
   }
 
   togglePersonalEditing() {
+    if (this.state.accountEditing) {
+      this.props.userActions.updateUser(this.state.user);
+    }
+
     this.setState({
       personalEditing: !this.state.personalEditing,
     });
   }
 
   toggleAccountEditing() {
-    // if (this.state.accountEditing) {
-    //   this.props.userActions.updateUser();
-    // }
+    if (this.state.accountEditing) {
+      this.props.userActions.updateUser(this.state.user);
+    }
 
     this.setState({
       accountEditing: !this.state.accountEditing,
@@ -65,7 +69,6 @@ class UserComponent extends React.Component {
     const value = $(e.target).val();
 
     stateObj.user.accountInfo[id] = value;
-
     this.setState(stateObj);
   }
 

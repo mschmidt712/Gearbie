@@ -7,7 +7,7 @@ function InfoItemComponent(props) {
         <p>{props.value}</p>}
       {props.editing &&
         <input
-          placeholder={props.value}
+          value={props.value}
           id={props.id}
           onChange={props.onChange}
         />}
