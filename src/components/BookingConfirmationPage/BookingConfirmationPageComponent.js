@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 function BookingConfirmationPageComponent() {
   return (
@@ -6,6 +7,7 @@ function BookingConfirmationPageComponent() {
       <h1>Thank You.</h1>
       <h2>Your booking has been submitted!</h2>
       <p>A confirmation should arrive in your email shortly.</p>
+      <Link to="/" className="btn btn-primary">Return to Home Page</Link>
     </div>
   );
 }

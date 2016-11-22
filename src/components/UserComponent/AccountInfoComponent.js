@@ -6,7 +6,7 @@ function AccountInfoComponent(props) {
   return (
     <div className="account-info-container info-container clearfix">
       <h4> Account Info </h4>
-      <EditButtonComponent clickHandler={props.editClickHandler} />
+      <EditButtonComponent editing={props.editing} clickHandler={props.editClickHandler} />
       <div className="account-info-content">
         <img src={props.user.imgSrc} alt="user" />
         <div className="account-properties">

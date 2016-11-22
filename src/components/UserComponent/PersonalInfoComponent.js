@@ -6,7 +6,7 @@ function PersonalInfoComponent(props) {
   return (
     <div className="personal-info-container info-container">
       <h4>Personal Info</h4>
-      <EditButtonComponent clickHandler={props.editClickHandler} />
+      <EditButtonComponent editing={props.editing} clickHandler={props.editClickHandler} />
       <div className="info-item">
         <label htmlFor="fullName">Full Name</label>
         <InfoItemComponent
